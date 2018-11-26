@@ -1,1 +1,4 @@
 <%= @item.title %>
+<%= link_to "edit", edit_project_item_path(@project, @item) %>
+<%= link_to "delete", project_item_path(@project, @item), :method => :delete %>
+<%= link_to "back", root_path %>

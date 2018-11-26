@@ -24,10 +24,18 @@ class ItemsController < ApplicationController
     def edit; end 
 
     def update
+        if @item.update_attributes(item_params)
+            redirect_to project_item_path(@project, @item)
+        else 
+            render :edit 
+        end 
     end 
 
     def destroy 
-        @item.destroy 
+        if @item.destroy 
+            redirect_to project_path(@project)
+        else 
+        end 
     end 
 
     private 

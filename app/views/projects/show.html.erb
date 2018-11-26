@@ -1,2 +1,10 @@
 <%= @project.name %>
+<%= link_to "edit", edit_project_path(@project) %>
+<%= link_to "Delete", project_path(@project), :method => :delete %>
+
 <%= link_to "Create Item", new_project_item_path(@project, @item) %>
+<% @project.items.each do |item| %>
+    <li><%= link_to item.title, project_item_path(@project, item) %></li>
+    
+<% end %>
+<%= link_to "back", root_path %>
