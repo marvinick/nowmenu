@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
         @project = Project.new 
     end 
 
-    def create 
+    def create w
         @project = Project.new(project_params)
         if @project.save 
             redirect_to projects_path(@projects)
