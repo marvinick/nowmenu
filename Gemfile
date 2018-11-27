@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'serviceworker-rails'
 gem 'simple_form'
 gem 'webpacker', '~> 3.5'
+gem 'jquery-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
