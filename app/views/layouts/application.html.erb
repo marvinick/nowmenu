@@ -8,10 +8,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="manifest" href="/manifest.json" />
   <%= javascript_pack_tag "application" %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.24/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.24/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.24/js/uikit-icons.min.js"></script>
 <meta name="apple-mobile-web-app-capable" content="yes"></head>
 
   <body>
+  <div class="uk-container">
     <%= yield %>
+  </div>
+    
   </body>
 
 </html>

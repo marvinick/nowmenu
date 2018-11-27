@@ -1,14 +1,17 @@
-<%= @project.name %>
-<%= link_to "edit", edit_project_path(@project) %>
-<%= link_to "Delete", project_path(@project), :method => :delete %>
+<div class="uk-margin-top">
+    <%= @project.name %>
+    <%= link_to "edit", edit_project_path(@project), class: "uk-button uk-button-secondary" %>
+    <%= link_to "Delete", project_path(@project), :method => :delete, class: "uk-button uk-button-danger" %>
 
-<%= link_to "Create Item", new_project_item_path(@project, @item) %>
-<% @project.items.each do |item| %>
-    <li><%= link_to item.title, project_item_path(@project, item) %></li>
-    
-<% end %>
-<%= link_to "back", root_path %>
-
-<div data-controller="hello">
-  <h1 data-target="hello.output"></h1>
+    <%= link_to "+", new_project_item_path(@project, @item), class: "uk-button uk-button-primary" %>
+    <% @project.items.each do |item| %>
+        <li><%= link_to item.title, project_item_path(@project, item) %></li>
+        
+    <% end %>
+    <%= link_to "back", root_path %>
+    <p uk-margin>
+        <a class="uk-button uk-button-default" href="#">Link</a>
+        <button class="uk-button uk-button-default">Button</button>
+        <button class="uk-button uk-button-default" disabled>Disabled</button>
+    </p>
 </div>
