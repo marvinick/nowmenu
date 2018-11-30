@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
     private 
 
     def project_params
-        params.require(:project).permit(:name, :description)
+        params.require(:project).permit(:name, :description, categories_attributes: [:name, :_destroy, :required, :id])
     end 
 
     def set_project 

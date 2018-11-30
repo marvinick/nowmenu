@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
     before_action :set_item
 
     def new 
-        @review = @item.reviews.new
+        @review = Review.new(project_id: params[:project_id])
     end 
 
     def create 
@@ -23,8 +23,8 @@ class ReviewsController < ApplicationController
     end 
 
     def set_item 
-        project = Project.find(params[:project_id])
-        @item = project.items.find(params[:item_id])
+        @project = Project.find(params[:project_id])
+        @item = @project.items.find(params[:item_id])
     end 
 
 end 

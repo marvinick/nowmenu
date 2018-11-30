@@ -1,17 +1,27 @@
 <div class="uk-margin-top">
-    <%= @project.name %>
-    <%= link_to "edit", edit_project_path(@project), class: "uk-button uk-button-secondary" %>
-    <%= link_to "Delete", project_path(@project), :method => :delete, class: "uk-button uk-button-danger" %>
+    
+    <h2>
+        <%= @project.name %>
+        <%= link_to "edit", edit_project_path(@project), class: "uk-button uk-button-secondary" %>
+        <%= link_to "Delete", project_path(@project), :method => :delete, class: "uk-button uk-button-danger" %>
+    
+    </h2>
+    
 
-    <%= link_to "+", new_project_item_path(@project, @item), class: "uk-button uk-button-primary" %>
-    <% @project.items.each do |item| %>
-        <li><%= link_to item.title, project_item_path(@project, item) %></li>
-        
+    <h4>Categories</h4>
+    <% @project.categories.each do |category| %>
+        <li><h6><%= category.name %></h6></li>
     <% end %>
+
+    <hr>
+    <h4>
+        Items
+        <%= link_to "+", new_project_item_path(@project, @item), class: "uk-button uk-button-primary" %>
+    </h4>
+
+    <% @project.items.each do |item| %>
+        <li><%= link_to item.title, project_item_path(@project, item) %></li>        
+    <% end %>
+    <hr>
     <%= link_to "back", root_path %>
-    <p uk-margin>
-        <a class="uk-button uk-button-default" href="#">Link</a>
-        <button class="uk-button uk-button-default">Button</button>
-        <button class="uk-button uk-button-default" disabled>Disabled</button>
-    </p>
 </div>

@@ -1,5 +1,10 @@
 <%= simple_form_for @project do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
+
+    <%= f.fields_for :categories do |builder| %>
+        <%= render 'category_categories', f: builder %>
+    <% end %>
+    <%= link_to_add_categories "Add Category", f, :categories %>
     <%= f.button :submit %>
 <% end %>
