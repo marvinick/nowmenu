@@ -2,10 +2,12 @@
     <%= f.input :private_review %>
     <%= f.input :public_review %>
     <%= f.hidden_field :project_id %>
-
+    <%= f.hidden_field :item_id %>
     <%= f.fields_for :properties, OpenStruct.new(@review.properties) do |builder| %>
         <% @review.project.categories.each do |category| %>
-            <%= render "field", field: field, f: builder %>
+            <%= render "field", field: category,  f: builder %>
         <% end %>
     <% end %>
+
+    <%= f.submit %>
 <% end %>

@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
     def create 
         @item = @project.items.new(item_params)
-        if @item.save 
+        if @item.save  
             redirect_to project_item_path(@project, @item)
         else 
             render :new 

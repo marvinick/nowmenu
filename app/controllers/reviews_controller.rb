@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     end 
 
     def create 
-        @review = @item.reviews.builder(review_params)
+        @review = Review.new(review_params)
         if @review.save 
             redirect_to root_path 
         else 
@@ -19,7 +19,12 @@ class ReviewsController < ApplicationController
     private 
 
     def review_params 
-        params.require(:review).permit(:project_id, :private_review, :public_review)
+        params.require(:review).permit(:project_id, :item_id, :private_review, :public_review, properties: {})
+        # params.require(:review).tap do |whitelisted|
+        #     whitelisted[:properties] = params[:review][:properties]
+        #     whitelisted[:public_review] = params[:review][:public_review]
+        #     whitelisted[:private_review] = params[:review][:private_review]
+        # end
     end 
 
     def set_item 
