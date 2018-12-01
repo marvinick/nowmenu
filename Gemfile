@@ -37,6 +37,7 @@ gem 'simple_form'
 gem 'webpacker', '~> 3.5'
 gem 'jquery-rails'
 gem 'devise'
+gem 'devise_invitable'
 
 
 group :development, :test do

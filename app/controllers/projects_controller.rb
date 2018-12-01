@@ -3,7 +3,7 @@ class ProjectsController < BaseController
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index 
-        @projects = Project.all 
+        @projects = current_user.projects 
     end 
 
     def new 
@@ -12,6 +12,7 @@ class ProjectsController < BaseController
 
     def create
         @project = Project.new(project_params)
+        @project.project_users.new(user: current_user, role: "owner" )
         if @project.save 
             redirect_to projects_path(@projects)
         else 
@@ -48,6 +49,6 @@ class ProjectsController < BaseController
     end 
 
     def set_project 
-        @project = Project.find(params[:id])
+        @project = current_user.projects.find(params[:id])
     end 
 end 
