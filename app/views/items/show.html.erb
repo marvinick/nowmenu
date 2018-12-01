@@ -1,11 +1,17 @@
-<%= @item.title %>
+<h3><%= @item.title %></h3>
 <%= link_to "edit", edit_project_item_path(@project, @item) %>
 <%= link_to "delete", project_item_path(@project, @item), :method => :delete %>
-<%= link_to "back", root_path %>
-<%= link_to "review", new_project_item_review_path(@project, @item) %>
+<hr>
+<h4>
+    Reviews
+    <%= link_to "review", new_project_item_review_path(@project, @item), class: "uk-button uk-button-primary" %>
+</h4>
 
 <% @item.reviews.each do |review| %>
-    <% review.properties.each do |key, value | %>
-        <%= key %><%= value %>
+    <li><%= link_to review.public_review, project_item_review_path(@project, @item, review) %></li>
+    <% review.properties.each do |key, value| %>
+        <li><%= key %>: <%= value %></li>
     <% end %>
 <% end %>
+<hr />
+<%= link_to "back", root_path %>

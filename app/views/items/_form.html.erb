@@ -1,0 +1,6 @@
+<%= simple_form_for [@project, @item] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+    <%= link_to "cancel", :back %>
+<% end %>

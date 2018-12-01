@@ -1,0 +1,14 @@
+<%= simple_form_for [@project, @item, @review] do |f| %>
+    <%= f.input :private_review %>
+    <%= f.input :public_review %>
+    <%= f.hidden_field :project_id %>
+    <%= f.hidden_field :item_id %>
+    <%= f.fields_for :properties, OpenStruct.new(@review.properties) do |builder| %>
+        <% @review.project.categories.each do |category| %>
+            <%= render "field", field: category,  f: builder %>
+        <% end %>
+    <% end %>
+
+    <%= f.submit %>
+    <%= link_to "cancel", project_item_review_path(@project, @item, @review) %>
+<% end %>
