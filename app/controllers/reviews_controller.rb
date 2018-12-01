@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController 
+class ReviewsController < BaseController 
     before_action :set_item
     before_action :set_review, only: [:show, :edit, :destroy, :update]
 

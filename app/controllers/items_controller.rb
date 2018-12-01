@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController 
+class ItemsController < BaseController 
     before_action :set_project 
     before_action :set_item, only: [:show, :edit, :update, :destroy]
 
