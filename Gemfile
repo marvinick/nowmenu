@@ -36,6 +36,7 @@ gem 'serviceworker-rails'
 gem 'simple_form'
 gem 'webpacker', '~> 3.5'
 gem 'jquery-rails'
+gem 'devise'
 
 
 group :development, :test do
