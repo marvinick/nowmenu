@@ -1,5 +1,4 @@
-class Projects::ProjectUsersController < ApplicationController 
-    before_action :authenticate_user!
+class Projects::ProjectUsersController < BaseController  
     before_action :set_project 
 
     def create
@@ -7,6 +6,7 @@ class Projects::ProjectUsersController < ApplicationController
         project_user.project = @project
       
         if project_user.save
+          ProjectUserMailer.invite(project_user).deliver_now
           redirect_to @project, notice: 'Saved!'
         else
           redirect_to @project, alert: 'Failed saving!'

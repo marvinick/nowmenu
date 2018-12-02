@@ -30,7 +30,7 @@ config.webpacker.check_yarn_integrity = true
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -56,5 +56,18 @@ config.webpacker.check_yarn_integrity = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   #set up the default URL options for the Devise mailer in each environment
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  ActionMailer::Base.smtp_settings =
+  { 
+
+    :address            => 'smtp.gmail.com',
+    :port               => 587,
+    :domain             => 'gmail.com', #you can also use google.com
+    :authentication     => :plain,
+    :user_name          => 'marvkipi@gmail.com',
+    :password           => 'Echo314!'
+  }
 end
