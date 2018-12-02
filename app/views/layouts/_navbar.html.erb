@@ -1,34 +1,28 @@
-<nav class="uk-navbar-container uk-container" uk-navbar>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "nowmenu", root_path, class: "navbar-brand"  %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="uk-navbar-left">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
 
-        <ul class="uk-navbar-nav">
-            <li class="uk-active"><a href="#">NowMenu</a></li>
-        </ul>
-
-    </div>
-
-    <div class="uk-navbar-right">
-
-        <ul class="uk-navbar-nav">
-             <% if user_signed_in? %>
-              <li>
-                <a href="#"><%= current_user.email %></a>
-                <div class="uk-navbar-dropdown">
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                        
-                        <li><a href="#"><%= link_to "logout", destroy_user_session_path, class:"btn btn-sm btn-danger outline", method: :delete %></a></li>
-                        
-                    </ul>
+    </ul>
+    <% if user_signed_in? %>
+        
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.email %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-item">
+                    <%= link_to "logout", destroy_user_session_path,  method: :delete %>
                 </div>
-            </li>
-            
-            <% else %>
-              <p class="black-link"><%= link_to "sign in", new_user_session_path %></p>
-            <% end %>
-            
-        </ul>
-
-    </div>
-
+            </div>
+        </li>
+        
+    <% else %>
+        <li class="nav-item"><%= link_to "sign in", new_user_session_path %></li>
+    <% end %>
+  </div>
 </nav>

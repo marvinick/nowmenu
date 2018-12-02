@@ -1,6 +1,7 @@
 <h1>Projects</h1>
-<%= link_to "New", new_project_path(@project), class: "btn" %> 
+<%= link_to "New", new_project_path(@project), class: "btn btn-success" %> 
 <hr>
 <% @projects.each do |project| %>
-    <li><%= link_to project.name, project_path(project) %></li>
+    <li><h5><%= link_to project.name, project_path(project) %></h5></li>
 <% end %>
+
