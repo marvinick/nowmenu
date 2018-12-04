@@ -9,7 +9,7 @@ class ReviewsController < BaseController
     def create 
         @review = Review.new(review_params)
         if @review.save 
-            redirect_to root_path 
+            redirect_to [@project, @item]
         else 
             render :new 
         end 
@@ -28,6 +28,9 @@ class ReviewsController < BaseController
     end 
 
     def destroy
+        if @review.destroy
+            redirect_to [@project, @item], alert: 'deleted!'
+        end 
     end 
 
 

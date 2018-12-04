@@ -1,16 +1,16 @@
 <div class="field">
-    <%= f.label field.name %>
    
-    <div id="star-rating_<%= field.name %>"></div>
+   
+    <div id="star-rating_<%= field.name %>"> <%= f.label field.name %></div>
     <script>
         $("#star-rating_<%= field.name %>").each(function() {
-        $(this).raty({
-            path: '/assets/',
-            scoreName: 'review[properties[<%= field.name %>]',
-            score: 'review[properties]'
+            $(this).raty({
+                path: '/assets/',
+                scoreName: 'review[properties[<%= field.name %>]',
+                score: 'review[properties]'
+            });
         });
-        });
-    </script>  
+    </script> 
 </div>
 
 

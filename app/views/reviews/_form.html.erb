@@ -8,7 +8,7 @@
             <%= render "field", field: category,  f: builder %>
         <% end %>
     <% end %>
-
-    <%= f.submit, class: "btn btn-primary" %>
+    <br />
+    <%= f.button :submit, class: "btn btn-primary" %>
     <%= link_to "cancel", project_item_path(@project, @item), class: "btn btn-warning" %>
-<% end %>
+<% end %> 

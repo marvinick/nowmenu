@@ -1,4 +1,8 @@
+<%= link_to project_item_path(@project, @item) do %>
+  <h6><i class="fas fa-arrow-left"></i></h6>
+<% end %>
 <%= @review.private_review %>
 <%= link_to "edit", edit_project_item_review_path(@project, @item, @review) %>
-
-<%= link_to "back", project_item_path(@project, @item) %>
+<%= link_to project_item_review_path, :method => :delete do %>
+    <i class="fas fa-trash"></i>
+<% end %>

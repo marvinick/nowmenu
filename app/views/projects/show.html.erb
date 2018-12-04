@@ -1,38 +1,56 @@
 
-<h3>
-     <%= @project.name %>    
-</h3>
-<%= link_to "edit", edit_project_path(@project), class: "btn btn-sm btn-primary" %>
+<h4><%= @project.name %></h4>
+
+<%= link_to "edit", edit_project_path(@project), class: "btn btn-sm btn-warning" %>
 <%= link_to "Delete", project_path(@project), :method => :delete, class: "btn btn-sm btn-danger" %>
 <br />
 <br />
-<h5>Categories</h5>
+<br />
+
+<h6>Categories</h6>
 <% @project.categories.each do |category| %>
-    <li><h6><%= category.name %></h6></li>
+    <li><small><%= category.name %></small></li>
 <% end %>
+<br />
+<br />
 
-<hr>
-<h5>Items</h5>
+<h6>Items</h6>
 <%= link_to "New item", new_project_item_path(@project, @item), class: "btn btn-sm btn-primary" %>
+<%= link_to "Menu", project_items_path(@project, @items), class: "btn btn-sm btn-success" %>
 <br />
 <br />
-<% @project.items.each do |item| %>
-    <li><%= link_to item.title, project_item_path(@project, item) %></li>        
-<% end %>
-<hr>
 
-<h5>Invite User</h5>
-<%= form_for [@project, ProjectUser.new] do |f| %>
-<div>
-    <%= f.text_field :email, required: true %>
+<div class="row">
+    <% @project.items.each do |item| %>
+        
+        <div class="col-md-3">
+            <%= link_to project_item_path(@project, item) do %>
+                <div class="card">
+                    <div class="card-body">
+                        <small><%= item.title %></small>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        
+    <% end %>
 </div>
 <br />
-<%= f.submit "Invite", class: "btn btn-sm btn-primary" %>
-<%  end %>
-<br /> 
-<h5>Users</h5>
-<% @project.users.each do |user| %>
-    <div><%= user.email %></div>
-<% end %>
-<hr>
+<br />
 
+<h6>Invite</h6>
+
+<div class="row">
+    <div class="col-md-4">
+        <%= simple_form_for [@project, ProjectUser.new] do |f| %>
+            <%= f.input :email, placeholder: "email", label: false %>
+            <%= f.submit "Invite", class: "btn btn-xs btn-primary" %>
+        <%  end %>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <% @project.users.each do |user| %>
+            <div><small><%= user.email %></small></div>
+        <% end %>
+    </div>
+</div>
