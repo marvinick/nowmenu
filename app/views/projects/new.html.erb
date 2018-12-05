@@ -1,3 +1,11 @@
-<h4>Create Project</h4>
-<hr>
-<%= render "form" %>
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <h5>Create Project</h5>
+    <hr>
+    <%= render "form" %>
+    <br>
+    <%= link_to "cancel", projects_path(@projects), class: "btn btn-warning" %>
+</div>
+<div class="col-md-3"></div>
+</div>

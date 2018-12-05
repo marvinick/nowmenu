@@ -9,10 +9,11 @@
 
     <%= f.fields_for :categories do |builder| %>
         <%= render 'category_categories', f: builder %>
+        <br>
     <% end %>
-    <%= link_to_add_categories "Add Category", f, :categories %>
-    <br />
-    <br />
+    <%= link_to_add_categories "+", f, :categories %>
+    <br>
+    <br>
     <%= f.button :submit, class: "btn btn-primary" %>
-    <%= link_to "cancel", projects_path(@projects), class: "btn btn-warning" %>
+    
 <% end %> 

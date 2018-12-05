@@ -1,16 +1,29 @@
 
-<h4><%= @project.name %></h4>
+<h4>
+    <%= @project.name %>
+    <div class="dropdown">
+        <i class="fab fa-elementor dropdown-toggle" data-toggle="dropdown" ></i>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button"><%= link_to "edit", edit_project_path(@project) %></button>
+            <button class="dropdown-item" type="button"><%= link_to "Delete", project_path(@project), :method => :delete %></button>
+            
+        </div>
+    </div>
+</h4>
+<br />
 
-<%= link_to "edit", edit_project_path(@project), class: "btn btn-sm btn-warning" %>
-<%= link_to "Delete", project_path(@project), :method => :delete, class: "btn btn-sm btn-danger" %>
-<br />
-<br />
-<br />
 
-<h6>Categories</h6>
-<% @project.categories.each do |category| %>
-    <li><small><%= category.name %></small></li>
-<% end %>
+<div class="row">
+    <% @project.categories.each do |category| %>
+        <div class="col-md-2">
+            <div class="card my-2">
+                <div class="card-body py-1  text-center">
+                    <small><%= category.name %></small>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
 <br />
 <br />
 
@@ -25,7 +38,7 @@
         
         <div class="col-md-3">
             <%= link_to project_item_path(@project, item) do %>
-                <div class="card">
+                <div class="card my-2">
                     <div class="card-body">
                         <small><%= item.title %></small>
                     </div>
@@ -38,19 +51,33 @@
 <br />
 <br />
 
-<h6>Invite</h6>
 
 <div class="row">
+    
     <div class="col-md-4">
-        <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-            <%= f.input :email, placeholder: "email", label: false %>
-            <%= f.submit "Invite", class: "btn btn-xs btn-primary" %>
-        <%  end %>
+        <p>
+            <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Add member
+            </a>            
+        </p>
+        <div class="collapse" id="collapseExample">
+        
+            <%= simple_form_for [@project, ProjectUser.new] do |f| %>
+                <div class="card card-body">
+                   
+                    <%= f.input :email, placeholder: "email", label: false %>
+                    <%= f.submit "Invite", class: "btn btn-xs btn-primary" %>
+            
+                <%  end %>
+            </div>
+        </div>
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-6">
         <% @project.users.each do |user| %>
-            <div><small><%= user.email %></small></div>
+           <li><small><%= user.email %></small></li>
         <% end %>
     </div>
+    
+    
 </div>

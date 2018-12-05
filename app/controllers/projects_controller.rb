@@ -14,7 +14,7 @@ class ProjectsController < BaseController
         @project = Project.new(project_params)
         @project.project_users.new(user: current_user, role: "owner" )
         if @project.save 
-            redirect_to projects_path(@projects)
+            redirect_to project_path(@project)
         else 
             render :new
         end 
@@ -28,7 +28,7 @@ class ProjectsController < BaseController
 
     def update 
         if @project.update_attributes(project_params)
-            redirect_to root_path 
+            redirect_to project_path(@project)
         else 
             render :edit
         end 
