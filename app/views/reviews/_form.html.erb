@@ -1,5 +1,5 @@
 <%= simple_form_for [@project, @item, @review] do |f| %>
-    <%= f.input :private_review %>
+    <%= f.input :private_review, label: false, placeholder: "enter public review" %>
     <%= f.input :public_review %>
     <%= f.hidden_field :project_id %>
     <%= f.hidden_field :item_id %>
