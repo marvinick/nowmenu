@@ -1,48 +1,47 @@
-<div class="card m-5 w-75 mx-auto shadow-sm">
+
+  <div class="card mb-5 shadow-sm">
     <div class="card-body p-5">
-    <%= link_to project_path(@project) do %>
-      <h6 ><i class="fas fa-arrow-left"></i></h6>
-    <% end %>
-    <h4 class="text-center font-weight-bold"><%= @item.title %></h4>
-     <%= link_to "edit", edit_project_item_path(@project, @item)  %>
-      <%= link_to "delete", project_item_path(@project, @item), :method => :delete %>
-    <br />
-    <br />
-    <h6 class="text-center font-weight-bold">Reviews</h6>
-    <%= link_to "review", new_project_item_review_path(@project, @item), class: "btn btn-sm btn-primary" %>
-
-    <br />
-    <br />
-    <div class="row">
-      <% @item.reviews.each do |review| %>
-        <div class="col-md-4">
-          <%= link_to project_item_review_path(@project, @item, review) do %>
-            <div class="card">
-
-              <div class="card-body">
-                <h6 class="card-title"><%= review.public_review %></h6>
-                <% review.properties.each do |key, value| %>
-                    <small><%= key %></small> <div class="star-rating" data-score= <%= value %>" ></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+      <%= link_to project_path(@project) do %>
+        <h6 ><i class="fas fa-arrow-left"></i></h6>
       <% end %>
+      <h4 class="text-center font-weight-bold"><%= @item.title %></h4>
+       <%= link_to "edit", edit_project_item_path(@project, @item)  %>
+        <%= link_to "delete", project_item_path(@project, @item), :method => :delete %>
+      <br />
+      <br />
+      <h6 class="text-center font-weight-bold">Reviews</h6>
+      <%= link_to "review", new_project_item_review_path(@project, @item), class: "btn btn-sm btn-primary" %>
+
+      <br />
+      <br />
+      <div class="row">
+        <% @item.reviews.each do |review| %>
+          <div class="col-md-4">
+            <%= link_to project_item_review_path(@project, @item, review) do %>
+              <div class="card">
+
+                <div class="card-body">
+                  <h6 class="card-title"><%= review.public_review %></h6>
+                  <% review.properties.each do |key, value| %>
+                      <small><%= key %></small> <div class="star-rating" data-score= <%= value %>" ></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
-    <br />
-    <br />
+  </div>
 
 
-
-    <script>
-      $('.star-rating').raty({
-        path: '/assets/',
-        readOnly: true,
-        score: function() {
-          return $(this).attr('data-score');
-        }
-      });
-    </script>
-    </div>
-    </div>
+<script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
