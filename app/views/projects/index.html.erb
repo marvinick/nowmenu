@@ -1,20 +1,28 @@
-<div class="card m-5">
-    <div class="card-body p-5">
-        <h5>Projects</h5>
-        <%= link_to "New", new_project_path(@project), class: "btn btn-success" %> 
-        <hr>
-        <div class="row">
-            <% @projects.each do |project| %>
-                <div class="col-md-4">
-                <%= link_to project_path(project) do %>
-                    <div class="card">
-                        <div class="card-body">
-                            <%= project.name %>
+<div class="d-flex bd-highlight justify-content-md-center align-items-center">
+
+  <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 p-2 bd-highlight">
+
+    <div class="card">
+        <div class="card-body ">
+            <h5>Projects</h5>
+            <%= link_to "add", new_project_path(@project), class: "btn btn-success" %>
+            <br />
+            <br />
+            <div class="row">
+                <% @projects.each do |project| %>
+                    <div class="col-md-4">
+                    <%= link_to project_path(project) do %>
+                        <div class="card">
+                            <div class="card-body">
+                                <%= project.name %>
+                            </div>
                         </div>
+                        <br />
+                    <% end %>
                     </div>
                 <% end %>
-                </div>
-            <% end %>
+            </div>
         </div>
     </div>
+  </div>
 </div>

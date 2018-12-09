@@ -1,9 +1,9 @@
-<div class="card m-5 shadow-sm">
-    <div class="card-body p-5 mx-5">
-            <h6 class="text-center">Create Item</h6>
-            <hr />
-            <%= render "form" %>
-            <%= link_to "cancel", project_path(@project), class: "btn btn-warning" %>
-        </div>
-    </div>
+<div class="card mb-1 shadow-sm">
+  <div class="card-body m-1 text-center">
+    <h6 class="text-center">Create Item</h6>
+    <hr />
+    <%= render "form" %>
+    <br />
+    <%= link_to "cancel", project_path(@project), class: "btn btn-warning" %>
+  </div>
 </div>
