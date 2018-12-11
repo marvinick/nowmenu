@@ -1,9 +1,11 @@
-<div class="card mb-1 shadow-sm">
-  <div class="card-body m-3 text-center">
-    <h5 >Create Project</h5>
-    <hr>
+<div class="row my-5 text-center">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h6 >Create Project</h6>
+
     <%= render "form" %>
     <br>
-    <%= link_to "cancel", projects_path(@projects), class: "btn btn-warning" %>
+    <%= link_to "cancel", projects_path(@projects), class: "btn btn-light" %>
   </div>
+  <div class="col-md-4"></div>
 </div>
