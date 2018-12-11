@@ -1,6 +1,6 @@
 <%= simple_form_for [@project, @item, @review] do |f| %>
-    <%= f.input :private_review, label: false, placeholder: "enter public review" %>
-    <%= f.input :public_review %>
+    <%= f.input :private_review, label: false, placeholder: " public review" %>
+    <%= f.input :public_review, label: false, placeholder: "private review" %>
     <%= f.hidden_field :project_id %>
     <%= f.hidden_field :item_id %>
     <%= f.fields_for :properties, OpenStruct.new(@review.properties) do |builder| %>
@@ -11,4 +11,4 @@
     <br />
     <%= f.button :submit, class: "btn btn-primary" %>
 
-<% end %> 
+<% end %>
