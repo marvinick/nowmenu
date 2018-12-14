@@ -14,9 +14,13 @@
               <i class="fas fa-user"><% current_user.email %></i>
           </span>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <div class="dropdown-item">
-                  <%= link_to "logout", destroy_user_session_path,  method: :delete %>
-              </div>
+            <div class="dropdown-item">
+              <%= current_user.email %>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item">
+              <%= link_to "logout", destroy_user_session_path,  method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?"} %>
+            </div>
           </div>
       </li>
     <% else %>
