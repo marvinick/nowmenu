@@ -38,6 +38,7 @@ gem 'webpacker', '~> 3.5'
 gem 'jquery-rails'
 gem 'devise'
 gem 'devise_invitable'
+gem 'daru', '~> 0.2.1'
 
 
 group :development, :test do
