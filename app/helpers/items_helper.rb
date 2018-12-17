@@ -1,18 +1,20 @@
 module ItemsHelper
-  def each_item_review_average
-    float = sum_review_average / @item.reviews.count
-    float.floor
+
+  def item_average_rating
+    each_review_total_collection.sum / @item.reviews.count
   end
 
-  def sum_review_average
-    total = []
-    total_value = []
-    sum_of_each_review_average = []
+  def each_review_total_collection
+    all_total = []
+
     @item.reviews.each do |review|
-      review.properties.each do |k, v|
-        total_value << v.to_i
+      total = []
+      review.properties.each_value do |v|
+        total << v.to_i
       end
-      return total_value.sum / review.properties.count
+      all_total << total.sum / review.properties.count
     end
+    all_total
   end
+
 end

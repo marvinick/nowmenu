@@ -6,13 +6,16 @@
   </div>
 </div>
 
+<br />
+
 
 <div class="d-flex bd-highlight justify-content-md-center align-items-center">
 
   <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 p-2 bd-highlight">
     <div class="card mb-5  ">
       <div class="card-body p-5">
-        <%= sum_review_average %>
+        <div class="star-rating" data-score= <%= item_average_rating %>" ></div>
+
         <div class="text-center">
           <h4 class="font-weight-bold"><%= @item.title %></h4>
            <small><%= link_to "edit", edit_project_item_path(@project, @item)  %></small>
@@ -34,7 +37,7 @@
           <% @item.reviews.each do |review| %>
             <div class="col-md-6">
               <%= link_to project_item_review_path(@project, @item, review) do %>
-                <div class="card">
+                <div class="card shadow-sm">
 
                   <div class="card-body">
                     <h6 class="card-title"><%= review.public_review %></h6>
@@ -44,7 +47,9 @@
                   </div>
                 </div>
               <% end %>
+              <br />
             </div>
+
           <% end %>
         </div>
 
