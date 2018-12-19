@@ -11,8 +11,9 @@
   <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 p-2 bd-highlight">
     <div class="card mb-5  ">
       <div class="card-body p-5">
-        <div class="star-rating" data-score= <%= each_review_average %>" ></div>
+        
         <div class="text-center">
+          <%= each_review_average %> <i class="fas fa-star"></i>
           <p><%= @review.private_review %></p>
           <p><%= @review.public_review %></p>
           <small><%= link_to "edit", edit_project_item_review_path(@project, @item, @review) %></small>

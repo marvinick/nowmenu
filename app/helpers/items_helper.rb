@@ -1,7 +1,7 @@
 module ItemsHelper
 
   def item_average_rating
-    each_review_total_collection.sum / @item.reviews.count
+    each_review_total_collection.sum / @item.reviews.count rescue 0
   end
 
   def each_review_total_collection
@@ -15,6 +15,14 @@ module ItemsHelper
       all_total << total.sum / review.properties.count
     end
     all_total
+  end
+
+  def reviewers
+    reviewers = []
+    @item.reviews.each do |review|
+      reviewers << review.user_id
+    end
+    reviewers.uniq
   end
 
 end

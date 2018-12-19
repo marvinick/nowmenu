@@ -3,6 +3,7 @@
     <%= f.input :public_review, label: false, placeholder: "private review" %>
     <%= f.hidden_field :project_id %>
     <%= f.hidden_field :item_id %>
+    <%= f.hidden_field :user_id %>
     <%= f.fields_for :properties, OpenStruct.new(@review.properties) do |builder| %>
         <% @review.project.categories.each do |category| %>
             <%= render "field", field: category,  f: builder %>

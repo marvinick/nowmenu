@@ -14,10 +14,12 @@
   <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 p-2 bd-highlight">
     <div class="card mb-5  ">
       <div class="card-body p-5">
-        <div class="star-rating" data-score= <%= item_average_rating %>" ></div>
+
 
         <div class="text-center">
+          <%= item_average_rating %> <i class="fas fa-star"></i>
           <h4 class="font-weight-bold"><%= @item.title %></h4>
+
            <small><%= link_to "edit", edit_project_item_path(@project, @item)  %></small>
           <small><%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %></small>
         </div>
@@ -27,7 +29,11 @@
 
         <div class="text-center">
           <h6 class="font-weight-bold">Reviews</h6>
-          <%= link_to "review", new_project_item_review_path(@project, @item) %>
+          <% if reviewers.include?(current_user.id) %>
+            You've submitted a review
+          <% else %>
+            <%= link_to "review", new_project_item_review_path(@project, @item) %>
+          <% end %>
         </div>
 
         <br />

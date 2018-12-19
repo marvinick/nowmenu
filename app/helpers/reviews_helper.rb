@@ -1,5 +1,5 @@
 module ReviewsHelper
-    
+
   def each_review_average
     review_total_value = []
     @review.properties.each do |k, v|
