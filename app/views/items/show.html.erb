@@ -1,69 +1,45 @@
-<div class="d-flex mt-2 ml-1">
-  <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 p-2 bd-highlight">
-    <%= link_to  project_path(@project) do %>
-      <h6 ><i class="fas fa-arrow-left"></i></h6>
-    <% end %>
+<div class="row">
+  <div class="col-md-3">
+
   </div>
+
+  <div class="col-md-9">
+    <small><%= link_to "project",  project_path(@project) %></small>
+    <h2 class="font-weight-bold"><%= @item.title %></h2>
+    <small class="mt-0">
+      <%= link_to "edit", edit_project_item_path(@project, @item)  %>
+       <%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %>
+    </small>
+
+  </div>
+
 </div>
 
 <br />
+<br />
+<br />
+<br />
+<div class="row">
+  <div class="col-md-3">
+    <h3>Reviews</h3>
+  </div>
+  <div class="col-md-9">
 
-
-<div class="d-flex bd-highlight justify-content-md-center align-items-center">
-
-  <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 p-2 bd-highlight">
-    <div class="card mb-5  ">
-      <div class="card-body p-5">
-
-
-        <div class="text-center">
-          <%= item_average_rating %> <i class="fas fa-star"></i>
-          <h4 class="font-weight-bold"><%= @item.title %></h4>
-
-           <small><%= link_to "edit", edit_project_item_path(@project, @item)  %></small>
-          <small><%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %></small>
-        </div>
-
-        <br />
-        <br />
-
-        <div class="text-center">
-          <h6 class="font-weight-bold">Reviews</h6>
-          <% if reviewers.include?(current_user.id) %>
-            You've submitted a review
-          <% else %>
-            <%= link_to "review", new_project_item_review_path(@project, @item) %>
-          <% end %>
-        </div>
-
-        <br />
-        <br />
-
-        <div class="row justify-content-md-center">
-          <% @item.reviews.each do |review| %>
-            <div class="col-md-6">
-              <%= link_to project_item_review_path(@project, @item, review) do %>
-                <div class="card shadow-sm">
-
-                  <div class="card-body">
-                    <h6 class="card-title"><%= review.public_review %></h6>
-                    <% review.properties.each do |key, value| %>
-                        <small><%= key %></small> <div class="star-rating" data-score= <%= value %>" ></div>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-              <br />
-            </div>
-
-          <% end %>
-        </div>
-
-      </div>
-    </div>
+    <% if reviewers.include?(current_user.id) %>
+      You've submitted a review
+    <% else %>
+      <%= link_to "review", new_project_item_review_path(@project, @item), class: "btn btn-success" %>
+    <% end %>
+    <br />
+    <br />
+    <% @item.reviews.each do |review| %>
+      <%= link_to project_item_review_path(@project, @item, review) do %>
+        <h6 class="card-title"><%= review.public_review %></h6>
+      <% end %>
+      <hr />
+    <% end %>
   </div>
 </div>
-
 
 <script>
   $('.star-rating').raty({
