@@ -1,45 +1,34 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3"></div>
 
-  </div>
-
-  <div class="col-md-9">
+  <div class="col-md-6">
     <small><%= link_to "project",  project_path(@project) %></small>
     <h2 class="font-weight-bold"><%= @item.title %></h2>
     <small class="mt-0">
       <%= link_to "edit", edit_project_item_path(@project, @item)  %>
        <%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %>
     </small>
-
-  </div>
-
-</div>
-
-<br />
-<br />
-<br />
-<br />
-<div class="row">
-  <div class="col-md-3">
-    <h3>Reviews</h3>
-  </div>
-  <div class="col-md-9">
+    <hr />
+  
+    <h6 class="font-weight-bold">Reviews</h6>
 
     <% if reviewers.include?(current_user.id) %>
       You've submitted a review
     <% else %>
-      <%= link_to "review", new_project_item_review_path(@project, @item), class: "btn btn-success" %>
+      <%= link_to "review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
     <% end %>
     <br />
     <br />
     <% @item.reviews.each do |review| %>
       <%= link_to project_item_review_path(@project, @item, review) do %>
-        <h6 class="card-title"><%= review.public_review %></h6>
+        <p class="card-title"><%= review.public_review %></p>
       <% end %>
       <hr />
     <% end %>
   </div>
+  <div class="col-md-3"></div>
 </div>
+
 
 <script>
   $('.star-rating').raty({
