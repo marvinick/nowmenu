@@ -1,4 +1,4 @@
-<div class="row  ">
+<div class="row mb-5  ">
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <div class="card my-4 border-0 ">
@@ -14,18 +14,23 @@
           </div>
           <br />
           <div class="form-group">
-              <%= f.input :description, label: false %>
+              <%= f.input :description, label: false, placeholder: "example: one of a kind dish" %>
           </div>
           <br />
+          <hr />
+          <small id="emailHelp" class="form-text text-muted">Hint: you can add as many or as little categories as you want.</small>
+          <small id="emailHelp" class="form-text text-muted">Every item under this project will inherit the same categories you add here.</small>
+          <br />
           <%= f.fields_for :categories do |builder| %>
-              <%= render 'category_categories', f: builder %>
-              <br>
+            <%= render 'category_categories', f: builder %>
           <% end %>
+
           <%= link_to_add_categories "+", f, :categories %>
+
           <br />
           <br />
           <br />
-          <%= link_to "cancel", projects_path(@projects), class: "btn btn-outline-warning btn-sm" %>
+          <%= link_to "cancel", projects_path(@projects), class: "btn btn-outline-dark btn-sm" %>
           <%= f.submit "create project", class: "btn btn-outline-secondary btn-sm" %>
       <% end %>
 

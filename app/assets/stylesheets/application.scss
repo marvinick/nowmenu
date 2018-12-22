@@ -14,10 +14,25 @@
  *= require_self
  */
 
- input[type="text"], textarea {
+input[type="text"], textarea {
    outline: none!important;
    box-shadow:none !important;
-   border:1px solid #ccc !important;
+   border:1px solid #ccc!important;
+    // border-top: none!important;
+    // border-left: none!important;
+    // border-right: none!important;
+ }
+
+input::placeholder {
+   color: #a5a5a5!important;
+   font-size: 10px!important;
+   font-style: italic;
+ }
+
+ textarea::placeholder {
+   color: #a5a5a5!important;
+   font-size: 10px!important;
+   font-style: italic;
  }
 
  .grey-bg {

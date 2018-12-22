@@ -17,7 +17,7 @@
       <% end %>
     </div>
     <br />
-    <p class="font-weight-bold mt-3">Items</p>
+    <h5 class="font-weight-bold mt-3">Items</h5>
     <small><%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %></small>
 
     <% link_to "Menu", project_items_path(@project, @items) %>
@@ -27,7 +27,7 @@
       <div class="col-md-6 col-sm-6 col-xs-6">
         <%= link_to project_item_path(@project, item) do %>
         <div class="card my-3 p-3 shadow">
-          <li><p><%= item.title %></p></li>
+          <li><p class="font-weight-bold"><%= item.title %></p></li>
         </div>
         <% end %>
       </div>
@@ -42,9 +42,9 @@
         <div class="card-body">
           <p class="font-weight-bold">
             Members
-            <small class="text-center">
+            <small >
                 <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Invite
+                    invite
                 </a>
             </small>
             <div class="collapse" id="collapseExample">

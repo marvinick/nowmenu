@@ -8,10 +8,7 @@
       <br />
 
       <%= simple_form_for [@project, @item, @review] do |f| %>
-          <%= f.input :private_review, label: false, placeholder: " public review" %>
-          <br />
-          <%= f.input :public_review, label: false, placeholder: "private review" %>
-          <br />
+
           <%= f.hidden_field :project_id %>
           <%= f.hidden_field :item_id %>
           <%= f.hidden_field :user_id %>
@@ -22,8 +19,11 @@
               <% end %>
           <% end %>
           <br />
-
-          <%= link_to "cancel", project_item_review_path(@project, @item, @review), class: "btn btn-outline-warning btn-sm" %>
+          <%= f.input :private_review, label: false, placeholder: " private review" %>
+          <br />
+          <%= f.input :public_review, label: false, placeholder: "public review" %>
+          <br />
+          <%= link_to "cancel", project_item_review_path(@project, @item, @review), class: "btn btn-outline-dark btn-sm" %>
           <%= f.submit "change your review", class: "btn btn-outline-secondary btn-sm" %>
       <% end %>
 

@@ -1,4 +1,4 @@
-<div class="row  ">
+<div class="row mb-5 ">
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <div class="card my-4 border-0 ">
@@ -17,15 +17,16 @@
               <%= f.input :description, label: false %>
           </div>
           <br />
+          <small id="emailHelp" class="form-text text-muted">Optional! Hint: you can add as many or as little categories as you want.</small>
+          <br />
           <%= f.fields_for :categories do |builder| %>
-              <%= render 'category_categories', f: builder %>
-              <br>
+            <%= render 'category_categories', f: builder %>
           <% end %>
           <%= link_to_add_categories "+", f, :categories %>
           <br />
           <br />
           <br />
-          <%= link_to "cancel", project_path(@project), class: "btn btn-outline-warning btn-sm" %>
+          <%= link_to "cancel", project_path(@project), class: "btn btn-outline-dark btn-sm" %>
           <%= f.submit "make the change", class: "btn btn-outline-secondary btn-sm" %>
       <% end %>
 
