@@ -1,27 +1,41 @@
-<div class="d-flex mt-2 ml-1">
-  <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 p-2 bd-highlight">
-    <%= link_to project_item_path(@project, @item) do %>
-      <h6><i class="fas fa-arrow-left"></i></h6>
-    <% end %>
-  </div>
-</div>
-
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <div class="card p-3">
+    <div class="card p-3 border-0 beige-bg">
       <div class="card-body">
+        <div class="row">
+          <div class="col-md-8">
+            <small><%= link_to "#{@item.title}", project_item_path(@project, @item) %></small>
+          </div>
+          <div class="col-md-4">
+            <%= link_to "edit", edit_project_item_review_path(@project, @item, @review), class: "btn btn-sm btn-outline-secondary" %>
+            <%= link_to "delete", project_item_review_path, :method => :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-secondary" %>
+          </div>
+        </div>
 
-          <%= each_review_average %> <i class="fas fa-star"></i>
-          <p><%= @review.private_review %></p>
-          <p><%= @review.public_review %></p>
-          <small><%= link_to "edit", edit_project_item_review_path(@project, @item, @review) %></small>
-          <small><%= link_to "delete", project_item_review_path, :method => :delete, data: {confirm: "Are you sure?"} %></small>
-        
+
         <br />
+        <h5><%= each_review_average %> <i class="fas fa-star"></i></h5>
+
+        <br />
+        <h6 class="font-weight-bold">Public review</h6>
+        <small class="mb-3"><%= @review.public_review %></small>
+        <br />
+        <br />
+        <h6 class="font-weight-bold">Private review</h6>
+        <small><%= @review.private_review %></small>
+        <hr />
         <br />
         <% @review.properties.each do |key, value| %>
-            <small><%= key %></small> <div class="star-rating" data-score= <%= value %>" ></div>
+          <div class="row mb-3 ">
+            <div class="col-md-7">
+              <small><%= key %></small>
+            </div>
+            <div class="col-md-5">
+              <small><div class="star-rating" data-score= "<%= value %>" ></div></small>
+            </div>
+          </div>
+
         <% end %>
       </div>
     </div>

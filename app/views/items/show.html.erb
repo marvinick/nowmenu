@@ -14,7 +14,7 @@
     <h6 class="font-weight-bold">Reviews</h6>
 
     <% if reviewers.include?(current_user.id) %>
-      You've submitted a review
+      <small>you've submitted a review</small>
     <% else %>
       <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
     <% end %>
@@ -23,7 +23,7 @@
     <br />
     <% @item.reviews.each do |review| %>
       <%= link_to project_item_review_path(@project, @item, review) do %>
-        <div class="card p-3 mb-3 shadow">
+        <div class="card beige-bg p-3 mb-3 shadow border-0">
           <p class="card-title"><small><%= review.public_review %></small></p>
           <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
         </div>
