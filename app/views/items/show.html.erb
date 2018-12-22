@@ -4,7 +4,8 @@
   <div class="col-md-6">
     <small><%= link_to "project #{@project.name}",  project_path(@project) %></small>
     <h2 class="font-weight-bold"><%= @item.title %></h2>
-    <p class="font-weight-thin"><%= @item.content %></p>
+    <small><%= @item.content %></small>
+    <br />
     <small class="mt-0">
       <%= link_to "edit", edit_project_item_path(@project, @item)  %>
        <%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %>
@@ -24,7 +25,7 @@
     <% @item.reviews.each do |review| %>
       <%= link_to project_item_review_path(@project, @item, review) do %>
         <div class="card beige-bg p-3 mb-3 shadow border-0">
-          <p class="card-title"><small><%= review.public_review %></small></p>
+          <small><%= review.public_review %></small>
           <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
         </div>
       <% end %>

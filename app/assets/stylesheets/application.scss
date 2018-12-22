@@ -14,6 +14,12 @@
  *= require_self
  */
 
+ input[type="text"], textarea {
+   outline: none!important;
+   box-shadow:none !important;
+   border:1px solid #ccc !important;
+ }
+
  .grey-bg {
    background-color: #f7f7f7!important;
  }

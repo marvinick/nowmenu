@@ -1,13 +1,35 @@
-<div class="row py-2 text-center">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
-    <div class="card p-5">
-      <h6 >Create Project</h6>
+<div class="row  ">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="card my-4 border-0 ">
+      <h5 class="font-weight-bold">Create your project</h5>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <hr />
+      <br />
 
-      <%= render "form" %>
-      <br>
-      <%= link_to "cancel", projects_path(@projects), class: "btn btn-light" %>
+
+      <%= simple_form_for @project do |f| %>
+          <div class="form-group">
+              <%= f.input :name, label: false, class: "form-control", placeholder: "name" %>
+          </div>
+          <br />
+          <div class="form-group">
+              <%= f.input :description, label: false %>
+          </div>
+          <br />
+          <%= f.fields_for :categories do |builder| %>
+              <%= render 'category_categories', f: builder %>
+              <br>
+          <% end %>
+          <%= link_to_add_categories "+", f, :categories %>
+          <br />
+          <br />
+          <br />
+          <%= link_to "cancel", projects_path(@projects), class: "btn btn-outline-warning btn-sm" %>
+          <%= f.submit "create project", class: "btn btn-outline-secondary btn-sm" %>
+      <% end %>
+
     </div>
   </div>
-  <div class="col-md-3"></div>
+  <div class="col-md-4"></div>
 </div>
