@@ -1,29 +1,33 @@
-<div class="row">
+<div class="row pt-2">
   <div class="col-md-3"></div>
 
   <div class="col-md-6">
-    <small><%= link_to "project",  project_path(@project) %></small>
+    <small><%= link_to "project #{@project.name}",  project_path(@project) %></small>
     <h2 class="font-weight-bold"><%= @item.title %></h2>
+    <p class="font-weight-thin"><%= @item.content %></p>
     <small class="mt-0">
       <%= link_to "edit", edit_project_item_path(@project, @item)  %>
        <%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %>
     </small>
     <hr />
-  
+    <br />
     <h6 class="font-weight-bold">Reviews</h6>
 
     <% if reviewers.include?(current_user.id) %>
       You've submitted a review
     <% else %>
-      <%= link_to "review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+      <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
     <% end %>
+
     <br />
     <br />
     <% @item.reviews.each do |review| %>
       <%= link_to project_item_review_path(@project, @item, review) do %>
-        <p class="card-title"><%= review.public_review %></p>
+        <div class="card p-3 mb-3 shadow">
+          <p class="card-title"><small><%= review.public_review %></small></p>
+          <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
+        </div>
       <% end %>
-      <hr />
     <% end %>
   </div>
   <div class="col-md-3"></div>

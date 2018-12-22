@@ -1,7 +1,8 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-1"></div>
+  <div class="col-md-7">
     <small><%= link_to "projects", projects_path(@projects) %></small>
-    <h2 class="font-weight-bold mb-0"><%= @project.name %></h2>
+    <h1 class="font-weight-bold mb-0"><%= @project.name %></h1>
     <small>
 
       <%= link_to "edit", edit_project_path(@project) %>
@@ -10,58 +11,65 @@
 
     <div class="row">
       <% @project.categories.each do |category| %>
-          <div class="card py-0 px-2 my-1 mx-2 rounded">
+          <div class="card py-0 px-2 my-1 mx-2 shadow-sm rounded">
             <li><p class="inline-text"><%= category.name %></p></li>
           </div>
       <% end %>
     </div>
-
+    <br />
     <h6 class=" mt-3">Items</h6>
     <small><%= link_to "add item", new_project_item_path(@project, @item) %></small>
 
     <% link_to "Menu", project_items_path(@project, @items) %>
 
-
-    <% @project.items.each do |item| %>
-      <%= link_to project_item_path(@project, item) do %>
-      <div class="card my-3 mx-0 p-3 shadow-sm">
-        <li><%= item.title %></li>
+    <div class="row">
+      <% @project.items.each do |item| %>
+      <div class="col-md-6">
+        <%= link_to project_item_path(@project, item) do %>
+        <div class="card my-3 p-4 shadow">
+          <li><p><%= item.title %></p></li>
+        </div>
+        <% end %>
       </div>
       <% end %>
-    <% end %>
+    </div>
 
   </div>
 
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <p class="font-weight-bold">
-          Members
-          <small class="text-center">
-              <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  Invite
-              </a>
-          </small>
-          <div class="collapse" id="collapseExample">
-            <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-              <div class="card card-body">
-                  <%= f.input :email, placeholder: "email", label: false %>
-                  <%= f.submit "Invite", class: "btn btn-xs btn-primary" %>
-              </div>
-            <%  end %>
-          </div>
-        </p>
+  <div class="col-md-3">
+    <div class="row">
+      <div class="card  border-top-0 border-bottom-0 border-right-0 ">
+        <div class="card-body">
+          <p class="font-weight-bold">
+            Members
+            <small class="text-center">
+                <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Invite
+                </a>
+            </small>
+            <div class="collapse" id="collapseExample">
+              <%= simple_form_for [@project, ProjectUser.new] do |f| %>
 
-        <div class="row text-center">
-          <% @project.users.each do |user| %>
-          <div class="card py-0 px-2 m-2 rounded">
-              <li class="inline-li"><p class="inline-text"><%= user.email %></p></li>
+                    <%= f.input :email, placeholder: "email", label: false %>
+                    <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
+
+              <%  end %>
             </div>
-          <% end %>
+          </p>
+
+
+            <% @project.users.each do |user| %>
+            <div class="card grey-bg py-0 px-2 mb-3 rounded ">
+                <li class="inline-li"><p class="inline-text font-weight-bold"><%= user.email %></p></li>
+              </div>
+            <% end %>
+
+
+
         </div>
-
-
       </div>
     </div>
   </div>
+  <div class="col-md-1"></div>
+
 </div>
