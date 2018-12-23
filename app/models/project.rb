@@ -1,12 +1,19 @@
 class Project < ApplicationRecord
-    has_many :project_users
-    has_many :users, through: :project_users
-    has_many :items, dependent: :destroy
-    has_many :reviews, dependent: :destroy
-    has_many :categories, dependent: :destroy
-    accepts_nested_attributes_for :categories, allow_destroy: true
+  before_create :generate_random_id
 
-    validates_presence_of :name, length: {minimum: 5, maximum: 20}, allow_blank: false
-    validates :description, length: {minimum: 5}
-    
+  has_many :project_users
+  has_many :users, through: :project_users
+  has_many :items, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :categories, dependent: :destroy
+  accepts_nested_attributes_for :categories, allow_destroy: true
+
+  validates_presence_of :name, length: {minimum: 5, maximum: 30}, allow_blank: false
+  validates :description, length: {minimum: 5}, allow_blank: false
+
+  def generate_random_id
+    begin
+      self.id = SecureRandom.random_number(1_000_0000)
+    end while Project.where(id: self.id).exists?
+  end
 end

@@ -25,13 +25,13 @@
             <%= render 'category_categories', f: builder %>
           <% end %>
 
-          <%= link_to_add_categories "+", f, :categories %>
+          <strong><h4><%= link_to_add_categories "+", f, :categories %></h4></strong>
 
           <br />
           <br />
-          <br />
+
           <%= link_to "cancel", projects_path(@projects), class: "btn btn-outline-dark btn-sm" %>
-          <%= f.submit "create project", class: "btn btn-outline-secondary btn-sm" %>
+          <%= f.submit "create project", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating project..." } %>
       <% end %>
 
     </div>

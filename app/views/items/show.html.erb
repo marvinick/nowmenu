@@ -25,7 +25,7 @@
     <% @item.reviews.each do |review| %>
       <%= link_to project_item_review_path(@project, @item, review) do %>
         <div class="card beige-bg p-3 mb-3 shadow border-0">
-          <small><%= review.public_review %></small>
+          <small><%= truncate(review.public_review, length: 200) %></small>
           <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
         </div>
       <% end %>

@@ -24,7 +24,7 @@
           <%= f.input :public_review, label: false, placeholder: "public review" %>
           <br />
           <%= link_to "cancel", project_item_review_path(@project, @item, @review), class: "btn btn-outline-dark btn-sm" %>
-          <%= f.submit "change your review", class: "btn btn-outline-secondary btn-sm" %>
+          <%= f.submit "change your review", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
       <% end %>
 
     </div>

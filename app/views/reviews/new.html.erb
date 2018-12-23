@@ -24,7 +24,7 @@
           <%= f.input :private_review, label: false, placeholder: " public review" %>
           <br />
           <%= link_to "cancel", project_item_path(@project, @item), class: "btn btn-outline-dark btn-sm" %>
-          <%= f.submit "create review", class: "btn btn-outline-secondary btn-sm" %>
+          <%= f.submit "create review", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating project..." } %>
       <% end %>
 
     </div>

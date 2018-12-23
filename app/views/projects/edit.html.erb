@@ -21,13 +21,15 @@
           <br />
           <%= f.fields_for :categories do |builder| %>
             <%= render 'category_categories', f: builder %>
+            <br />
+
           <% end %>
-          <%= link_to_add_categories "+", f, :categories %>
+          <strong><%= link_to_add_categories "+", f, :categories %></strong>
           <br />
           <br />
           <br />
           <%= link_to "cancel", project_path(@project), class: "btn btn-outline-dark btn-sm" %>
-          <%= f.submit "make the change", class: "btn btn-outline-secondary btn-sm" %>
+          <%= f.submit "make the change", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
       <% end %>
 
     </div>
