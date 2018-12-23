@@ -1,8 +1,9 @@
 <div class="row">
 <div class="col-md-4"></div>
 <div class="col-md-4">
-  <h5 class="">login</h5>
+  <h5 class="font-weight-bold">login</h5>
   <hr />
+  <br />
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
@@ -10,7 +11,7 @@
                   autofocus: true,
                   label: false,
                   input_html: { autocomplete: "email" } %>
-                  
+
       <%= f.input :password,
                   label: false,
                   input_html: { autocomplete: "current-password" } %>
@@ -18,10 +19,10 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+      <%= f.button :submit, "Log in", class: "btn btn-outline-secondary btn-sm" %>
     </div>
   <% end %>
-
+  <hr />
   <%= render "devise/shared/links" %>
 </div>
 <div class="col-md-4"></div>

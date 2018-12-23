@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "homes#home"
 
   resources :projects do
+    resources :categories
     resources :items do
       resources :reviews
     end

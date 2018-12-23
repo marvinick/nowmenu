@@ -10,9 +10,10 @@
     </small>
 
     <div class="row">
+      <%= link_to "new cat", new_project_category_path(@project, @category) %>
       <% @project.categories.each do |category| %>
           <div class="card py-0 px-2 my-1 mx-2 shadow-sm rounded beige-bg border-0">
-            <li><p class="inline-text"><%= category.name %></p></li>
+            <li><p class="inline-text"><%= link_to category.name, project_category_path(@project, category) %></p></li>
           </div>
       <% end %>
     </div>
