@@ -1,3 +1,4 @@
 <%= @category.name %>
+<%= @category.description %>
 <%= link_to "edit", edit_project_category_path(@project, @category) %>
 <%= link_to "delete", project_category_path(@project, @category), :method => :delete, data: {confirm: "Are you sure?"} %>

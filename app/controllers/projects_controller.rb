@@ -6,6 +6,11 @@ class ProjectsController < BaseController
         @projects = current_user.projects
     end
 
+    def preview
+      #this where the menu will live
+      #draggble items
+    end
+
     def new
         @project = Project.new
     end

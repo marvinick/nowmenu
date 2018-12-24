@@ -16,7 +16,7 @@
           <div class="form-group">
               <%= f.input :description, label: false %>
           </div>
-          <br />
+          <!-- <br />
           <small id="emailHelp" class="form-text text-muted">Optional! Hint: you can add as many or as little categories as you want.</small>
           <br />
           <%= f.fields_for :categories do |builder| %>
@@ -26,7 +26,7 @@
           <% end %>
           <strong><%= link_to_add_categories "+", f, :categories %></strong>
           <br />
-          <br />
+          <br /> -->
           <br />
           <%= link_to "cancel", project_path(@project), class: "btn btn-outline-dark btn-sm" %>
           <%= f.submit "make the change", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>

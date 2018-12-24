@@ -14,7 +14,7 @@
           <%= f.input :description, label: false, placeholder: "description" %>
 
           <br />
-          <%= link_to "cancel", project_path(@project), class: "btn btn-outline-secondary btn-sm" %>
+          <%= link_to "cancel", project_categories_path(@project, @categories), class: "btn btn-outline-secondary btn-sm" %>
           <%= f.submit "create category", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." } %>
       <% end %>
     </div>

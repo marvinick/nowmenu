@@ -3,7 +3,7 @@ class CategoriesController < BaseController
   before_action :set_category, only: [:edit, :update, :destroy, :show]
 
   def index
-    @categories = Category.all
+    @categories = @project.categories.all
   end
 
   def new
@@ -13,7 +13,7 @@ class CategoriesController < BaseController
   def create
     @category = @project.categories.new(category_params)
     if @category.save
-      redirect_to @project, notice: "a category is successfully created!"
+      redirect_to project_categories_path(@project, @categories), notice: "success!"
     else
       render :new
     end
@@ -23,7 +23,7 @@ class CategoriesController < BaseController
 
   def update
     if @category.update_attributes(category_params)
-      redirect_to [@project], notice: "success!"
+      redirect_to project_categories_path(@project, @categories), notice: "success!"
     else
       render :edit
     end
