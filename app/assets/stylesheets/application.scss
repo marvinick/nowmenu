@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require direct_uploads
+ *= require active_storage_drag_and_drop
  */
 
 input[type="text"], textarea {

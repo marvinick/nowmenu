@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
@@ -40,7 +39,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'daru', '~> 0.2.1'
 gem 'bootsnap'
-
+gem 'active_storage_drag_and_drop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

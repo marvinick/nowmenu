@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
+//= require active_storage_drag_and_drop
 //= require_tree .
 
 $(document).on('click', 'form .remove_fields', function(event) {
@@ -21,7 +22,7 @@ $(document).on('click', 'form .remove_fields', function(event) {
     $(this).closest('fieldset').hide();
     return event.preventDefault();
   });
-  
+
   $(document).on('click', 'form .add_fields', function(event) {
     var regexp, time;
     time = new Date().getTime();
