@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   before_create :generate_random_id
-
+  has_many :groups
   has_many :project_users
   has_many :users, through: :project_users
   has_many :items, dependent: :destroy

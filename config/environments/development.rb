@@ -48,6 +48,9 @@ config.webpacker.check_yarn_integrity = true
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  #active storage upload
+  config.active_storage.service = :local
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
@@ -61,7 +64,7 @@ config.webpacker.check_yarn_integrity = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   ActionMailer::Base.smtp_settings =
-  { 
+  {
 
     :address            => 'smtp.gmail.com',
     :port               => 587,

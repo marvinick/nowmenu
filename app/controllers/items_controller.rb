@@ -18,7 +18,7 @@ class ItemsController < BaseController
             render :new
         end
     end
- 
+
     def show; end
 
     def edit; end
@@ -41,7 +41,7 @@ class ItemsController < BaseController
     private
 
     def item_params
-        params.require(:item).permit(:title, :content, :project_id)
+        params.require(:item).permit(:title, :content, :project_id, images: [])
     end
 
     def set_project

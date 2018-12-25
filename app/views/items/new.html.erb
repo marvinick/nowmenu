@@ -12,7 +12,9 @@
 
           <br />
           <%= f.input :content, label: false, placeholder: "description" %>
-
+          <br />
+          <%= f.drag_and_drop_file_field :images, 'Drag and drop images here!' %>
+          <br />
           <br />
           <%= link_to "cancel", project_path(@project), class: "btn btn-outline-secondary btn-sm" %>
           <%= f.submit "create item", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." } %>

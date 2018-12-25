@@ -2,8 +2,12 @@
   <div class="col-md-3"></div>
 
   <div class="col-md-6">
-    <small><%= link_to "project #{@project.name}",  project_path(@project) %></small>
+    <small><%= link_to "#{@item.title}",  project_items_path(@project, @items) %></small>
+    <% @item.images.each do |img| %>
+      <%= image_tag img, class: "img-fluid" %>
+    <% end %>
     <h2 class="font-weight-bold"><%= @item.title %></h2>
+
     <small><%= @item.content %></small>
     <br />
     <small class="mt-0">
