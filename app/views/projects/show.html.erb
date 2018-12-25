@@ -4,7 +4,7 @@
     <small><%= link_to "projects", projects_path(@projects) %></small>
     <h1 class="font-weight-bold mb-0"><%= @project.name %></h1>
     <small>
-      <h6 class="mt-0 text-center"><small><%= link_to "add group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %></small></h6>
+
       <br />
       <%= link_to "edit", edit_project_path(@project) %>
       <%= link_to "delete", project_path(@project), :method => :delete, data: {confirm: "Are you sure?"} %>
@@ -85,6 +85,7 @@
       <div class="card  border-top-0 border-bottom-0 border-right-0 ">
         <div class="card-body">
           <h5 class="font-weight-bold">Groups</h5>
+          <h6 class="mt-0 text-center"><small><%= link_to "add group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %></small></h6>
           <% @project.groups.each do |group| %>
             <div class="card beige-bg py-1 px-2 mb-3 rounded border-0">
               <li><p class="inline-text "<li><%= group.name %></p></li>

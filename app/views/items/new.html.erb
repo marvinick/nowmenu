@@ -16,6 +16,12 @@
           <%= f.drag_and_drop_file_field :images, 'Drag and drop images here!' %>
           <br />
           <br />
+          <%= f.label "Groups" %>
+          <%= f.collection_check_boxes :group_ids, @project.groups.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox_inline") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>
+          <br />
+          
           <%= link_to "cancel", project_path(@project), class: "btn btn-outline-secondary btn-sm" %>
           <%= f.submit "create item", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." } %>
       <% end %>
