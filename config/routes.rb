@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   root to: "homes#home"
 
   resources :projects do
+    member do
+      get 'preview'
+    end
+
     resources :groups
     resources :categories
+
     resources :items do
       resources :reviews
     end

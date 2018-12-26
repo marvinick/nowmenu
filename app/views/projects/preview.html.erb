@@ -1,0 +1,39 @@
+
+<div class="card p-2 m-2 border-0 text-center">
+  <small><%= link_to "exit preview", project_path(@project) %></small>
+  <br />
+  <h3 class="font-weight-bold"><%= @project.name %></h3>
+</div>
+<hr />
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <% @preview.each do |pre| %>
+      <li>
+        <h6 class="font-weight-bold"><%= pre.name %></h6>
+      </li>
+      <% pre.items.each do |item| %>
+
+          <div class="table-responsive">
+            <table class="table table-sm table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 85%"></th>
+                  <th scope="col" style="width: 15%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="h-50">
+                  <td><small><%= link_to item.title, project_item_path(@project, item) %></small></td>
+                  <td><small><%= item.price %></small></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+      <% end %>
+      <br />
+    <% end %>
+  </div>
+  <div class="col-md-3"></div>
+</div>

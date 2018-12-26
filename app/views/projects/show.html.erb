@@ -3,6 +3,7 @@
   <div class="col-md-8">
     <small><%= link_to "projects", projects_path(@projects) %></small>
     <h1 class="font-weight-bold mb-0"><%= @project.name %></h1>
+    <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-outline-secondary" %>
     <small>
 
       <br />
@@ -27,8 +28,6 @@
 
     <small><%= link_to "see more . . .", project_items_path(@project, @items), class: "btn btn-sm btn-outline-secondary" %></small>
 
-    <% link_to "Menu", project_items_path(@project, @items) %>
-
     <div class="row">
       <% @project.items.last(6).each do |item| %>
       <div class="col-md-4 col-6">
@@ -44,9 +43,7 @@
       </div>
       <% end %>
       <br />
-
     </div>
-
   </div>
 
   <div class="col-md-4">
@@ -54,24 +51,25 @@
       <div class="card  border-top-0 border-bottom-0 border-right-0 ">
         <div class="card-body">
           <h5 class="font-weight-bold">
+
             Members
-            <small >
-                <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    invite
-                </a>
+
+            <small>
+              <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                invite
+              </a>
             </small>
+
             <div class="collapse" id="collapseExample">
               <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-
-                    <%= f.input :email, placeholder: "email", label: false %>
-                    <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
-
+                <%= f.input :email, placeholder: "email", label: false %>
+                <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
               <%  end %>
             </div>
           </h5>
 
           <% @project.users.each do |user| %>
-          <div class="card beige-bg py-1 px-2 mb-3 rounded border-0">
+            <div class="card beige-bg py-1 px-2 mb-3 rounded border-0">
               <li class="inline-li"><p class="inline-text "><%= user.email %></p></li>
             </div>
           <% end %>
@@ -82,19 +80,20 @@
     <br />
     <br />
     <div class="row">
-      <div class="card  border-top-0 border-bottom-0 border-right-0 ">
+      <div class="card border-top-0 border-bottom-0 border-right-0 ">
         <div class="card-body">
           <h5 class="font-weight-bold">Groups</h5>
           <h6 class="mt-0 text-center"><small><%= link_to "add group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %></small></h6>
           <% @project.groups.each do |group| %>
-            <div class="card beige-bg py-1 px-2 mb-3 rounded border-0">
-              <li><p class="inline-text "<li><%= group.name %></p></li>
+            <div class="card beige-bg py-1 px-2 mb-2 rounded border-0">
+              <li><p class="inline-text "><%= group.name %></p></li>
             </div>
             <% link_to "edit", edit_project_group_path(@project, group) %>
           <% end %>
+        </div>
+      </div>
     </div>
 
   </div>
-
 
 </div>
