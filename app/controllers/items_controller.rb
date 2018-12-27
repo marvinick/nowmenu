@@ -2,8 +2,20 @@ class ItemsController < BaseController
   before_action :set_project
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+
   def index
-      @items = @project.items.all
+    @items = @project.items.all
+  end
+
+  def sort
+
+      items = @project.items
+      params[:item].each_with_index do |id, index|
+        items.where(id: id).update_all(position: index + 1)
+      end
+
+
+    head :ok
   end
 
   def new
@@ -40,8 +52,9 @@ class ItemsController < BaseController
 
   private
 
+
   def item_params
-      params.require(:item).permit(:title, :content, :price, :project_id, group_ids: [], images: [])
+      params.require(:item).permit(:title, :content, :position, :price, :project_id, group_ids: [], images: [])
   end
 
   def set_project

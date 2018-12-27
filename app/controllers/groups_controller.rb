@@ -1,6 +1,22 @@
 class GroupsController < ApplicationController
   before_action :set_project
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :sort]
+
+  def index
+    @groups = @project.groups.all
+
+  end
+
+  def sort
+    @itemss = @group.items.all
+
+
+      params[:item].each_with_index do |id, index|
+        @itemss.where(id: id).update_all(position: index + 1)
+      end
+
+
+  end
 
   def new
     @group = @project.groups.build
@@ -33,7 +49,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, :project_id)
+    params.require(:group).permit(:name, :description, :project_id, :position)
   end
 
   def set_project

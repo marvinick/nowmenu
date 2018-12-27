@@ -1,0 +1,9 @@
+<div id="groups" class="row list-group" data-url="<%= sort_project_group_items_path(@project, @groups) %>">
+  <% @groups.each do |group| %>
+
+    <% group.items.each do |item| %>
+      <li><%= link_to item.title, project_group_item_path(@project, group, item), class: "list-group-group border-0 shadow-sm", id: dom_id(item) %></li>
+    <% end %>
+
+  <% end %>
+</div>

@@ -7,7 +7,8 @@ class ProjectsController < BaseController
     end
 
     def preview
-      @preview = @project.groups.all
+      @groups = @project.groups.all
+
     end
 
     def new

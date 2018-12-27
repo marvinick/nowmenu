@@ -4,45 +4,47 @@
   <br />
   <h3 class="font-weight-bold"><%= @project.name %></h3>
 </div>
-<hr />
-<div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
-    <% @preview.each do |pre| %>
-      <li>
-        <h6 class="font-weight-bold"><%= pre.name %></h6>
-      </li>
-      <% pre.items.each do |item| %>
 
-          <div class="table-responsive">
-            <table class="table table-sm table-borderless">
-              <thead>
-                <tr>
-                  <th scope="col" style="width: 85%"></th>
-                  <th scope="col" style="width: 15%"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="h-50">
-                  <td><small><%= link_to item.title, project_item_path(@project, item) %></small></td>
-                  <td><small><%= item.price %></small></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <hr />
+    <br />
+    <br />
+    <% @groups.order('name ASC').each do |group| %>
+      <li>
+        <h6 class="font-weight-bold"><%= group.name %></h6>
+      </li>
+      <% group.items.order('title').each do |item| %>
+
+        <div class="table-responsive">
+          <table class="table table-sm table-borderless">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 85%"></th>
+                <th scope="col" style="width: 15%"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="h-50">
+                <td><small><%= link_to item.title, project_item_path(@project, item) %></small></td>
+                <td><small><%= item.price %></small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
       <% end %>
       <br />
     <% end %>
-    <div id="items" class="row list-group">
-    <% @preview.each do |pre| %>
 
-        <% pre.items.each do |item| %>
-          <%= link_to item.title, project_item_path(@project, item), class: "list-group-item border-0" %>
-        <% end %>
+    <div id="items" class="row list-group" data-url="<%= sort_project_items_path(@project) %>">
 
-    <% end %>
+      <% @project.items.each do |item| %>
+        <% link_to item.title, project_item_path(@project, item), class: "list-group-item border-0 shadow-sm", id: dom_id(item) %>
+      <% end %>
+
     </div>
   </div>
-  <div class="col-md-3"></div>
+  <div class="col-md-2"></div>
 </div>

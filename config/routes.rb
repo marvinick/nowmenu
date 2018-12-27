@@ -10,10 +10,20 @@ Rails.application.routes.draw do
       get 'preview'
     end
 
-    resources :groups
+    resources :groups do
+      resources :items do
+        collection do
+          patch :sort
+        end
+      end
+    end
+    
     resources :categories
 
     resources :items do
+      collection do
+        patch :sort
+      end
       resources :reviews
     end
 
