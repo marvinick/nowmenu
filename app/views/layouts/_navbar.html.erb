@@ -1,30 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top">
-  <%= link_to "nowmenu", home_path, class: "navbar-brand"  %>
-  <span class="navbar-toggler"  data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <i class="fas fa-user"></i>
-  </span>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+  <%= link_to "FireTable", home_path, class: "menu-brand navbar-brand" %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="mx-auto order-0">
+    <% link_to home_path  do %>
+      <i class="fab fa-accusoft"></i>
+    <% end %>
 
-    </ul>
-    <% if user_signed_in? %>
-      <li class="nav-item dropdown">
-          <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user"><% current_user.email %></i>
-          </span>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+  </div>
+  <% if user_signed_in? %>
+    <li class="nav-item dropdown">
+        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            <i class="fab fa-accusoft"> <% current_user.email %></i>
+        </span>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <div class="card p-2 border-0">
             <div class="dropdown-item">
-              <%= current_user.email %>
+              <small><%= link_to current_user.email, edit_user_registration_path %></small>
             </div>
-            <div class="dropdown-divider"></div>
+
             <div class="dropdown-item">
-              <%= link_to "logout", destroy_user_session_path,  method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?"} %>
+              <small><%= link_to "logout", destroy_user_session_path,  method: :delete, data: { confirm: "Are you sure?"} %></small>
             </div>
           </div>
-      </li>
-    <% else %>
-        <li class="nav-item"><%= link_to "sign in", new_user_session_path %></li>
-    <% end %>
-  </div>
+        </div>
+    </li>
+  <% else %>
+      <li class="nav-item"><%= link_to "sign in", new_user_session_path %></li>
+  <% end %>
+
 </nav>

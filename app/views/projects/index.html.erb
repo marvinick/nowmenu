@@ -15,7 +15,7 @@
             <br />
             <small><%= project.items.count %> item(s)</small>
             <hr class="my-4">
-            <a href="#" class="btn btn-outline-secondary btn-sm">Preview</a>
+            <%= link_to "Preview", preview_project_path(project), class: "btn btn-sm btn-outline-secondary" %>
 
           </div>
         </div>

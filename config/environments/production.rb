@@ -27,7 +27,8 @@ config.webpacker.check_yarn_integrity = false
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -56,6 +57,9 @@ config.webpacker.check_yarn_integrity = false
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
+
+
+  config.secret_key_base = '22cad5405c180399254ef932cdad65e7cef00f7fd8d0361d10151474633e4276bb15300c08b3925f676a24c419c50d0d4f89e114c4e017d3431791b18d975f10'
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

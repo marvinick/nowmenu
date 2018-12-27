@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: nowmenu_production
   username: nowmenu
   password: <%= ENV['NOWMENU_DATABASE_PASSWORD'] %>

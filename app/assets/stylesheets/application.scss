@@ -16,6 +16,23 @@
  *= require active_storage_drag_and_drop
  */
 
+ .menu-brand {
+   font-weight: bolder!important;
+   color: black!important;
+   font-size: 20px!important;
+   font-family: Arial Black,Arial Bold,Gadget,sans-serif!important;
+ }
+
+ .fa-user  {
+   color: #addb8e!important;
+   font-size: 24px!important;
+ }
+
+ .fa-accusoft {
+   color: #addb8e!important;
+   font-size: 30px!important;
+ }
+
 input[type="text"], textarea {
    outline: none!important;
    box-shadow:none !important;
