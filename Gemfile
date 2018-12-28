@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'serviceworker-rails'
 gem 'simple_form'
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 gem 'jquery-rails'
 gem 'devise'
 gem 'devise_invitable'
