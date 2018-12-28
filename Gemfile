@@ -46,6 +46,13 @@ gem 'active_storage_drag_and_drop'
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
 
+#image upload
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
+
+gem 'aws-sdk'
+gem "aws-sdk-s3", require: false
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

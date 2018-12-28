@@ -36,9 +36,7 @@
       <div class="col-md-4 col-6">
         <%= link_to project_item_path(@project, item) do %>
         <div class="card my-3 p-2 shadow border-0">
-          <% item.images.each do |img| %>
-            <%= image_tag(img, :size => "260x180", class: "img-fluid") %>
-          <% end %>
+          
           <small class="font-weight-bold card-text"><%= truncate(item.title, length: 15) %></small>
           <small class=" form-text text-muted"><%= truncate(item.content, length: 30)  %></small>
         </div>

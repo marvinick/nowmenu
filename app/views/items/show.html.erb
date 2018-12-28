@@ -3,9 +3,9 @@
 
   <div class="col-md-6">
     <small><%= link_to "#{@project.name}",  project_path(@project) %></small>
-    <% @item.images.each do |img| %>
-      <%= image_tag img, class: "img-fluid" %>
-    <% end %>
+    <br />
+    <%= image_tag(@item.image, class: "img-fluid") %>
+
     <h2 class="font-weight-bold"><%= @item.title %></h2>
 
     <small><%= @item.content %></small>

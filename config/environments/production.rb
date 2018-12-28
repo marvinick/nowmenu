@@ -51,6 +51,9 @@ config.webpacker.check_yarn_integrity = false
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
+  #upload   
+  config.active_storage.service = :cloudinary
+
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug

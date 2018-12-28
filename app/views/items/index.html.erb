@@ -7,9 +7,9 @@
   <div class="col-md-3 col-6">
     <%= link_to project_item_path(@project, item) do %>
     <div class="card my-3 p-3 shadow-sm border-0">
-      <% item.images.each do |img| %>
-        <%= image_tag img, class: "img-fluid" %>
-      <% end %>
+
+        <%= image_tag(item.image, class: "img-fluid") %>
+
       <p class="font-weight-bold"><%= item.title %></p>
       <small><%= truncate(item.content, length: 40)  %></small>
     </div>
