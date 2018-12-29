@@ -33102,7 +33102,7 @@ $(document).on('click', 'form .add_fields', function(event) {
   return event.preventDefault();
 });
 
-$(document).addEventListener("turbolinks:load", function() {
+document.addEventListener("turbolinks:load", function() {
 
   $("#items, #groups").sortable({
     update: function(e, ui) {
