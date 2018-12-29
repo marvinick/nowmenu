@@ -26,3 +26,9 @@ yarn-debug.log*
 config/local_env.yml
 
 # Ignore uploaded files in development
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
