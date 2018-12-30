@@ -5,43 +5,33 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
-# Use postgresql as the database for Active Record
+gem 'bootsnap'
 gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-
-# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-#Use Capistrano for deployment
-gem 'capistrano-rails'
-
 gem 'serviceworker-rails'
+
 gem 'simple_form'
+
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
-gem 'jquery-rails'
+
+#authentication
 gem 'devise'
 gem 'devise_invitable'
+
+#data analysis
 gem 'daru', '~> 0.2.1'
-gem 'bootsnap'
-gem 'active_storage_drag_and_drop'
 
 #draggable sortable
 gem 'jquery-ui-rails'
@@ -50,7 +40,6 @@ gem 'acts_as_list'
 #image upload
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
-
 gem 'aws-sdk'
 gem "aws-sdk-s3", require: false
 

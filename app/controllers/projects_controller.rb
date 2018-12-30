@@ -8,7 +8,6 @@ class ProjectsController < BaseController
 
     def preview
       @groups = @project.groups.all
-
     end
 
     def new

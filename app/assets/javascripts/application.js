@@ -14,9 +14,7 @@
 //= require jquery-ui
 //= require rails-ujs
 //= require turbolinks
-//= require active_storage_drag_and_drop
 //= require_tree .
-//= require_self
 
 
 $(document).on('click', 'form .remove_fields', function(event) {

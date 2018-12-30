@@ -11,13 +11,11 @@ Rails.application.routes.draw do
     end
 
     resources :groups do
-      resources :items do
-        collection do
-          patch :sort
-        end
+      collection do
+        patch :sort        
       end
     end
-    
+
     resources :categories
 
     resources :items do

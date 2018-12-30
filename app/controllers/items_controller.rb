@@ -2,24 +2,22 @@ class ItemsController < BaseController
   before_action :set_project
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @items = @project.items.all
   end
 
   def sort
 
-      items = @project.items
-      params[:item].each_with_index do |id, index|
-        items.where(id: id).update_all(position: index + 1)
-      end
+    items = @project.items.all
+    params[:item].each_with_index do |id, index|
 
-
+      items.where(id: id).update_all(position: index + 1)
+    end
     head :ok
   end
 
   def new
-      @item = @project.items.build
+    @item = @project.items.build
   end
 
   def create
@@ -36,33 +34,32 @@ class ItemsController < BaseController
   def edit; end
 
   def update
-      if @item.update_attributes(item_params)
-        redirect_to project_item_path(@project, @item)
-      else
-          render :edit
-      end
+    if @item.update_attributes(item_params)
+      redirect_to project_item_path(@project, @item)
+    else
+        render :edit
+    end
   end
 
   def destroy
-      if @item.destroy
-          redirect_to project_path(@project)
-      else
-      end
+    if @item.destroy
+        redirect_to project_path(@project)
+    else
+    end
   end
 
   private
 
-
   def item_params
-      params.require(:item).permit(:title, :content, :position, :price, :image, :project_id, group_ids: [])
+    params.require(:item).permit(:title, :content, :position, :price, :image, :project_id, group_ids: [])
   end
 
   def set_project
-      @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
   end
 
   def set_item
-      @item = set_project.items.find(params[:id])
+    @item = @project.items.find(params[:id])
   end
 
 end

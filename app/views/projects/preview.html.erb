@@ -38,13 +38,8 @@
       <br />
     <% end %>
 
-    <div id="items" class="row list-group" data-url="<%= sort_project_items_path(@project) %>">
 
-      <% @project.items.each do |item| %>
-        <% link_to item.title, project_item_path(@project, item), class: "list-group-item border-0 shadow-sm", id: dom_id(item) %>
-      <% end %>
-
-    </div>
+    
   </div>
   <div class="col-md-2"></div>
 </div>

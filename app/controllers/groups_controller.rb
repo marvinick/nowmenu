@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_project
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
     @groups = @project.groups.all
@@ -8,14 +8,12 @@ class GroupsController < ApplicationController
   end
 
   def sort
-    @itemss = @group.items.all
+    groups = @project.groups.all
 
-
-      params[:item].each_with_index do |id, index|
-        @itemss.where(id: id).update_all(position: index + 1)
-      end
-
-
+    params[:group].each_with_index do |id, index|
+      groups.where(id: id).update_all(position: index + 1)
+    end
+    head :ok
   end
 
   def new
