@@ -1,0 +1,19 @@
+<small>
+  <button data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
+    invite
+  </button>
+</small>
+
+<div class="collapse" id="collapseExample">
+  <%= simple_form_for [@project, ProjectUser.new] do |f| %>
+    <%= f.input :email, placeholder: "email", label: false %>
+    <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
+  <%  end %>
+</div>
+</h5>
+
+<% @project.users.each do |user| %>
+<div class="card beige-bg py-1 px-2 mb-3 rounded border-0">
+  <small class="inline-text"><%= user.email %></small>
+</div>
+<% end %>

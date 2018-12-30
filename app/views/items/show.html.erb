@@ -4,16 +4,19 @@
   <div class="col-md-6">
     <small><%= link_to "#{@project.name}",  project_path(@project) %></small>
     <br />
-    <%= image_tag(@item.image, class: "img-fluid") %>
-
+    <% if @item.image.present? %>
+      <%= image_tag(@item.image, class: "img-fluid") %>
+    <% end %>
     <h2 class="font-weight-bold"><%= @item.title %></h2>
 
     <small><%= @item.content %></small>
     <br />
-    <small class="mt-0">
-      <%= link_to "edit", edit_project_item_path(@project, @item)  %>
-       <%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %>
-    </small>
+    <% if item_owner? %>
+      <small class="mt-0">
+        <%= link_to "edit", edit_project_item_path(@project, @item)  %>
+         <%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %>
+      </small>
+    <% end %>
     <hr />
     <br />
     <h6 class="font-weight-bold">Reviews</h6>

@@ -12,14 +12,23 @@
  *
  *= require_tree .
  *= require_self
- 
+
  */
+
+ .container div {
+  -webkit-column-gap: 10px!important; /* Chrome, Safari, Opera */
+  -moz-column-gap: 10px!important; /* Firefox */
+  column-gap: -10px!important;
+}
 
  .menu-brand {
    font-weight: bolder!important;
    color: black!important;
    font-size: 20px!important;
-   font-family: Arial Black,Arial Bold,Gadget,sans-serif!important;
+   
+   font-family: 'Charm', cursive;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
  }
 
  .fa-user  {

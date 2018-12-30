@@ -1,10 +1,14 @@
-class Projects::ProjectUsersController < BaseController  
-    before_action :set_project 
+class Projects::ProjectUsersController < BaseController
+    before_action :set_project
 
+    def index
+      @project_users = @project.project_users.all
+    end
+    
     def create
         project_user = @project.project_users.new(project_user_params)
         project_user.project = @project
-      
+
         if project_user.save
           ProjectUserMailer.invite(project_user).deliver_now
           redirect_to @project, notice: 'Saved!'
@@ -13,7 +17,7 @@ class Projects::ProjectUsersController < BaseController
         end
     end
 
-    private 
+    private
 
     def set_project
         @project = current_user.projects.find(params[:project_id])
@@ -22,4 +26,4 @@ class Projects::ProjectUsersController < BaseController
     def project_user_params
         params.require(:project_user).permit(:email)
       end
-end 
+end

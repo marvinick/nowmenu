@@ -22,6 +22,7 @@ class ItemsController < BaseController
 
   def create
     @item = @project.items.new(item_params)
+    @item.user_id = @project.user_id
     if @item.save
         redirect_to project_item_path(@project, @item)
     else
@@ -34,7 +35,9 @@ class ItemsController < BaseController
   def edit; end
 
   def update
+    @item.user_id = @project.user_id
     if @item.update_attributes(item_params)
+
       redirect_to project_item_path(@project, @item)
     else
         render :edit
@@ -51,7 +54,7 @@ class ItemsController < BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :content, :position, :price, :image, :project_id, group_ids: [])
+    params.require(:item).permit(:title, :content, :user_id, :position, :price, :image, :project_id, group_ids: [])
   end
 
   def set_project

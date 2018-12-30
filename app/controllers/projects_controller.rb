@@ -16,7 +16,7 @@ class ProjectsController < BaseController
 
     def create
       @project = Project.new(project_params)
-      @project.user_id = current_user
+      @project.user_id = current_user.id
       @project.project_users.new(user: current_user, role: "owner" )
       if @project.save
           redirect_to project_path(@project)
