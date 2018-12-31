@@ -1,19 +1,34 @@
-<small>
-  <button data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
+<div class="text-center">
+  <small><%= link_to "exit", project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small>
+
+  <h4 class="font-weight-bold">Users</h4>
+  <small class="form-text text-muted">
+    These are your people
+  </small>
+
+  <button class="btn btn-sm btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
     invite
   </button>
-</small>
 
-<div class="collapse" id="collapseExample">
-  <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-    <%= f.input :email, placeholder: "email", label: false %>
-    <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
-  <%  end %>
+  <div class="collapse" id="collapseExample">
+    <%= simple_form_for [@project, ProjectUser.new] do |f| %>
+      <%= f.input :email, placeholder: "email", label: false %>
+      <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
+    <%  end %>
+  </div>
 </div>
-</h5>
+<br />
 
-<% @project.users.each do |user| %>
-<div class="card beige-bg py-1 px-2 mb-3 rounded border-0">
-  <small class="inline-text"><%= user.email %></small>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+  <% @project.users.each do |user| %>
+
+    <div class="card py-3 px-3 border-0 shadow-sm">
+      <small class="inline-text"><%= user.email %></small>
+    </div>
+    <br />
+  <% end %>
+  </div>
+  <div class="col-md-3"></div>
 </div>
-<% end %>

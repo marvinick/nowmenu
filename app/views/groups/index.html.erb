@@ -1,6 +1,47 @@
+<div class="text-center">
+  <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+  <h4 class="font-weight-bold">Groups</h4>
+  <small class="form-text text-muted">
+    Where each of your items belong to
+  </small>
+  <br />
+  <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
+</div>
+<br />
 
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
   <% @groups.each do |group| %>
 
-    <%= group.name %>
-
+      <div class="card py-3 px-3 border-0 shadow">
+        <div class="row">
+          <div class="col-md-11">
+            <small class="font-weight-bold"><%= group.name %></small>
+            <br />
+            <small><%= group.description %></small>
+          </div>
+          <div class="col-md-1">
+            <div class=" dropdown">
+              <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
+                <i class="fas fa-ellipsis-v"></i>
+              </span>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <div class="card p-0 border-0">
+                  <div class="dropdown-item">
+                    <small>  <%= link_to "edit", edit_project_group_path(@project, group) %></small>
+                  </div>
+                  <div class="dropdown-item">
+                    <small><%= link_to "delete", project_group_path(@project, group), :method => :delete, data: {confirm: "Are you sure?"} %></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
   <% end %>
+  </div>
+  <div class="col-md-3"></div>
+</div>

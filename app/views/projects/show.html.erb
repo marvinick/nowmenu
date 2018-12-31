@@ -1,15 +1,18 @@
-<div class=" card text-center border-0">
-  <small><%= link_to "projects", projects_path(@projects) %></small>
-  <h3 class="font-weight-bold mb-0 "><%= @project.name %></h3>
-  <%= link_to "Preview", preview_project_path(@project) %>
+<div class=" row">
+  <div class="col-md-12">
+    <small><%= link_to "exit", projects_path(@projects), class: "exit-text" %></small>
+    <br />
+    <h3 class="font-weight-bold mb-1 "><%= @project.name %></h3>
+    <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-outline-secondary" %>
+  </div>
 </div>
-
 <br />
-<small>
+
+
 <div class="row text-center">
   <div class="col-md-4 col-6 mb-4">
     <%= link_to project_items_path(@project, @items) do %>
-      <div class="card shadow-sm border-0 p-3">
+      <div class="card shadow  p-3">
         <h6 class="font-weight-bold text-center">Items</h6>
         <div class="card border-0 px-5 py-2">
           <%= image_tag("food", class: "img-fluid") %>
@@ -18,15 +21,9 @@
         <p class="card-text">
           This is where your items live
         </p>
-        <% @project.items.last(2).each do |item| %>
-          <div class="">
-
-            <div class="card m-1 px-3 py-1 shadow-sm border-0">
-
-              <small class="font-weight-bold card-text"><% truncate(item.title, length: 15) %></small>
-              <small class=" form-text text-muted"><% truncate(item.content, length: 30)  %></small>
-            </div>
-
+        <% @project.items.last(1).each do |item| %>
+          <div class="card m-1 px-3 py-1 beige-bg border-0 ">
+            <small class="font-weight-bold card-text"><% truncate(item.title, length: 15) %></small>
           </div>
         <% end %>
       </div>
@@ -34,7 +31,7 @@
   </div>
   <div class="col-md-4 col-6 mb-4">
     <%= link_to project_groups_path(@project, @groups) do %>
-      <div class="card shadow-sm border-0  p-3">
+      <div class="card shadow  p-3">
         <h6 class="font-weight-bold text-center">Groups</h6>
 
         <div class="card border-0 px-5 py-2">
@@ -45,11 +42,10 @@
           This is where your items live
         </p>
         <% @project.groups.last(1).each do |group| %>
-          <div class="card beige-bg py-1 px-2 mb-2 rounded border-0">
+          <div class="card beige-bg py-1 px-2 mb-2 border-0 ">
             <small class="inline-text "><% group.name %></small>
-            <small class=" form-text text-muted"><% truncate(group.description, length: 30)  %></small>
+
           </div>
-          <% link_to "edit", edit_project_group_path(@project, group) %>
         <% end %>
       </div>
     <% end %>
@@ -57,7 +53,7 @@
   <div class="col-md-4 col-6 mb-4">
     <%= link_to project_categories_path(@project, @categories) do %>
 
-      <div class="card shadow-sm border-0  p-3">
+      <div class="card shadow p-3">
         <h6 class="font-weight-bold text-center">Categories</h6>
         <div class="card border-0 px-5 py-2">
           <%= image_tag("categories", class: "img-fluid") %>
@@ -68,7 +64,7 @@
         </p>
 
         <% @project.categories.last(1).each do |category| %>
-            <div class="card py-1 px-2 mt-1 mx-3 shadow-sm rounded beige-bg border-0">
+            <div class="card beige-bg py-1 px-2 mb-2 border-0">
               <li><p class="inline-text"><% category.name %></p></li>
             </div>
         <% end %>
@@ -77,7 +73,7 @@
   </div>
   <div class="col-md-4 col-6 mb-4">
     <%= link_to project_project_users_path(@project, @users) do %>
-      <div class="card shadow-sm border-0  p-3">
+      <div class="card shadow p-3">
         <h6 class="font-weight-bold text-center">Members</h6>
         <div class="card border-0 px-5 py-2">
           <%= image_tag("members", class: "img-fluid") %>
@@ -95,7 +91,7 @@
   </div>
   <div class="col-md-4 col-6 mb-4">
     <%= link_to project_project_users_path(@project, @users) do %>
-      <div class="card border-0  shadow-sm p-3">
+      <div class="card shadow p-3">
         <h6 class="font-weight-bold text-center">Faqs</h6>
         <div class="card border-0 px-5 py-2">
           <%= image_tag("faq", class: "img-fluid") %>
@@ -114,9 +110,9 @@
   </div>
   <div class="col-md-4 col-6 mb-4">
     <%= link_to project_items_path(@project, @items) do %>
-      <div class="card border-0 shadow-sm p-3">
+      <div class="card shadow p-3">
         <h6 class="font-weight-bold text-center">Analytics</h6>
-        <div class="card border-0 px-5 py-2">
+        <div class="card border-0 px-5 py-0">
           <%= image_tag("analytics", class: "img-fluid") %>
         </div>
         <br />
@@ -132,3 +128,5 @@
     <% end %>
   </div>
 </div>
+
+<hr class="m-5">

@@ -1,5 +1,5 @@
 <div class="text-center">
-  <small><%= link_to "#{@project.name}", project_path(@project) %></small>
+  <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
   <h4 class="font-weight-bold">Categories</h4>
   <small class="form-text text-muted">
     These categories will be part of every review for each item
@@ -10,24 +10,36 @@
 <br />
 
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
   <% @categories.each do |category| %>
-
-      <div class="card beige-bg py-3 px-3 border-0 shadow">
-        <small><%= category.name %></small>
-
-        <small class="text-muted"><%= category.description %></small>
-        <hr />
-        <small >
-          <%= link_to "edit", edit_project_category_path(@project, category), class: "btn btn-outline-secondary btn-sm" %>
-          <%= link_to "delete", project_category_path(@project, category), :method => :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-secondary btn-sm" %>
-        </small>
+    <div class="card py-3 px-3 border-0 shadow">
+      <div class="row">
+        <div class="col-md-11">
+          <small class="font-weight-bold"><%= category.name %></small>
+          <br />
+          <small class="text-muted"><%= category.description %></small>
+        </div>
+        <div class="col-md-1">
+          <div class=" dropdown">
+            <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
+              <i class="fas fa-ellipsis-v"></i>
+            </span>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <div class="card p-0 border-0">
+                <div class="dropdown-item">
+                  <small><%= link_to "edit", edit_project_category_path(@project, category) %></small>
+                </div>
+                <div class="dropdown-item">
+                  <small><%= link_to "delete", project_category_path(@project, category), :method => :delete, data: {confirm: "Are you sure?"} %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <br />
-
-
+    </div>
   <% end %>
   </div>
-  <div class="col-md-2"></div>
+  <div class="col-md-3"></div>
 </div>

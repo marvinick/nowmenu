@@ -1,0 +1,124 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+ */
+/* line 19, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.container div {
+  -webkit-column-gap: 10px !important;
+  /* Chrome, Safari, Opera */
+  -moz-column-gap: 10px !important;
+  /* Firefox */
+  column-gap: -10px !important;
+}
+
+/* line 25, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.menu-brand {
+  font-weight: bolder !important;
+  color: black !important;
+  font-size: 20px !important;
+  font-family: 'Charm', cursive;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 35, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.fa-user {
+  color: #addb8e !important;
+  font-size: 24px !important;
+}
+
+/* line 40, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.fa-accusoft {
+  color: #addb8e !important;
+  font-size: 30px !important;
+}
+
+/* line 45, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+input[type="text"], textarea {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid #ccc !important;
+}
+
+/* line 54, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+input::placeholder {
+  color: #a5a5a5 !important;
+  font-size: 10px !important;
+  font-style: italic;
+}
+
+/* line 60, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+textarea::placeholder {
+  color: #a5a5a5 !important;
+  font-size: 10px !important;
+  font-style: italic;
+}
+
+/* line 66, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.grey-bg {
+  background-color: #f7f7f7 !important;
+}
+
+/* line 70, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.beige-bg {
+  background-color: #f4f2ef !important;
+}
+
+/* line 74, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.navbar-light {
+  background-color: white;
+  z-index: 1000;
+}
+
+/* line 80, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.container-fluid {
+  margin-top: -10px;
+}
+
+/* line 84, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.jumbotron {
+  background-color: transparent !important;
+}
+
+/* line 88, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+li .inline-text {
+  list-style-type: none;
+  display: inline;
+}
+
+/* line 93, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+li {
+  list-style-type: none;
+}
+
+/* line 97, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.container {
+  margin-top: 30px;
+}
+
+/* line 102, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+/* line 106, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+.inline-text {
+  font-size: 11px;
+}
+
+/* line 112, /Users/daddy/Documents/projects/nowmenu/app/assets/stylesheets/application.scss */
+a {
+  color: black !important;
+}

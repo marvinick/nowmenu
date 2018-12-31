@@ -1,19 +1,24 @@
-<small><%= link_to "#{@project.name}", project_path(@project) %></small>
-<h1>Items</h1>
-<small><%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %></small>
-
 <div class="row">
-  <% @items.each do |item| %>
-  <div class="col-md-3 col-6">
-    <%= link_to project_item_path(@project, item) do %>
-    <div class="card my-3 p-3 shadow-sm border-0">
-
-        <%= image_tag(item.image, class: "img-fluid") %>
-
-      <p class="font-weight-bold"><%= item.title %></p>
-      <small><%= truncate(item.content, length: 40)  %></small>
+  <div class="col-md-2 text-center">
+    <div class="card beige-bg py-3 mb-2 border-0">
+      <h2 class="mb-0 font-weight-bold"><%= @items.count %></h2>
+      <small>items</small>
     </div>
-    <% end %>
   </div>
-  <% end %>
+  <div class="col-md-10">
+    <%= link_to "exit", project_path(@project),  class: "btn btn-sm btn-outline-secondary" %>
+    <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
+    <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-md-3 col-6">
+        <%= link_to project_item_path(@project, item) do %>
+        <div class="card my-3 p-3 shadow border-0">
+          <small class="font-weight-bold"><%= truncate(item.title, length: 20) %></small>
+          <small class="font-weight-light"><%= truncate(item.content, length: 20)  %></small>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
