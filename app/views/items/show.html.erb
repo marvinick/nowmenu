@@ -2,10 +2,10 @@
   <div class="col-md-3"></div>
 
   <div class="col-md-6">
-    <small><%= link_to "#{@project.name}",  project_path(@project) %></small>
+    <small><%= link_to "exit",  project_items_path(@project, @items), class: "exit-text" %></small>
     <br />
     <% if @item.image.present? %>
-      <%= image_tag(@item.image, class: "img-fluid") %>
+      <%= image_tag url_for(@item.image.variant(resize: "500x300")), class: "img-fluid"  %>
     <% end %>
     <h2 class="font-weight-bold"><%= @item.title %></h2>
 

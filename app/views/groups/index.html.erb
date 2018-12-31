@@ -1,5 +1,5 @@
 <div class="text-center">
-  <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+  <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
   <h4 class="font-weight-bold">Groups</h4>
   <small class="form-text text-muted">
     Where each of your items belong to
@@ -16,12 +16,12 @@
 
       <div class="card py-3 px-3 border-0 shadow">
         <div class="row">
-          <div class="col-md-11">
+          <div class="col-md-11 col-10">
             <small class="font-weight-bold"><%= group.name %></small>
             <br />
             <small><%= group.description %></small>
           </div>
-          <div class="col-md-1">
+          <div class="col-md-1 col-2">
             <div class=" dropdown">
               <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
                 <i class="fas fa-ellipsis-v"></i>
@@ -32,7 +32,7 @@
                     <small>  <%= link_to "edit", edit_project_group_path(@project, group) %></small>
                   </div>
                   <div class="dropdown-item">
-                    <small><%= link_to "delete", project_group_path(@project, group), :method => :delete, data: {confirm: "Are you sure?"} %></small>
+                    <small><%= link_to "delete", project_group_path(@project, group), :method => :delete, data: {confirm: "Are you sure?"}, class:"exit-text" %></small>
                   </div>
                 </div>
               </div>

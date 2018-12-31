@@ -1,6 +1,6 @@
 
 <div class="card p-2 m-2 border-0 text-center">
-  <small><%= link_to "exit preview", project_path(@project) %></small>
+  <small><%= link_to "exit preview", project_path(@project), class: "exit-text" %></small>
   <br />
   <h3 class="font-weight-bold"><%= @project.name %></h3>
 </div>
@@ -39,7 +39,7 @@
     <% end %>
 
 
-    
+
   </div>
   <div class="col-md-2"></div>
 </div>
