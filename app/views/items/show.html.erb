@@ -1,14 +1,13 @@
-<div class="row pt-2">
-  <div class="col-md-3"></div>
-
-  <div class="col-md-6">
-    <small><%= link_to "exit",  project_items_path(@project, @items), class: "exit-text" %></small>
-    <br />
-    <% if @item.image.present? %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card border-0">
       <%= image_tag url_for(@item.image.variant(resize: "500x300")), class: "img-fluid"  %>
-    <% end %>
-    <h2 class="font-weight-bold"><%= @item.title %></h2>
+    </div>
+  </div>
 
+  <div class="col-md-8 ">
+    <small><%= link_to "exit",  project_items_path(@project, @items), class: "exit-text" %></small>
+    <h3 class="font-weight-bold mt-1"><%= @item.title %></h3>
     <small><%= @item.content %></small>
     <br />
     <% if item_owner? %>
@@ -17,18 +16,20 @@
          <%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %>
       </small>
     <% end %>
-    <hr />
+
     <br />
     <h6 class="font-weight-bold">Reviews</h6>
 
     <% if reviewers.include?(current_user.id) %>
-      <small>you've submitted a review</small>
+      <small class="exit-text">you've submitted a review</small>
+      <br />
     <% else %>
+      <h6 class="nothing-yet">There are no reviews yet!</h6>
       <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
     <% end %>
 
     <br />
-    <br />
+
     <% @item.reviews.each do |review| %>
       <%= link_to project_item_review_path(@project, @item, review) do %>
         <div class="card beige-bg p-3 mb-3 shadow border-0">
@@ -37,8 +38,9 @@
         </div>
       <% end %>
     <% end %>
+
   </div>
-  <div class="col-md-3"></div>
+
 </div>
 
 

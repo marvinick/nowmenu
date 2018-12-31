@@ -4,17 +4,21 @@ class Projects::ProjectUsersController < BaseController
     def index
       @project_users = @project.project_users.all
     end
-    
-    def create
-        project_user = @project.project_users.new(project_user_params)
-        project_user.project = @project
 
-        if project_user.save
-          ProjectUserMailer.invite(project_user).deliver_now
-          redirect_to @project, notice: 'Saved!'
-        else
-          redirect_to @project, alert: 'Failed saving!'
-        end
+    def create
+      project_user = @project.project_users.new(project_user_params)
+      project_user.project = @project
+
+      if project_user.save
+        ProjectUserMailer.invite(project_user).deliver_now
+        redirect_to @project, notice: 'Saved!'
+      else
+        redirect_to @project, alert: 'Failed saving!'
+      end
+    end
+
+    def destroy
+      
     end
 
     private
