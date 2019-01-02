@@ -1,9 +1,9 @@
 <div class="text-center">
   <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
   <h4 class="font-weight-bold">Groups</h4>
-  <small class="form-text text-muted">
+  <p class="content mb-0">
     Where each of your items belong to
-  </small>
+  </p>
   <br />
   <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
 </div>
@@ -18,8 +18,8 @@
         <div class="row">
           <div class="col-md-11 col-10">
             <small class="font-weight-bold"><%= group.name %></small>
-            <br />
-            <small><%= group.description %></small>
+
+            <p class="description mb-0"><%= group.description %></p>
           </div>
           <div class="col-md-1 col-2">
             <div class=" dropdown">
@@ -29,10 +29,10 @@
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <div class="card p-0 border-0">
                   <div class="dropdown-item">
-                    <small>  <%= link_to "edit", edit_project_group_path(@project, group) %></small>
+                    <p class="description mb-0"><i class="fas fa-pencil-alt"></i>  <%= link_to " edit", edit_project_group_path(@project, group) %></p>
                   </div>
                   <div class="dropdown-item">
-                    <small><%= link_to "delete", project_group_path(@project, group), :method => :delete, data: {confirm: "Are you sure?"}, class:"exit-text" %></small>
+                    <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to " delete", project_group_path(@project, group), :method => :delete, data: {confirm: "Are you sure?"} %></p>
                   </div>
                 </div>
               </div>
@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <br />
+
   <% end %>
   </div>
   <div class="col-md-3"></div>

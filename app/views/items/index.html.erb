@@ -1,34 +1,36 @@
+<div class="text-center">
+  <%= link_to "exit", project_path(@project),  class: "exit-text description" %>
+  <h2 class="font-weight-bold">Items</h2>
+  <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
+</div>
+
+<br/ >
 <div class="row">
-  <div class="col-md-2 text-center">
-    <div class="card  mb-3 beige-bg py-3 mb-2 border-0">
-      <h2 class="mb-0 font-weight-bold"><%= @items.count %></h2>
-      <small>items</small>
-    </div>
-  </div>
-  <div class="col-md-10">
-    <%= link_to "exit", project_path(@project),  class: "btn btn-sm btn-outline-secondary exit-text" %>
-    <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
-    <br />
-    <br />
-    <div class="row">
-      <% @items.each do |item| %>
-      <div class="col-md-6 col-6">
-        <%= link_to project_item_path(@project, item) do %>
-        <div class="card my-2 p-3 shadow-sm border-right-0 border-top-0 border-bottom-0">
-          <div class="row">
-            <div class="col-md-3 col-12">
-              <%= image_tag url_for(item.image.variant(resize: "200x100")), class: "img-fluid" %>
-            </div>
-            <div class="col-md-9 col-12">
-              <small class="font-weight-bold"><%= truncate(item.title, length: 20) %></small>
-              <br />
-              <small class="font-weight-light"><%= truncate(item.content, length: 20)  %></small>
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <% @items.each do |item| %>
+
+      <%= link_to project_item_path(@project, item) do %>
+      <div class="card p-2 mb-2 shadow-sm">
+        <div class="row">
+          <div class="col-md-2 col-3">
+            <%= image_tag url_for(item.image.variant(resize: "150x100")), class: "img-fluid" %>
+          </div>
+          <div class="col-md-10 col-9">
+            <p class="item-title mb-0"><%= truncate(item.title, length: 20) %></p>
+            <p class=" description mb-2"><%= truncate(item.content, length: 125)  %></p>
+
+            <div class="row mt-2">
+              <div class="col-md-9 col-8"><p class="description"><i class="fas fa-dollar-sign"></i><%= item.price %></p></div>
+
             </div>
           </div>
         </div>
-        <% end %>
       </div>
       <% end %>
-    </div>
+
+    <% end %>
+  </div>
+  <div class="col-md-2"></div>
   </div>
 </div>
