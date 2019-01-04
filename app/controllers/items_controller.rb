@@ -26,11 +26,13 @@ class ItemsController < BaseController
     if @item.save
         redirect_to project_item_path(@project, @item)
     else
-        render :new
+      render :new
     end
   end
 
-  def show; end
+  def show
+
+  end
 
   def edit; end
 

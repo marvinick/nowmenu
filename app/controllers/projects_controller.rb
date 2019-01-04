@@ -3,7 +3,7 @@ class ProjectsController < BaseController
     before_action :set_project, only: [:show, :edit, :update, :destroy, :preview]
 
     def index
-      @projects = current_user.projects
+      @projects = current_user.projects.includes(:categories, :items)
     end
 
     def preview

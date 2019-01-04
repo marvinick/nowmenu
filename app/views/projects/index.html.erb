@@ -1,27 +1,28 @@
-<div class="jumbotro ">
-  <h1 class="font-weight-bold text-center">Projects</h1>
-  <h6 class="mt-0 text-center"><small><%= link_to "add project", new_project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small></h6>
-  <br />
-  <br />
-  <div class="row">
-    <% @projects.each do |project| %>
+<h3 class="font-weight-bold ">Projects</h3>
+<h6 class="mt-0 "><small><%= link_to "add project", new_project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small></h6>
+<hr class="my-4" />
+
+<div class="row">
+
+  <% @projects.each do |project| %>
+
     <div class="col-md-4 col-6">
       <%= link_to project_path(project) do %>
-        <div class="card shadow-lg">
-          <%= image_tag "cook", class: "img-fluid" %>
-          <div class="card-body">
-            <h5 class="font-weight-bold">  <%= project.name %></h5>
-            <small><%= project.categories.count %> categories</small>
-            <br />
-            <small><%= project.items.count %> item(s)</small>
-            <hr class="my-4">
-            <%= link_to "Preview", preview_project_path(project), class: "btn btn-sm btn-outline-secondary" %>
+        <div class="card shadow-sm">
 
+          <div class="card-body">
+            <h6 class="font-weight-bold">  <%= project.name %></h6>
+            <p class="description mb-0"><%= project.items.count %> item(s)</p>
+            <p class="description mb-0"><%= project.categories.count %> categories</p>
+
+            <br />
+            <%= link_to "Preview", preview_project_path(project), class: "btn btn-sm btn-outline-secondary" %>
           </div>
         </div>
         <br />
       <% end %>
     </div>
-    <% end %>
-  </div>
+
+
+  <% end %>
 </div>
