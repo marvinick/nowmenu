@@ -1,28 +1,34 @@
-<h3 class="font-weight-bold ">Projects</h3>
-<h6 class="mt-0 "><small><%= link_to "add project", new_project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small></h6>
-<hr class="my-4" />
+<%= render "layouts/navbar" %>
 
-<div class="row">
+<div class="container pt-5">
 
-  <% @projects.each do |project| %>
+  <h3 class="font-weight-bold ">Projects</h3>
+  <h6 class="mt-0 "><small><%= link_to "add project", new_project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small></h6>
 
-    <div class="col-md-4 col-6">
-      <%= link_to project_path(project) do %>
-        <div class="card shadow-sm">
+  <br />
 
-          <div class="card-body">
-            <h6 class="font-weight-bold">  <%= project.name %></h6>
-            <p class="description mb-0"><%= project.items.count %> item(s)</p>
-            <p class="description mb-0"><%= project.categories.count %> categories</p>
+  <div class="row">
 
-            <br />
-            <%= link_to "Preview", preview_project_path(project), class: "btn btn-sm btn-outline-secondary" %>
+    <% @projects.each do |project| %>
+
+      <div class="col-md-4 col-6">
+        <%= link_to project_path(project) do %>
+          <div class="card shadow-sm">
+
+            <div class="card-body">
+              <h6 class="font-weight-bold">  <%= project.name %></h6>
+              <p class="description mb-0"><%= project.items.count %> item(s)</p>
+              <p class="description mb-0"><%= project.categories.count %> categories</p>
+
+              <br />
+              <%= link_to "Preview", preview_project_path(project), class: "btn btn-sm btn-outline-secondary" %>
+            </div>
           </div>
-        </div>
-        <br />
-      <% end %>
-    </div>
+          <br />
+        <% end %>
+      </div>
 
 
-  <% end %>
+    <% end %>
+  </div>
 </div>

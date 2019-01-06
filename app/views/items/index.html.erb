@@ -1,36 +1,40 @@
-<div class="text-center">
-  <%= link_to "exit", project_path(@project),  class: "exit-text description" %>
-  <h2 class="font-weight-bold">Items</h2>
-  <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
-</div>
+<%= render "projects/project_navbar" %>
 
-<br/ >
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <% @items.each do |item| %>
+<div class="container pt-5">
+  <div class="text-center">
+    <%= link_to "exit", project_path(@project),  class: "exit-text description" %>
+    <h2 class="font-weight-bold">Items</h2>
+    <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
+  </div>
 
-      <%= link_to project_item_path(@project, item) do %>
-      <div class="card p-2 mb-2 shadow-sm">
-        <div class="row">
-          <div class="col-md-2 col-3">
-            <%= image_tag url_for(item.image.variant(resize: "150x100")), class: "img-fluid" %>
-          </div>
-          <div class="col-md-10 col-9">
-            <p class="item-title mb-0"><%= truncate(item.title, length: 20) %></p>
-            <p class=" description mb-2"><%= truncate(item.content, length: 125)  %></p>
+  <br/ >
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <% @items.each do |item| %>
 
-            <div class="row mt-2">
-              <div class="col-md-9 col-8"><p class="description"><i class="fas fa-dollar-sign"></i><%= item.price %></p></div>
+        <%= link_to project_item_path(@project, item) do %>
+        <div class="card p-2 mb-2 shadow-sm">
+          <div class="row">
+            <div class="col-md-2 col-3">
+              <%= image_tag url_for(item.image.variant(resize: "150x100")), class: "img-fluid" %>
+            </div>
+            <div class="col-md-10 col-9">
+              <p class="item-title mb-0"><%= truncate(item.title, length: 20) %></p>
+              <p class=" description mb-2"><%= truncate(item.content, length: 125)  %></p>
 
+              <div class="row mt-2">
+                <div class="col-md-9 col-8"><p class="description"><i class="fas fa-dollar-sign"></i><%= item.price %></p></div>
+
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <% end %>
+        <% end %>
 
-    <% end %>
-  </div>
-  <div class="col-md-2"></div>
+      <% end %>
+    </div>
+    <div class="col-md-2"></div>
+    </div>
   </div>
 </div>

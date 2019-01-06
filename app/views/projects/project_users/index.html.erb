@@ -1,34 +1,39 @@
-<div class="text-center">
-  <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+<%= render "projects/project_navbar" %>
 
-  <h4 class="font-weight-bold">Users</h4>
-  <small class="form-text text-muted mb-3">
-    These are your people
-  </small>
+<div class="container pt-5">
 
-  <button class="btn btn-sm btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
-    invite
-  </button>
+  <div class="text-center">
+    <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
 
-  <div class="collapse" id="collapseExample">
-    <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-      <%= f.input :email, placeholder: "email", label: false %>
-      <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
-    <%  end %>
-  </div>
-</div>
-<br />
+    <h4 class="font-weight-bold">Users</h4>
+    <small class="form-text text-muted mb-3">
+      These are your people
+    </small>
 
-<div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
-  <% @project.users.each do |user| %>
+    <button class="btn btn-sm btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
+      invite
+    </button>
 
-    <div class="card py-3 px-3 border-0 shadow">
-      <small class="inline-text"><%= user.email %></small>
+    <div class="collapse" id="collapseExample">
+      <%= simple_form_for [@project, ProjectUser.new] do |f| %>
+        <%= f.input :email, placeholder: "email", label: false %>
+        <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
+      <%  end %>
     </div>
-    <br />
-  <% end %>
   </div>
-  <div class="col-md-3"></div>
+  <br />
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <% @project.users.each do |user| %>
+
+      <div class="card py-3 px-3 border-0 shadow">
+        <small class="inline-text"><%= user.email %></small>
+      </div>
+      <br />
+    <% end %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 </div>

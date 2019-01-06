@@ -1,120 +1,89 @@
-<div class=" row">
-  <div class="col-md-12">
-    <small><%= link_to "exit", projects_path(@projects), class: "exit-text font-weight-" %></small>
-    <br />
-    <h3 class="font-weight-bold mb-1 "><%= @project.name %></h3>
-    <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-outline-secondary" %>
+<%= render "layouts/navbar" %>
+
+<div class="container pt-5">
+
+  <div class=" row">
+    <div class="col-md-12">
+      <small><%= link_to "exit", projects_path(@projects), class: "exit-text font-weight-" %></small>
+      <br />
+      <h3 class="font-weight-bold mb-1 "><%= @project.name %></h3>
+      <p class="content">Remember, your items need to have categories, for your users to review them. And also don't forget to group them.</p>
+      <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-outline-secondary" %>
+    </div>
   </div>
-</div>
-<br />
+  <br />
 
 
-<div class="row text-center">
-  <div class="col-md-4 col-6 mb-4">
-    <%= link_to project_items_path(@project, @items) do %>
-      <div class="card shadow-sm  p-3">
-        <h6 class="font-weight-bold text-center">Items</h6>
-        <div class="card border-0 px-3 py-2">
-
-        </div>
-
-        <p class="description">This is where your items live</p>
-        <% @project.items.last(1).each do |item| %>
-          <div class="card m-1 px-3 py-1 beige-bg border-0 ">
-            <small class="font-weight-bold card-text"><%= truncate(item.title, length: 15) %></small>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-4 col-6 mb-4">
-    <%= link_to project_groups_path(@project, @groups) do %>
-      <div class="card shadow-sm  p-3">
-        <h6 class="font-weight-bold text-center">Groups</h6>
-
-        <div class="card border-0 px-3 py-2">
-
-        </div>
-
-        <p class="description">This is where your items live</p>
-        <% @project.groups.each do |group| %>
-          <div class="card beige-bg py-1 px-2 mb-2 border-0 ">
-            <small class="inline-text "><%= group.name %></small>
-
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-4 col-6 mb-4">
-    <%= link_to project_categories_path(@project, @categories) do %>
-
-      <div class="card shadow-sm p-3 ">
-        <h6 class="font-weight-bold text-center">Categories</h6>
-        <div class="card border-0 px-3 py-2">
-
-        </div>
-
-        <p class="description">Check your categories</p>
-
-        <% @project.categories.each do |category| %>
-            <div class="card beige-bg py-1 px-2 mb-2 border-0">
-              <li><p class="inline-text"><%= category.name %></p></li>
+  <div class="row ">
+    <div class="col-md-3 col-6 mb-4">
+      <%= link_to project_items_path(@project, @items) do %>
+        <div class="card shadow-sm p-3 h-100">
+          <h6 class="font-weight-bold text-center mb-0 ">Items</h6>
+          <hr />
+          <p class="description text-center">This is where your items live</p>
+          <% @project.items.last(3).each do |item| %>
+            <div class="py-1 px-2 border-0 ">
+              <p class="content font-weight-bold card-text"><%= truncate(item.title, length: 15) %></p>
             </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-4 col-6 mb-4">
-    <%= link_to project_project_users_path(@project, @users) do %>
-      <div class="card shadow-sm p-3">
-        <h6 class="font-weight-bold text-center">Members</h6>
-        <div class="card border-0 px-3 py-2">
-
+          <% end %>
         </div>
-        <p class="description">This is where your items live</p>
-        <% @project.users.each do |user| %>
-          <div class="card beige-bg py-1 px-2 mb-3 shadow-sm rounded border-0">
-            <small class="inline-text"><%= user.email %></small>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-4 col-6 mb-4">
-    <%= link_to project_project_users_path(@project, @users) do %>
-      <div class="card shadow-sm p-3">
-        <h6 class="font-weight-bold text-center">Faqs</h6>
-        <div class="card border-0 px-3 py-2">
+      <% end %>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+      <%= link_to project_groups_path(@project, @groups) do %>
+        <div class="card shadow-sm  p-3 h-100">
+          <h6 class="font-weight-bold text-center mb-0">Groups</h6>
+          <hr />
+          <p class="description text-center">This is where your items live</p>
+          <% @project.groups.last(3).each do |group| %>
+            <div class="py-1 px-2 border-0 ">
+              <p class="content font-weight-bold card-text"><%= group.name %></p>
 
+            </div>
+          <% end %>
         </div>
+      <% end %>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+      <%= link_to project_categories_path(@project, @categories) do %>
 
-        <p class="description">This is where your items live</p>
-        <% @project.users.each do |user| %>
-          <div class="card beige-bg py-1 px-2 mb-3 shadow-sm rounded border-0">
-            <small class="inline-text"><%= user.email %></small>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-4 col-6 mb-4">
-    <%= link_to project_items_path(@project, @items) do %>
-      <div class="card shadow-sm p-3">
-        <h6 class="font-weight-bold text-center">Analytics</h6>
-        <div class="card border-0 px-3 py-0">
+        <div class="card shadow-sm p-3 h-100">
+          <h6 class="font-weight-bold text-center mb-0">Categories</h6>
+          <hr />
+          <p class="description text-center">Check your categories</p>
 
+          <% @project.categories.last(3).each do |category| %>
+              <div class="card py-1 px-2 border-0">
+                <p class="content font-weight-bold card-text"><%= category.name %></p>
+              </div>
+          <% end %>
         </div>
-        <br />
-        <p class="description">This is where your items live</p>
-        <% @project.users.each do |user| %>
-          <div class="card beige-bg py-1 px-2 mb-3 shadow-sm rounded border-0">
-            <small class="inline-text"><%= user.email %></small>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+      <%= link_to project_project_users_path(@project, @users) do %>
+        <div class="card shadow-sm p-3 h-100">
+          <h6 class="font-weight-bold text-center mb-0">Members</h6>
+          <hr />
+          <p class="description text-center">This is where your items live</p>
+          <% @project.users.each do |user| %>
+            <div class="card py-1 px-2 border-0 ">
+              <p class="content font-weight-bold card-text"><%= truncate((user.email).chomp("gmail"), length: 12) %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+  <hr class="m-5">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="font-weight-bold">Help</h4>
+
+      <p class="content">Need help to get started? Check these easy steps</p>
+    </div>
   </div>
 </div>
-
-<hr class="m-5">
