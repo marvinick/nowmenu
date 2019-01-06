@@ -1,7 +1,10 @@
 
 <nav class="navbar navbar-expand-xl py-0 shadow-sm navbar-light sticky-top">
   <div class="container">
-  <%= link_to "onthefly", home_path, class: "menu-brand navbar-brand" %>
+  <%= link_to home_path do %>
+    <i class="fab fa-accusoft"></i>
+  <% end %>
+  <%= link_to "onthefly", home_path, class: "menu-brand" %>
 
   <div class="mx-auto order-0">
     <% link_to home_path do %>
@@ -12,7 +15,7 @@
   <% if user_signed_in? %>
     <li class="nav-item dropdown">
       <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fab fa-accusoft"></i>
+        <i class="fas fa-user-circle"></i>
       </span>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
         <div class="card p-2 border-0">

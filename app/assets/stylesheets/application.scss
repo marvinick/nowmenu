@@ -15,6 +15,8 @@
 
  */
 
+
+
  .nav.navbar-nav {
 	display: flex!important;
 	justify-content: center!important;
@@ -69,10 +71,12 @@
  .menu-brand {
    font-weight: bolder!important;
    color: black!important;
-   font-size: 20px!important;
-
-
+   font-size: 14px!important;
  }
+
+.fa-user-circle {
+  font-size: 24px!important;
+}
 
  .fa-layer-group {
    color: #636363!important;
@@ -82,6 +86,7 @@
  .fa-user  {
    color: #addb8e!important;
    font-size: 24px!important;
+
  }
 
  .fa-accusoft {
@@ -128,7 +133,7 @@ input::placeholder {
  }
 
 
-.container-fluid {
+.container {
   margin-top: -10px;
 }
 
@@ -147,6 +152,7 @@ input::placeholder {
 
   .container {
     margin-top: 10px;
+    overflow-x: hidden!important;
   }
 
 
@@ -158,7 +164,9 @@ input::placeholder {
   font-size: 11px;
 }
 
-
+a:hover{
+    text-decoration: none!important;
+}
 
 a {
   color: black!important;

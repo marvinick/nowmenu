@@ -1,40 +1,42 @@
-<div class="row mb-5  ">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <div class="card my-4 border-0 ">
-      <h5 class="font-weight-bold">Create your project</h5>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      <hr />
-      <br />
+<div class="jumbotron ">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card my-4 border-0 ">
+        <h5 class="font-weight-bold">Create your project</h5>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <hr class="my-4">
+        <br />
 
 
-      <%= simple_form_for @project do |f| %>
-          <div class="form-group">
-              <%= f.input :name, label: false, class: "form-control", placeholder: "name" %>
-          </div>
-          <br />
-          <div class="form-group">
-              <%= f.input :description, label: false, placeholder: "example: one of a kind dish" %>
-          </div>
-          <!-- <br />
-          <hr />
-          <small id="emailHelp" class="form-text text-muted">Hint: you can add as many or as little categories as you want.</small>
-          <small id="emailHelp" class="form-text text-muted">Every item under this project will inherit the same categories you add here.</small>
-          <br />
-          <%= f.fields_for :categories do |builder| %>
-            <%= render 'category_categories', f: builder %>
-          <% end %>
+        <%= simple_form_for @project do |f| %>
+            <div class="form-group">
+                <%= f.input :name, label: false, class: "form-control", placeholder: "name" %>
+            </div>
+            <br />
+            <div class="form-group">
+                <%= f.input :description, label: false, placeholder: "example: one of a kind dish" %>
+            </div>
+            <!-- <br />
+            <hr />
+            <small id="emailHelp" class="form-text text-muted">Hint: you can add as many or as little categories as you want.</small>
+            <small id="emailHelp" class="form-text text-muted">Every item under this project will inherit the same categories you add here.</small>
+            <br />
+            <%= f.fields_for :categories do |builder| %>
+              <%= render 'category_categories', f: builder %>
+            <% end %>
 
-          <strong><h4><%= link_to_add_categories "+", f, :categories %></h4></strong>
+            <strong><h4><%= link_to_add_categories "+", f, :categories %></h4></strong>
 
-          <br /> -->
-          <br />
+            <br /> -->
+            <br />
 
-          <%= link_to "cancel", projects_path(@projects), class: "btn btn-outline-dark btn-sm" %>
-          <%= f.submit "create project", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating project..." } %>
-      <% end %>
+            <%= link_to "cancel", projects_path(@projects), class: "btn btn-outline-dark btn-sm" %>
+            <%= f.submit "create project", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating project..." } %>
+        <% end %>
 
+      </div>
     </div>
+    <div class="col-md-4"></div>
   </div>
-  <div class="col-md-4"></div>
 </div>

@@ -3,7 +3,7 @@
   <head>
     <title>Nowmenu</title>
     <%= csrf_meta_tags %>
-   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="manifest" href="/manifest.json" />
     <%= javascript_pack_tag "application" %>
@@ -22,7 +22,6 @@
 
   <body>
 
-
       <%= yield %>
 
       <div class="sticky-footer">
@@ -34,7 +33,7 @@
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
       </div>
-    
+
 
   </body>
 

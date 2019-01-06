@@ -1,67 +1,70 @@
+<%= render "projects/project_navbar" %>
 
-<div class="row ">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <small><%= link_to "exit", project_item_path(@project, @item), class: "exit-text" %></small>
-    <div class="card p-2 mt-2 border">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-10 col-9">
-            <h5><%= each_review_average %> <i class="fas fa-star"></i></h5>
-          </div>
-          <div class="col-md-2 col-3">
-            <div class=" dropdown">
-              <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
-                <i class="fas fa-ellipsis-h"></i>
-              </span>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <div class="card p-0 border-0">
-                  <div class="dropdown-item">
-                    <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_review_path(@project, @item, @review) %></p>
-                  </div>
-                  <div class="dropdown-item">
-                    <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_review_path, :method => :delete, data: {confirm: "Are you sure?"} %></p>
+<div class="container pt-5">
+
+  <div class="row ">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <small><%= link_to "exit", project_item_path(@project, @item), class: "exit-text" %></small>
+      <div class="card p-2 mt-2 border">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-10 col-9">
+              <h5><%= each_review_average %> <i class="fas fa-star"></i></h5>
+            </div>
+            <div class="col-md-2 col-3">
+              <div class=" dropdown">
+                <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
+                  <i class="fas fa-ellipsis-h"></i>
+                </span>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <div class="card p-0 border-0">
+                    <div class="dropdown-item">
+                      <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_review_path(@project, @item, @review) %></p>
+                    </div>
+                    <div class="dropdown-item">
+                      <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_review_path, :method => :delete, data: {confirm: "Are you sure?"} %></p>
+                    </div>
                   </div>
                 </div>
               </div>
+
+            </div>
+          </div>
+
+          <br />
+          <h6 class="font-weight-bold">Public review</h6>
+          <small class="mb-3"><%= @review.public_review %></small>
+          <br />
+          <br />
+          <h6 class="font-weight-bold">Private review</h6>
+          <small><%= @review.private_review %></small>
+          <br />
+          <br />
+          <br />
+          <% @review.properties.each do |key, value| %>
+            <div class="row mb-3 ">
+              <div class="col-md-8">
+                <small><%= key %></small>
+              </div>
+              <div class="col-md-4">
+                <small><div class="star-rating" data-score= "<%= value %>" ></div></small>
+              </div>
             </div>
 
-          </div>
+          <% end %>
         </div>
-
-        <br />
-        <h6 class="font-weight-bold">Public review</h6>
-        <small class="mb-3"><%= @review.public_review %></small>
-        <br />
-        <br />
-        <h6 class="font-weight-bold">Private review</h6>
-        <small><%= @review.private_review %></small>
-        <br />
-        <br />
-        <br />
-        <% @review.properties.each do |key, value| %>
-          <div class="row mb-3 ">
-            <div class="col-md-8">
-              <small><%= key %></small>
-            </div>
-            <div class="col-md-4">
-              <small><div class="star-rating" data-score= "<%= value %>" ></div></small>
-            </div>
-          </div>
-
-        <% end %>
       </div>
     </div>
+    <div class="col-md-2"></div>
   </div>
-  <div class="col-md-2"></div>
 </div>
-
-<script>
-  $('.star-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    }
-  });
-</script>
+  <script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      }
+    });
+  </script>

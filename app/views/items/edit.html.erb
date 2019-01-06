@@ -1,34 +1,36 @@
-<div class="row  ">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <div class="card my-4 border-0 ">
-      <h5 class="font-weight-bold">Edit your item</h5>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="jumbotron ">
+  <div class="row  ">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card my-4 border-0 ">
+        <h5 class="font-weight-bold">Edit your item</h5>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
-      <hr />
-      <br />
+        <hr />
+        <br />
 
-      <%= simple_form_for [@project, @item] do |f| %>
-          <%= f.input :title, label: false, placeholder: "name" %>
-          <br />
-          <%= f.input :content, label: false, placeholder: "description" %>
-          <br />
-          <%= f.input :price, label: false, placeholder: "price" %>
-          <br />
-          <%= f.file_field :image %>
-          <br />
-          <br />
-          <small class="font-weight-bold"><%= f.label "Groups" %></small>
-          <br />
-          <%= f.collection_check_boxes :group_ids, @project.groups.all, :id, :name do |cb| %>
-            <% cb.label(class: "checkbox_inline") {cb.check_box(class: "checkbox") + cb.text} %>
-          <% end %>
-          <br />
-          <br />
-          <%= link_to "cancel", project_path(@project), class: "btn btn-outline-secondary btn-sm" %>
-          <%= f.submit "make the change", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
-      <% end %>
+        <%= simple_form_for [@project, @item] do |f| %>
+            <%= f.input :title, label: false, placeholder: "name" %>
+            <br />
+            <%= f.input :content, label: false, placeholder: "description" %>
+            <br />
+            <%= f.input :price, label: false, placeholder: "price" %>
+            <br />
+            <%= f.file_field :image %>
+            <br />
+            <br />
+            <small class="font-weight-bold"><%= f.label "Groups" %></small>
+            <br />
+            <%= f.collection_check_boxes :group_ids, @project.groups.all, :id, :name do |cb| %>
+              <% cb.label(class: "checkbox_inline") {cb.check_box(class: "checkbox") + cb.text} %>
+            <% end %>
+            <br />
+            <br />
+            <%= link_to "cancel", project_path(@project), class: "btn btn-outline-secondary btn-sm" %>
+            <%= f.submit "make the change", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
+        <% end %>
+      </div>
     </div>
+    <div class="col-md-4"></div>
   </div>
-  <div class="col-md-4"></div>
 </div>
