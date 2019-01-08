@@ -17,6 +17,10 @@
     <hr class="my-4">
 
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <%= link_to "get started", projects_path, class: "btn btn-outline-secondary"  %>
+    <% if user_signed_in? %>
+      <%= link_to "see your projects", projects_path, class: "btn btn-outline-secondary"  %>
+    <% else %>
+      <%= link_to "login", new_user_session_path, class: "btn btn-outline-secondary"  %>
+    <% end %>
   </div>
 </div>

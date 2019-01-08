@@ -21,20 +21,8 @@
 
 
   <body>
-
-      <%= yield %>
-
-      <div class="sticky-footer">
-        <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
-
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
-      </div>
-
-
+    <%= render "layouts/flash" %>
+    <%= yield %>
   </body>
 
 </html>

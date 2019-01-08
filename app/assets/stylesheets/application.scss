@@ -17,6 +17,11 @@
 
 
 
+.checkbox {
+  margin-left: 10px!important;
+  margin-right: 3px!important;
+
+}
  .nav.navbar-nav {
 	display: flex!important;
 	justify-content: center!important;
@@ -29,7 +34,7 @@
 }
 
 .navbar-menu {
-  font-size: 14px!important;
+  font-size: 12px!important;
   font-weight: bold!important;
   color: #636363!important;
 }
@@ -152,7 +157,7 @@ input::placeholder {
 
   .container {
     margin-top: 10px;
-    overflow-x: hidden!important;
+
   }
 
 
