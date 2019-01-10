@@ -14,6 +14,17 @@
  *= require_self
 
  */
+
+ .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+   padding-bottom: 20px;
+   padding-top: 30px;
+}
+
 .btn-success {
   color: white!important;
   background-color: #49a83c!important;
@@ -25,7 +36,7 @@
 }
 
 .home-title {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -141,7 +152,7 @@ input::placeholder {
  }
 
  .beige-bg {
-   background-color: #fffcf7!important;
+   background-color: #fffcf7;
  }
 
  .navbar-light {
@@ -151,7 +162,11 @@ input::placeholder {
 
 
 .container {
-  margin-top: -10px;
+
+}
+
+html, body {
+  padding-bottom: 50px!important;
 }
 
 .jumbotron {
