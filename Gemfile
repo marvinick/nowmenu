@@ -22,7 +22,9 @@ gem 'jquery-rails'
 
 gem 'serviceworker-rails'
 
+#forms
 gem 'simple_form'
+gem 'wicked'
 
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
