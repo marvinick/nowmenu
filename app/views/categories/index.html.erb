@@ -17,6 +17,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
     <% @categories.each do |category| %>
+    <% cache category do %>
       <div class="card py-3 px-3 border-0 shadow">
         <div class="row">
           <div class="col-md-11 col-10">
@@ -27,7 +28,7 @@
           <div class="col-md-1 col-2">
             <div class=" dropdown">
               <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
-                <i class="fas fa-ellipsis-v"></i> 
+                <i class="fas fa-ellipsis-v"></i>
               </span>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <div class="card p-0 border-0">
@@ -43,6 +44,7 @@
           </div>
         </div>
       </div>
+    <% end %>
     <% end %>
     </div>
     <div class="col-md-3"></div>

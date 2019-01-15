@@ -14,12 +14,7 @@
       invite
     </button>
 
-    <div class="collapse" id="collapseExample">
-      <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-        <%= f.input :email, placeholder: "email", label: false %>
-        <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
-      <%  end %>
-    </div>
+    
   </div>
   <br />
 

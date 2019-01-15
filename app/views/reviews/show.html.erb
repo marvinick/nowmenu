@@ -1,16 +1,20 @@
 <%= render "projects/project_navbar" %>
 
-<div class="container pt-5">
+<div class="container-fluid">
 
   <div class="row ">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-      <small><%= link_to "exit", project_item_path(@project, @item), class: "exit-text" %></small>
-      <div class="card p-2 mt-2 border">
+
+      <div class="card mt-2 border-0">
         <div class="card-body">
+          <small><%= link_to "back", project_item_path(@project, @item), class: "exit-text" %></small>
+          <br />
+          <br />
           <div class="row">
             <div class="col-md-10 col-9">
               <h5><%= each_review_average %> <i class="fas fa-star"></i></h5>
+              <p class="content">by <%= @review.user.email %></p>
             </div>
             <div class="col-md-2 col-3">
               <div class=" dropdown">
@@ -32,23 +36,26 @@
             </div>
           </div>
 
-          <br />
-          <h6 class="font-weight-bold">Public review</h6>
-          <small class="mb-3"><%= @review.public_review %></small>
-          <br />
-          <br />
-          <h6 class="font-weight-bold">Private review</h6>
-          <small><%= @review.private_review %></small>
-          <br />
-          <br />
-          <br />
+          <hr />
+
+          <h6 class="font-weight-bold mt-5 mb-3">Public review</h6>
+
+          <p class="content mb-5"><%= @review.public_review %></p>
+
+          <hr />
+          <h6 class="font-weight-bold font-weight-bold mt-5 mb-3">Private review</h6>
+
+          <p class="content mb-5"><%= @review.private_review %></p>
+
+          <hr class="my-5" />
+          <h6 class="font-weight-bold mb-4">Categories</h6>
           <% @review.properties.each do |key, value| %>
             <div class="row mb-3 ">
               <div class="col-md-8">
-                <small><%= key %></small>
+                <p class="content"><%= key %></p>
               </div>
               <div class="col-md-4">
-                <small><div class="star-rating" data-score= "<%= value %>" ></div></small>
+                <div class="star-rating" data-score= "<%= value %>" ></div>
               </div>
             </div>
 
