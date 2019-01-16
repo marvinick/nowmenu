@@ -3,7 +3,9 @@
 <div class="container pt-5">
   <div class="text-center">
     <%= link_to "exit", project_path(@project),  class: "exit-text description" %>
-    <h2 class="font-weight-bold">Items</h2>
+    <br />
+
+    <h3 class="font-weight-bold">Items</h3>
     <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
   </div>
 
@@ -17,7 +19,9 @@
           <div class="card p-2 mb-2 shadow-sm">
             <div class="row">
               <div class="col-md-2 col-3">
-                <%= image_tag url_for(item.image.variant(resize: "150x100")), class: "img-fluid" %>
+                <% if item.image.attached? %>
+                  <%= image_tag url_for(item.image.variant(resize: "150x100")), class: "img-fluid" %>
+                <% end %>
               </div>
               <div class="col-md-10 col-9">
                 <p class="item-title mb-0"><%= truncate(item.title, length: 20) %></p>

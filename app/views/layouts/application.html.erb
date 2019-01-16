@@ -16,14 +16,23 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-startup-image" href="launch.png">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+
     <%= javascript_include_tag 'jquery.raty.js', "data-turbolinks-track": false %>
   </head>
 
 
   <body>
-    <%= render "layouts/flash" %>
+    <% unless flash.empty? %>
+  	  <script type="text/javascript">
+  	      <% flash.each do |f| %>
+  	      <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+  	     	 toastr['<%= type %>']('<%= f[1] %>');
+  	      <% end %>
+  	  </script>
+  	 <% end %>
     <%= yield %>
-    
+
   </body>
 
 </html>

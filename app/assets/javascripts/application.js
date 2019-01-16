@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require rails-ujs
 //= require turbolinks
+//= require toastr
 //= require_tree .
 
 

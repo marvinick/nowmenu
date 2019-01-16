@@ -3,15 +3,15 @@
 <div class="container pt-5">
   <div class="text-center">
     <%= link_to "exit", project_item_path(@project, @item),  class: "exit-text description" %>
+    <br />
     <h2 class="font-weight-bold">Items</h2>
-
   </div>
 
   <div class="row ">
     <div class="col-md-4"></div>
     <div class="col-md-4 text-center">
-      <div class="card my-4 border-0 ">
-        
+      <div class="card border-0 ">
+
         <%= simple_form_for [@project, @item] do |f| %>
             <%= f.input :title, label: false, placeholder: "name" %>
 

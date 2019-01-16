@@ -48,7 +48,7 @@ class ItemsController < BaseController
 
   def destroy
     if @item.destroy
-        redirect_to project_path(@project)
+        redirect_to project_items_path(@project, @items), notice: "You have deleted the item"
     else
     end
   end

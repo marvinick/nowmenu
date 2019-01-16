@@ -12,30 +12,32 @@
     <br />
     <br />
     <% @groups.order('name ASC').each do |group| %>
-      <li>
-        <h6 class="font-weight-bold"><%= group.name %></h6>
-      </li>
-      <% group.items.order('title').each do |item| %>
-
-        <div class="table-responsive">
-          <table class="table table-sm table-borderless">
-            <thead>
-              <tr>
-                <th scope="col" style="width: 80%"></th>
-                <th scope="col" style="width: 20%"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="h-50">
-                <td><small><%= link_to item.title, project_item_path(@project, item) %></small></td>
-                <td><small><%= item.price %></small></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
+      <% cache group do %>
+        <li>
+          <h6 class="font-weight-bold"><%= group.name %></h6>
+        </li>
+        <% group.items.order('title').each do |item| %>
+          <% cache item do %>
+            <div class="table-responsive">
+              <table class="table table-sm table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 80%"></th>
+                    <th scope="col" style="width: 20%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="h-50">
+                    <td><small><%= link_to item.title, project_item_path(@project, item) %></small></td>
+                    <td><small><%= item.price %></small></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          <% end %>
+        <% end %>
+        <br />
       <% end %>
-      <br />
     <% end %>
 
 
