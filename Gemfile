@@ -36,8 +36,6 @@ gem 'jquery-ui-rails'
 gem 'acts_as_list'
 
 #image upload
-gem 'cloudinary', require: false
-gem 'activestorage-cloudinary-service'
 gem 'aws-sdk'
 gem "aws-sdk-s3", require: false
 gem "mini_magick"

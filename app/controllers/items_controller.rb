@@ -30,9 +30,7 @@ class ItemsController < BaseController
     end
   end
 
-  def show
-
-  end
+  def show; end
 
   def edit; end
 
@@ -40,7 +38,7 @@ class ItemsController < BaseController
     @item.user_id = @project.user_id
     if @item.update_attributes(item_params)
 
-      redirect_to project_item_path(@project, @item)
+      redirect_to project_item_path(@project, @item), notice: "noice!!!!"
     else
         render :edit
     end
