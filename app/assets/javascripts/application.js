@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require sweetalert
 //= require rails-ujs
 //= require turbolinks
 //= require toastr
