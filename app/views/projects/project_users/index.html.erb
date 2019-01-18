@@ -3,19 +3,15 @@
 <div class="container pt-5">
 
   <div class="text-center">
-    <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+    <p class="content"><%= link_to "exit", project_path(@project), class: "exit-text" %></p>
 
     <h4 class="font-weight-bold">Users</h4>
     <small class="form-text text-muted mb-3">
       These are your people
     </small>
-
-    <button class="btn btn-sm btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
-      invite
-    </button>
-
-    
+    <%= link_to "Invite", new_project_project_user_path(@project, @project_user), class: "btn btn-outline-secondary btn-sm" %>
   </div>
+
   <br />
 
   <div class="row">

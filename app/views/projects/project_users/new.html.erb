@@ -1,6 +1,28 @@
-<div class="collapse" id="collapseExample">
-  <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-    <%= f.input :email, placeholder: "email", label: false %>
-    <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
-  <%  end %>
+<%= render "projects/project_navbar" %>
+
+<div class="container pt-5">
+  <div class="text-center">
+    <p class="  content"><%= link_to "exit", project_project_users_path(@project, @project_users), class: "exit-text" %></p>
+
+
+    <h4 class="font-weight-bold">Users</h4>
+    <small class="form-text text-muted mb-3">
+      These are your people
+    </small>
+
+  </div>
+
+  <div class="row ">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card border-0 ">
+        <br />
+        <%= simple_form_for [@project, ProjectUser.new] do |f| %>
+          <%= f.input :email, placeholder: "email", label: false %>
+          <%= f.submit "Invite", class: "btn btn-sm btn-outline-secondary" %>
+        <%  end %>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 </div>
