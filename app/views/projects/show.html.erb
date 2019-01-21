@@ -85,16 +85,22 @@
 
       <p class="content">Need help to get started? Check these easy steps</p>
       <div id="app" data-controller="demo">
-          <button data-action="click->demo#launchDemo">Launch Demo</button>
+        <ol>
+          <li><button data-action="click->demo#launchDemo" data-name="Daniel Coulbourne" data-email="daniel@tighten.co" data-title="Developer">Daniel</button></li>
+          <li><button data-action="click->demo#launchDemo" data-name="Caleb Porzio" data-email="caleb@tighten.co" data-title="Developer">Caleb</button></li>
+        </ol>
 
-          <div class="modal" data-controller="modal" data-target="demo.modal">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      This is a modal
-                      <button data-action="click->modal#close">Close</button>
-                  </div>
-              </div>
+
+        <div class="modal" data-controller="modal co-host-modal" data-target="demo.modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <h2 data-target="co-host-modal.name"></h2>
+              <span data-target="co-host-modal.title"></span>
+              <a data-target="co-host-modal.email" href=""></a>
+              <button data-action="click->modal#close">Close</button>
+            </div>
           </div>
+        </div>
       </div>
 
     </div>

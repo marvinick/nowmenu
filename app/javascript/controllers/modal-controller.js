@@ -2,6 +2,8 @@ import { Controller } from 'stimulus';
 
 export default class extends Controller {
 
+  
+
   open() {
     document.body.classList.add("modal-open");
     this.element.setAttribute("style", "display: block;");
