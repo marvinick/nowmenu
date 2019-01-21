@@ -19,9 +19,6 @@ gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'serviceworker-rails'
-gem 'sweetalert2'
-
 #forms
 gem 'simple_form'
 gem 'wicked'

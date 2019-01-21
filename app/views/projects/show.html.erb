@@ -84,6 +84,18 @@
       <h4 class="font-weight-bold">Help</h4>
 
       <p class="content">Need help to get started? Check these easy steps</p>
+      <div id="app" data-controller="demo">
+          <button data-action="click->demo#launchDemo">Launch Demo</button>
+
+          <div class="modal" data-controller="modal" data-target="demo.modal">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      This is a modal
+                  </div>
+              </div>
+          </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -870,8 +870,6 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
-    serviceworker-rails (0.5.5)
-      railties (>= 3.1)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -887,8 +885,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sweetalert2 (7.25.6)
-      railties (>= 3.1.0)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -938,11 +934,9 @@ DEPENDENCIES
   redis (~> 4.0)
   sass-rails (~> 5.0)
   selenium-webdriver
-  serviceworker-rails
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-  sweetalert2
   turbolinks (~> 5)
   tzinfo-data
   uglifier

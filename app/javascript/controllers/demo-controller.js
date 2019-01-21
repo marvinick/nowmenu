@@ -1,9 +1,9 @@
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
 
 export default class extends Controller {
   static targets = ["modal"];
 
-  initialize() {
-    console.log(this.modalTarget);
+  launchDemo(event) {
+    console.log(event);
   }
 }
