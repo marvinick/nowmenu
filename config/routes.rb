@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root to: "homes#home"
 
+  get :search, controller: :search
+
   resources :projects do
     member do
       get 'preview'
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :groups do
       collection do
-        patch :sort        
+        patch :sort
       end
     end
 

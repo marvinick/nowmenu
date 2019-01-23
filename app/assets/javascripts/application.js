@@ -15,6 +15,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require toastr
+//= require jquery.easy-autocomplete
 //= require_tree .
 
 
