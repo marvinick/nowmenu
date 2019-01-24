@@ -22,6 +22,7 @@ gem 'redis', '~> 4.0'
 #forms
 gem 'simple_form'
 gem 'wicked'
+gem 'ransack'
 
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
