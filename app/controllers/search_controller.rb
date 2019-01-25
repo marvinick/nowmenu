@@ -1,13 +1,15 @@
 class SearchController < ApplicationController
-  before_action :force_json, only: :search
 
   def search
-    @projects = Project.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+    @projects = Project.ransack(name_cont: params[:q]).result(distinct: true)
+
+    respond_to do |format|
+      format.html {}
+      format.json {
+        @projects = @projects.limit(5)
+      }
+    end
   end
 
-  private
 
-  def force_json
-    request.format = :json
-  end
 end

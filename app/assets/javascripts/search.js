@@ -14,7 +14,7 @@ document.addEventListener("turbolinks:load", function() {
     ],
     list: {
       onChooseEvent: function() {
-        var url = @input.getSelectedItemData().url
+        var url = $input.getSelectedItemData().url
         $input.val("")
         Turbolinks.visit(url)
       }
