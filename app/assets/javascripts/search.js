@@ -9,7 +9,11 @@ document.addEventListener("turbolinks:load", function() {
     categories: [
       {
         listLocation: "projects",
-        header: "<strong>Projects</strong>"
+        header: "<strong>Projects</strong>",
+      },
+      {
+        listLocation: "items",
+        header: "<strong>Items</strong>",
       }
     ],
     list: {

@@ -4,3 +4,10 @@ json.projects do
     json.url project_path(project)
   end
 end
+
+json.items do
+  json.array!(@items) do |item|
+    json.name item.title
+    # json.url project_item_path(item)
+  end
+end
