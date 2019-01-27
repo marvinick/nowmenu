@@ -10,9 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery-ui
 //= require rails-ujs
+//= require sweetalert2
+//= require sweet-alert2-rails
 //= require turbolinks
 //= require toastr
 //= require jquery.easy-autocomplete
