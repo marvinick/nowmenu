@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  include PublicActivity::Model
+  tracked
 
   belongs_to :project
   has_many :group_items

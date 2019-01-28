@@ -23,12 +23,11 @@ gem 'redis', '~> 4.0'
 gem 'simple_form'
 gem 'wicked'
 
+#activity
+gem 'public_activity'
+
 #search
 gem 'ransack'
-
-#alert
-gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
-gem 'sweet-alert2-rails'
 
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 

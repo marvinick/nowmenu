@@ -6,6 +6,10 @@ class Project < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :categories, dependent: :destroy
+
+  include PublicActivity::Model
+  tracked
+
   accepts_nested_attributes_for :categories, allow_destroy: true
 
   validates_presence_of :name, length: {minimum: 5, maximum: 30}, allow_blank: false

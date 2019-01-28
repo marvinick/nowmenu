@@ -1,10 +1,10 @@
 /*
  * easy-autocomplete
  * jQuery plugin for autocompletion
- * 
+ *
  * @author Łukasz Pawełczak (http://github.com/pawelczak)
  * @version 1.3.5
- * Copyright  License: 
+ * Copyright  License:
  */
 
 .easy-autocomplete {
@@ -204,5 +204,3 @@
 .easy-autocomplete.eac-plate-dark ul li:last-child, .easy-autocomplete.eac-plate-dark ul .eac-category:last-child {
   border-radius: 0 0 6px 6px;
 }
-
-/*# sourceMappingURL=easy-autocomplete.themes.css.map */
