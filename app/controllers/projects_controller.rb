@@ -51,7 +51,7 @@ class ProjectsController < BaseController
 
   def load_activities
     @activities = PublicActivity::Activity.order('created_at DESC').limit(20)
-  end 
+  end
 
   def project_params
       params.require(:project).permit(:name, :description, :user_id, categories_attributes: [:name, :_destroy, :required, :id])

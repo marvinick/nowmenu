@@ -1,1 +1,10 @@
-<%= a.trackable.name %> was edited.
+<li class="list-group-item">
+  <span class="glyphicon glyphicon-edit"></span>
+  <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
+  <strong><%= activity.owner ? activity.owner.email : 'Guest' %></strong>
+  <% if a.trackable %>
+    edited the <%= link_to a.trackable.name, project_path(a.trackable) %>.
+  <% else %>
+    edited the story that is currently deleted.
+  <% end %>
+</li>

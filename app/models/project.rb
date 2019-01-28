@@ -10,6 +10,8 @@ class Project < ApplicationRecord
   include PublicActivity::Model
   tracked
 
+  tracked owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
+
   accepts_nested_attributes_for :categories, allow_destroy: true
 
   validates_presence_of :name, length: {minimum: 5, maximum: 30}, allow_blank: false
