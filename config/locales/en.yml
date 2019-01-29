@@ -30,4 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activity:
+    project:
+      create: 'has created a project'
+      destroy: 'has removed a project'
+      update: 'has edited the project'
