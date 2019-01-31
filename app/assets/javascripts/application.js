@@ -11,9 +11,12 @@
 // about supported directives.
 //
 
+//= require sweetalert2
+//= require sweet-alert2-rails
 //= require jquery
 //= require jquery-ui
 //= require rails-ujs
+
 //= require turbolinks
 //= require toastr
 //= require jquery.easy-autocomplete

@@ -19,6 +19,10 @@ gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
+gem 'data-confirm-modal'
+
 #forms
 gem 'simple_form'
 gem 'wicked'
