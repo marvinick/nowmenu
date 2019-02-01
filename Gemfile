@@ -21,7 +21,7 @@ gem 'redis', '~> 4.0'
 
 gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails'
-gem 'data-confirm-modal'
+gem 'sweet-alert-confirm'
 
 #forms
 gem 'simple_form'

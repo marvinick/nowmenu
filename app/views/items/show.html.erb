@@ -27,11 +27,11 @@
                   <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_path(@project, @item)  %></p>
                 </div>
                 <div class="dropdown-item">
-                  <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm: "Are you sure?"} %></p>
+                  <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_path(@project, @item), :method => :delete, data: {confirm_swal: 'Are you sure?'} %></p>
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
 
     </div>
