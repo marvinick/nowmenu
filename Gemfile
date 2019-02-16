@@ -15,7 +15,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+
+#faster app
 gem 'redis', '~> 4.0'
+gem 'sidekiq'
+
+#alert
 gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails'
 gem 'sweet-alert-confirm'
