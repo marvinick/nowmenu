@@ -20,6 +20,10 @@ gem 'jquery-rails'
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
 
+#performance measure
+gem "memory_profiler"
+gem "derailed_benchmarks"
+
 #alert
 gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails'
