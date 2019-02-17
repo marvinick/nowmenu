@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.6.1'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -23,6 +25,7 @@ gem 'sidekiq'
 #performance measure
 gem "memory_profiler"
 gem "derailed_benchmarks"
+# gem 'jemalloc'
 
 #alert
 gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
