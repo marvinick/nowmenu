@@ -3,7 +3,7 @@ class ProjectsController < BaseController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :preview]
 
   def index
-    @projects = current_user.projects.includes(:categories, :items)
+    @projects = current_user.projects.all
   end
 
   def preview
@@ -50,7 +50,7 @@ class ProjectsController < BaseController
   private
 
   def load_activities
-    @activities = PublicActivity::Activity.order('created_at DESC').limit(20)
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(20).includes(:owner, :trackable)
   end
 
   def project_params

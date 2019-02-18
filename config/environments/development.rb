@@ -74,4 +74,13 @@ Rails.application.configure do
     :user_name          => 'marvkipi@gmail.com',
     :password           => 'Echo314!'
   }
+
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet_bullet_logger = true
+    Bullet.console = true
+  end
+
 end

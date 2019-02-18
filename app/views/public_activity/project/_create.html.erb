@@ -1,7 +1,7 @@
 <li >
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
   <strong><%= activity.owner ? activity.owner.email : 'Guest' %></strong>
-  <% if a.trackable %>
+  <% if a.trackable.id == @project.id %>
     created the <strong><%= link_to a.trackable.name, project_path(a.trackable) %></strong>
   <% else %>
     edited the story that is currently deleted

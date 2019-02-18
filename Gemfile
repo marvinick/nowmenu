@@ -26,6 +26,7 @@ gem 'sidekiq'
 gem "memory_profiler"
 gem "derailed_benchmarks"
 # gem 'jemalloc'
+gem 'bullet', group: 'development'
 
 #alert
 gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
