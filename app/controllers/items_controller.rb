@@ -3,7 +3,7 @@ class ItemsController < BaseController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = @project.items.all
+    @items = @project.items.with_attached_image.includes(:image_attachment)
   end
 
   def sort
