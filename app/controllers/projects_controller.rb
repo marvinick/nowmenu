@@ -50,7 +50,7 @@ class ProjectsController < BaseController
   private
 
   def load_activities
-    @activities = PublicActivity::Activity.order('created_at DESC').limit(20).includes(:owner, :trackable)
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(30).includes(:owner, :trackable)
   end
 
   def project_params

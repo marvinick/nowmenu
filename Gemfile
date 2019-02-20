@@ -21,6 +21,7 @@ gem 'jquery-rails'
 #faster app
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
+gem 'goldiloader'
 
 #performance measure
 gem "memory_profiler"

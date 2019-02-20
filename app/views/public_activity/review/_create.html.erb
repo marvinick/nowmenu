@@ -2,7 +2,7 @@
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
   <strong><%= activity.owner ? activity.owner.email : 'Guest' %></strong>
   <% if a.trackable %>
-     created a review item <strong><%= link_to a.trackable.item.title, project_item_review_path(@project, a.trackable.item.id, a.trackable.id) %></strong>
+     created a review 
   <% else %>
     edited the story that is currently deleted
   <% end %>

@@ -75,7 +75,7 @@
       <h6 class="nothing-yet">There are no reviews yet!</h6>
     <% end %>
 
-    <% @item.reviews.each do |review| %>
+    <% @item.reviews.includes(:user).each do |review| %>
       <%= link_to project_item_review_path(@project, @item, review) do %>
         <div class="card  mb-2  border-0">
           <p class="content"><%= truncate(review.public_review, length: 200) %></p>
