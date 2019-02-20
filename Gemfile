@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
 gem 'goldiloader'
+gem 'kaminari'
 
 #performance measure
 gem "memory_profiler"
