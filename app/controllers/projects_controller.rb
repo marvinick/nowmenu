@@ -1,5 +1,5 @@
 class ProjectsController < BaseController
-  before_action :load_activities, only: [:show]
+  before_action :activities, only: [:load_activities]
   before_action :set_project, only: [:show, :edit, :update, :destroy, :preview]
 
   def index
@@ -8,6 +8,10 @@ class ProjectsController < BaseController
 
   def preview
     @groups = @project.groups.all
+  end
+
+  def load_activities
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(30).includes(:owner, :trackable)
   end
 
   def new
@@ -49,7 +53,7 @@ class ProjectsController < BaseController
 
   private
 
-  def load_activities
+  def activities
     @activities = PublicActivity::Activity.order('created_at DESC').limit(30).includes(:owner, :trackable)
   end
 

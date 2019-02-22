@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :projects do
     member do
       get 'preview'
+      get 'load_activities'
     end
 
     resources :groups do
