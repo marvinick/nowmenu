@@ -47,7 +47,6 @@ gem 'public_activity'
 
 #search
 gem 'ransack'
-
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 #authentication

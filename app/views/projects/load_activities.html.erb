@@ -1,1 +1,17 @@
-<%= render_activities @activities %>
+<%= render "layouts/navbar" %>
+<div class="container">
+  <br />
+  <div class="card p-2 m-2 border-0 text-center">
+
+    <small><%= link_to "exit preview", project_path(@project), class: "exit-text" %></small>
+
+    <h3 class="font-weight-bold"><%= @project.name %></h3>
+  </div>
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <%= render_activities @activities %>
+    </div>
+  </div>
+</div>
