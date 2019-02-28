@@ -3,7 +3,7 @@
 <div class="container pt-3">
 
   <div class="text-center">
-    <small><%= link_to "exit", project_groups_path(@project, @groups), class: "exit-text " %></small>
+    <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
     <h4 class="font-weight-bold">FAQS</h4>
     <p class="content mb-0">
       Post most asked question
@@ -28,8 +28,8 @@
             <br />
 
 
-            <%= link_to "cancel", project_faqs_path(@project, @faqs), class: "btn btn-outline-secondary btn-sm" %>
-            <%= f.submit "create group", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Posting question..." } %>
+            <%= link_to "cancel", project_path(@project, @faqs), class: "btn btn-outline-secondary btn-sm" %>
+            <%= f.submit "post the question", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Posting question..." } %>
         <% end %>
       </div>
     </div>

@@ -13,7 +13,7 @@ class FaqsController < ApplicationController
   def create
     @faq = @project.faqs.new(faq_params)
     if @faq.save
-      redirect_to [@project, @faqs], notice: "Posted a question"
+      redirect_to project_path(@project), notice: "Posted a question"
     else
       render "new", alert: "something wrong"
     end

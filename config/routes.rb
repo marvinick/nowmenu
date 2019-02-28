@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       resources :reviews
     end
 
+    resources :faqs
+
     resources :project_users, path: :users, module: :projects
   end
 

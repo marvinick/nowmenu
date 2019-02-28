@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :categories, dependent: :destroy
+  has_many :faqs
 
   include PublicActivity::Model
   tracked

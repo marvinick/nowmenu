@@ -84,6 +84,11 @@
   <div class="row">
     <div class="col-md-12">
       <h4 class="font-weight-bold">Help</h4>
+      <%= link_to "post a question", new_project_faq_path(@project, @faq), class: "btn btn-sm btn-outline-secondary" %>
+
+      <% @project.faqs.each do |faq| %>
+        <li><%= faq.ask %></li>
+      <% end %>
 
       <p class="content">Need help to get started? Check these easy steps</p>
       <div id="app" data-controller="demo">
