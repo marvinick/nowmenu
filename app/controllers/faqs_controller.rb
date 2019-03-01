@@ -21,13 +21,20 @@ class FaqsController < ApplicationController
 
   def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    if @faq.update_attributes(faq_params)
+      redirect_to project_path(@project), notice: "you've updated faq"
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    if @faq.destroy
+      redirect_to project_path(@project), notice: "You have deleted the faq"
+    end
   end
 
   private
@@ -41,6 +48,6 @@ class FaqsController < ApplicationController
   end
 
   def set_faq
-    @faq = @project.fags.find(params[:id])
+    @faq = @project.faqs.find(params[:id])
   end
 end

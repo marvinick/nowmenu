@@ -1,0 +1,38 @@
+<%= render "projects/project_navbar" %>
+
+<div class="container pt-3">
+
+  <div class="text-center">
+    <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
+    <h4 class="font-weight-bold">FAQS</h4>
+    <p class="content mb-0">
+      Edit faq
+    </p>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card my-4 border-0 ">
+
+        <hr />
+        <br />
+
+        <%= simple_form_for [@project, @faq] do |f| %>
+            <% f.hidden_field :project_id %>
+            <%= f.input :ask, label: false, placeholder: "name" %>
+
+            <br />
+            <%= f.input :answer, label: false, placeholder: "description" %>
+            <br />
+
+
+            <%= link_to "cancel", project_path(@project, @faqs), class: "btn btn-outline-secondary btn-sm" %>
+            <%= f.submit "edit the question", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Posting question..." } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+</div>

@@ -87,7 +87,7 @@
       <%= link_to "post a question", new_project_faq_path(@project, @faq), class: "btn btn-sm btn-outline-secondary" %>
 
       <% @project.faqs.each do |faq| %>
-        <li><%= faq.ask %></li>
+        <li><%= faq.ask %> | <small><%= link_to "edit", edit_project_faq_path(@project, faq) %> - <%= link_to "destroy", project_faq_path(@project, faq), :method => :delete, data: {confirm: 'Are you sure?'} %> </small> </li>
       <% end %>
 
       <p class="content">Need help to get started? Check these easy steps</p>
