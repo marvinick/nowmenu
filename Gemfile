@@ -18,6 +18,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 
+#roles
+gem "pundit"
+
 #faster app
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
