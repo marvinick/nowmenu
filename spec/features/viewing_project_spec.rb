@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.feature "Users can view projects" do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:project) { FactoryGirl.create(:project, name: "Sublime Text 3") }
+  let(:user) { FactoryBot.create(:user) }
+  let(:project) { FactoryBot.create(:project, name: "Sublime Text 3", description: "ubfubfwb") }
 
   before do
     login_as(:user)
