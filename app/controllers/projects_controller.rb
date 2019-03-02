@@ -1,4 +1,5 @@
 class ProjectsController < BaseController
+  
   before_action :activities, only: [:load_activities]
   before_action :set_project, only: [:show, :edit, :update, :destroy, :preview, :load_activities]
 
@@ -31,6 +32,7 @@ class ProjectsController < BaseController
 
   def show
     @project = Project.find(params[:id])
+    authorize @project, :show?
   end
 
   def edit; end
