@@ -91,6 +91,16 @@
       <% end %>
 
       <p class="content">Need help to get started? Check these easy steps</p>
+
+      <ol data-controller="drag-item"
+          data-action="dragstart->drag-item#dragstart dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop dragend->drag-item#dragend"
+      >
+        <li draggable="true" data-todo-id="1">Take out trash</li>
+        <li draggable="true" data-todo-id="2">Check Email</li>
+        <li draggable="true" data-todo-id="3">Subscribe to mailing list</li>
+        <li draggable="true" data-todo-id="4">Research Stimulus</li>
+      </ol>
+
       <div id="app" data-controller="demo">
         <ol>
           <li><button data-action="click->demo#launchDemo" data-name="Daniel Coulbourne" data-email="daniel@tighten.co" data-title="Developer">Daniel</button></li>
