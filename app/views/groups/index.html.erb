@@ -36,7 +36,8 @@
                         <p class="description mb-0"><i class="fas fa-pencil-alt"></i>  <%= link_to " edit", edit_project_group_path(@project, group) %></p>
                       </div>
                       <div class="dropdown-item">
-                        <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to " delete", project_group_path(@project, group), :method => :delete, data: {confirm_swal: 'Are you sure?'} %></p>
+                        <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to " delete", project_group_path(@project, group), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %></p>
+                        
                       </div>
                     </div>
                   </div>
