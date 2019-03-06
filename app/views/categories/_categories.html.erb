@@ -1,0 +1,30 @@
+<% @categories.each do |category| %>
+  <% cache category do %>
+    <div class="card py-3 px-3 border-0 shadow">
+      <div class="row">
+        <div class="col-md-11 col-10">
+          <small class="font-weight-bold"><%= category.name %></small>
+          <br />
+          <p class="description mb-0"><%= category.description %></p>
+        </div>
+        <div class="col-md-1 col-2">
+          <div class=" dropdown">
+            <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
+              <i class="fas fa-ellipsis-v"></i>
+            </span>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <div class="card p-0 border-0">
+                <div class="dropdown-item">
+                  <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "     edit", edit_project_category_path(@project, category) %></p>
+                </div>
+                <div class="dropdown-item">
+                  <p class="description mb-0"><i class="fa fa-trash"></i> <%= link_to "  delete", project_category_path(@project, category), :method => :delete, data: {confirm: "Are you sure?"} %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to project_path(@project), notice: "Success!"
+    redirect_to project_groups_path(@project, @groups), notice: "it's deleted!"
   end
 
   private
