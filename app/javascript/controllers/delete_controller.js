@@ -1,11 +1,11 @@
-const RESET_TIMEOUT_MILLIS = 3000;
-const CONFIRMATION_MESSAGE = '<strong>Are you sure?</strong>'
+const RESET_TIMEOUT_MILLIS = 5000;
+const CONFIRMATION_MESSAGE = '<strong>Are you sure?</strong>';
 
 import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static_targets = ['link']
+  static targets = ['link']
 
   connect() {
     this.delete = false;
