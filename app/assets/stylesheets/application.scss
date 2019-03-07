@@ -16,9 +16,12 @@
  *= require_tree .
  *= require_self
  *= require toastr
- 
+
  */
 
+ .filter--notFound {
+   display: none;
+ }
 
  .footer {
    position: fixed;
