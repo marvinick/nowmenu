@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     resources :categories
 
     resources :items do
+      member do
+        get 'preview'
+      end
       collection do
         patch :sort
       end
@@ -35,6 +38,8 @@ Rails.application.routes.draw do
     resources :faqs
 
     resources :project_users, path: :users, module: :projects
+
+    post "items_filter", action: :index, controller: "items_filter"
   end
 
 

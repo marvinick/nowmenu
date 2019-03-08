@@ -1,0 +1,14 @@
+<h1>All Books</h1>
+<div data-controller="select-filter" data-select-filter-url="<%= items_filter_path %>">
+  <div class="left-col">
+    <h2>Filter categories:</h2>
+    <select name="categories" multiple size="<%= @categories.length %>"  data-action="select-filter#change">
+      <%= @groups.each do |group| %>
+        <option value="<%= group %>"><%= group.humanize %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="right-col" data-target="select-filter.items">
+    <%= render partial: 'item_list', locals: { items: @items} %>
+  </div>
+</div>

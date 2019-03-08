@@ -6,6 +6,11 @@ class ItemsController < BaseController
     @items = @project.items.with_attached_image.includes(:image_attachment)
   end
 
+  def preview
+    @items = @project.items.all
+    @groups = @items.order(:group).pluck(:group).uniq
+  end
+
   def sort
 
     items = @project.items.all
@@ -29,7 +34,7 @@ class ItemsController < BaseController
       render :new
     end
   end
-  
+
   def show; end
 
   def edit; end

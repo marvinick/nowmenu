@@ -14,6 +14,9 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
+      <%= link_to "Preview", preview_project_item_path(@project, @items), class: "btn btn-sm btn-outline-secondary" %>
+      <br / >
+      <br / >
       <% if @items.present? %>
         <%= render "items" %>
       <% else %>
