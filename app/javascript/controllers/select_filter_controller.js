@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [ "items" ]
 
   change(event) {
-    fetcg(this.data.get("url"), {
+    fetch(this.data.get("url"), {
       method: 'POST',
       body: JSON.stringify( { groups: [...event.target.selectedOptions].map(option => option.value)}),
       credentials: "include",

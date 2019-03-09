@@ -19,6 +19,12 @@
 
  */
 
+ ul.history li {
+   display: inline;
+   list-style-type: none;
+   padding-right: 1em;
+ }
+
  .filter-size {
    height:35px;
    font-size:14pt;

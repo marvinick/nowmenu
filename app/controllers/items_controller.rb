@@ -8,7 +8,7 @@ class ItemsController < BaseController
 
   def preview
     @items = @project.items.all
-    @groups = @items.order(:group).pluck(:group).uniq
+    @groups = @items.order(:group_id).pluck(:group_id).uniq
   end
 
   def sort

@@ -31,4 +31,13 @@
 
     <% end %>
   </div>
+  <ul data-controller="history"
+    data-target="history.links"
+    class="history">
+    <li>
+    <a href="${ historyItemPath }" 
+       data-action="history#visitPageInHistory"
+       data-history-location="${ historyLocation }"> <strong>></strong> ${ historyItemTitle }</a>
+    </li>
+  </ul>
 </div>
