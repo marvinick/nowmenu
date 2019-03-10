@@ -13,9 +13,9 @@ class FaqsController < ApplicationController
   def create
     @faq = @project.faqs.new(faq_params)
     if @faq.save
-      redirect_to project_path(@project), notice: "Posted a question"
+      redirect_to project_path(@project), notice: "You have posted a new faq item"
     else
-      render "new", alert: "something wrong"
+      render "new", alert: "something is wrong"
     end
   end
 
@@ -25,9 +25,9 @@ class FaqsController < ApplicationController
 
   def update
     if @faq.update_attributes(faq_params)
-      redirect_to project_path(@project), notice: "you've updated faq"
+      redirect_to project_path(@project), notice: "you've updated this faq"
     else
-      render "edit"
+      render "edit", alert: "something is wrong"
     end
   end
 

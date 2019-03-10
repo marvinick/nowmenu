@@ -14,7 +14,7 @@ export default class extends Controller {
         "Content-Type": "application/json"
       },
     })
-      .then(response => response.text())
+      .then(response => response.text()) 
       .then(html => {
         this.itemsTarget.innerHTML = html
       })

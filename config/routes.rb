@@ -33,6 +33,8 @@ Rails.application.routes.draw do
         patch :sort
       end
       resources :reviews
+
+
     end
 
     resources :faqs

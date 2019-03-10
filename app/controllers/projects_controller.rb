@@ -7,9 +7,9 @@ class ProjectsController < BaseController
     @projects = current_user.projects.all
   end
 
-  # def preview
-  #   @groups = @project.groups.all
-  # end
+  def preview
+    @groups = @project.groups.all
+  end
 
   def load_activities
     @activities = PublicActivity::Activity.order('created_at DESC').limit(30).includes(:owner, :trackable)

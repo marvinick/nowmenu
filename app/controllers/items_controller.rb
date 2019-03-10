@@ -3,12 +3,14 @@ class ItemsController < BaseController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = @project.items.with_attached_image.includes(:image_attachment)
+    # @items = @project.items.with_attached_image.includes(:image_attachment)
+    @items = @project.items.all
   end
 
   def preview
     @items = @project.items.all
     @groups = @items.order(:group_id).pluck(:group_id).uniq
+    @items = @project.items.all
   end
 
   def sort
@@ -29,7 +31,7 @@ class ItemsController < BaseController
     @item = @project.items.new(item_params)
     @item.user_id = @project.user_id
     if @item.save
-        redirect_to project_item_path(@project, @item)
+      redirect_to project_item_path(@project, @item), notice: "You have successfully created #{@item.title}!"
     else
       render :new
     end
@@ -42,10 +44,9 @@ class ItemsController < BaseController
   def update
     @item.user_id = @project.user_id
     if @item.update_attributes(item_params)
-
-      redirect_to project_item_path(@project, @item), notice: "noice!!!!"
+      redirect_to project_item_path(@project, @item), notice: "You have successfully edited #{@item.title}"
     else
-        render :edit
+      render :edit
     end
   end
 
@@ -59,7 +60,7 @@ class ItemsController < BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :content, :user_id, :position, :price, :image, :project_id, group_ids: [])
+    params.require(:item).permit(:title, :content, :user_id, :position, :price, :image, :project_id, :group_id, group_ids: [])
   end
 
   def set_project

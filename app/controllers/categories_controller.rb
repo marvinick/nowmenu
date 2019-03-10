@@ -13,7 +13,7 @@ class CategoriesController < BaseController
   def create
     @category = @project.categories.new(category_params)
     if @category.save
-      redirect_to project_categories_path(@project, @categories), notice: "success!"
+      redirect_to project_categories_path(@project, @categories), notice: "You have successfully created #{@category.name}"
     else
       render :new
     end
@@ -23,7 +23,7 @@ class CategoriesController < BaseController
 
   def update
     if @category.update_attributes(category_params)
-      redirect_to project_categories_path(@project, @categories), notice: "success!"
+      redirect_to project_categories_path(@project, @categories), notice: "you have successfully #{@category.name}!"
     else
       render :edit
     end

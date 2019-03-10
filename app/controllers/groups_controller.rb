@@ -7,14 +7,14 @@ class GroupsController < ApplicationController
 
   end
 
-  def sort
-    groups = @project.groups.all
-
-    params[:group].each_with_index do |id, index|
-      groups.where(id: id).update_all(position: index + 1)
-    end
-    head :ok
-  end
+  # def sort
+  #   groups = @project.groups.all
+  #
+  #   params[:group].each_with_index do |id, index|
+  #     groups.where(id: id).update_all(position: index + 1)
+  #   end
+  #   head :ok
+  # end
 
   def new
     @group = @project.groups.build
@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   def create
     @group = @project.groups.new(group_params)
     if @group.save
-      redirect_to project_path(@project), notice: "Success!"
+      redirect_to project_groups_path(@project, @groups), notice: "You have a created a new group!"
     else
       render :new, alert: "something's wrong!"
     end
@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update_attributes(group_params)
-      redirect_to project_path(@project), notice: "Success!"
+      redirect_to project_groups_path(@project, @groups), notice: "You have successfully updated #{@group.name}"
     else
       render :edit, alert: "something's wrong!"
     end
@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to project_groups_path(@project, @groups), notice: "it's deleted!"
+    redirect_to project_groups_path(@project, @groups), notice: "a group has been deleted!"
   end
 
   private
