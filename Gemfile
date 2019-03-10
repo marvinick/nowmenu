@@ -35,6 +35,7 @@ gem 'bullet', group: 'development'
 
 #data analysis
 gem 'daru'
+gem 'daru-view', git: 'https://github.com/SciRuby/daru-view'
 
 #forms
 gem 'simple_form'

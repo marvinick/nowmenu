@@ -3,14 +3,20 @@
     <div data-controller="delete">
       <div class="card my-2 p-3 border-left-0 border-bottom-0 border-right-0 shadow-sm">
         <div class="row">
-          <div class="col-md-4 col-10">
+          <div class="col-md-6 col-10">
             <small class="font-weight-bold"><%= group.name %></small>
             <p class="description mb-0"><%= group.description %></p>
           </div>
-          <div class="col-md-6">
-            <% group.items.each do |item| %>
+          <div class="col-md-4">
+            <% if group.items.present? %>
+              <% group.items.each do |item| %>
 
-              <span><small class="font-weight-bold"><%= link_to item.title, project_item_path(@project, item) %></small></span><%= "," unless item == group.items.last %>
+                <li><span><small class="font-weight-bold"><%= link_to item.title, project_item_path(@project, item) %></small></span></li>
+              <% end %>
+            <% else %>
+              <small class="nothing-yet">it's not connected to any item yet</small>
+              <li><%= link_to "go to items", project_items_path(@project, @items), class: "btn btn-outline-secondary btn-sm" %></li>
+
             <% end %>
           </div>
           <div class="col-md-2 col-2">
