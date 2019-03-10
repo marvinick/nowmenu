@@ -1,16 +1,15 @@
 <div class="container">
-  <h1>Items</h1>
   <div data-controller="select-filter" data-select-filter-url="<%= project_items_filter_path %>">
     <div class="left-col">
-      <h2>Filter group:</h2>
-      <select name="groups" multiple size="<%= @groups.length %>"  data-action="select-filter#change">
-        <% @groups.each do |group| %>
-          <option value="<%= group %>"><%= group %></option>
+      <h6>Filter categories:</h6>
+      <select name="categories" multiple size="<%= @categories.length %>"  data-action="select-filter#change">
+        <%= @categories.each do |category| %>
+          <option value="<%= category %>"><%= category.to_s.humanize %></option>
         <% end %>
       </select>
     </div>
     <div class="right-col" data-target="select-filter.items">
-      <%= render partial: 'items/item_list', locals: { items: @items} %>
+      <%= render partial: 'item_list', locals: { items: @items} %>
     </div>
   </div>
 </div>

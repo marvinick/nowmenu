@@ -8,8 +8,7 @@ class ItemsController < BaseController
   end
 
   def preview
-    @items = @project.items.all
-    @groups = @items.order(:group_id).pluck(:group_id).uniq
+    @categories = @project.items.all.order(:category).pluck(:category).uniq
     @items = @project.items.all
   end
 
@@ -60,7 +59,7 @@ class ItemsController < BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :content, :user_id, :position, :price, :image, :project_id, :group_id, group_ids: [])
+    params.require(:item).permit(:title, :content, :user_id, :category, :position, :price, :image, :project_id, :group_id, group_ids: [])
   end
 
   def set_project

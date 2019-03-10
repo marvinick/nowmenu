@@ -27,7 +27,7 @@
 
       <h3 class="font-weight-bold mt-1 title"><%= @item.title %></h3>
       <p class="description"><%= @item.content %></p>
-
+      <p class="description"><%= @item.category %></p>
       <p class="content mb-1"><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</p>
       <p class="content mb-1"><i class="far fa-folder-open fa-fw"></i> belongs in
         <% @item.groups.each do |group| %>
