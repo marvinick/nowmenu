@@ -1,29 +1,27 @@
 <%= render "projects/project_navbar" %>
 
 <div class="container pt-5">
+  <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
+  <div class="row">
+    <div class="col-md-10">
 
-  <div class="text-center">
-    <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
-    <h4 class="font-weight-bold">Groups</h4>
-    <p class="content mb-0">
-      Where each of your items belong to
-    </p>
-    <br />
-    <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
+      <h4 class="font-weight-bold">Groups</h4>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
+    </div>
   </div>
+  <p class="content mb-0">
+    Where each of your items belong to
+  </p>
+
   <br />
 
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <% if @groups.present? %>
-        <%= render "groups" %>
-      <% else %>
-      <div class=" text-center">
-        <h6 class="nothing-yet"> Nothing yet</h6>
-      </div>
-      <% end %>
-    </div>
-    <div class="col-md-3"></div>
+  <% if @groups.present? %>
+    <%= render "groups" %>
+  <% else %>
+  <div class=" text-center">
+    <h6 class="nothing-yet"> Nothing yet</h6>
   </div>
+  <% end %>
 </div>

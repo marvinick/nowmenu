@@ -18,15 +18,10 @@
           <small><%= link_to "exit",  project_items_path(@project, @items), class: "exit-text" %></small>
         </div>
 
-          <div class="col-md-4 col-2">
-
-                    <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_path(@project, @item)  %></p>
-
-
-                    <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %></p>
-
-
-          </div>
+        <div class="col-md-4 col-2">
+          <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_path(@project, @item)  %></p>
+          <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %></p>
+        </div>
 
       </div>
 
