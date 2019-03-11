@@ -6,7 +6,7 @@ export default class extends Controller {
   change(event) {
     fetch(this.data.get("url"), {
       method: 'POST',
-      body: JSON.stringify( { groups: [...event.target.selectedOptions].map(option => option.value)}),
+      body: JSON.stringify( { categories: [...event.target.selectedOptions].map(option => option.value)}),
       credentials: "include",
       dataType: 'script',
       headers: {
@@ -14,7 +14,7 @@ export default class extends Controller {
         "Content-Type": "application/json"
       },
     })
-      .then(response => response.text()) 
+      .then(response => response.text())
       .then(html => {
         this.itemsTarget.innerHTML = html
       })

@@ -1,15 +1,25 @@
+<%= render "projects/project_navbar" %>
+
 <div class="container">
+  <small><%= link_to "exit",  project_items_path(@project, @items), class: "exit-text" %></small>
+  <h4 class="font-weight-bold">Preview</h4>
+  <%= link_to "No filters", preview_project_item_path(@project), class: "btn btn-outline-secondary btn-sm" %>
+  <br />
+  <br />
   <div data-controller="select-filter" data-select-filter-url="<%= project_items_filter_path %>">
-    <div class="left-col">
-      <h6>Filter categories:</h6>
-      <select name="categories" multiple size="<%= @categories.length %>"  data-action="select-filter#change">
-        <%= @categories.each do |category| %>
-          <option value="<%= category %>"><%= category.to_s.humanize %></option>
-        <% end %>
-      </select>
-    </div>
-    <div class="right-col" data-target="select-filter.items">
-      <%= render partial: 'item_list', locals: { items: @items} %>
+    <div class="row">
+      <div class="col-md-3">
+
+        <select name="categories" multiple size="<%= @categories.length %>" data-action="select-filter#change">
+          <%= @categories.each do |category| %>
+            <option value="<%= category %>"><%= category.to_s.humanize %></option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="col-md-9" data-target="select-filter.items">
+        <%= render partial: 'item_list', locals: { items: @items} %>
+      </div>
     </div>
   </div>
 </div>
