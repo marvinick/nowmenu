@@ -20,6 +20,9 @@
             <br />
             <%= f.input :category, label: false, placeholder: "category" %>
             <br />
+
+              <%# f.collection_select :group_ids, @project.groups.all, :id, :name, {}, { multiple: true }  %>
+
             <%= f.input :price, label: false, placeholder: "price" %>
             <br />
             <%= f.file_field :image %>

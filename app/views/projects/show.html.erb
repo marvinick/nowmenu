@@ -83,16 +83,16 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h4 class="font-weight-bold">Help</h4>
+      <h5 class="font-weight-bold">Help</h5>
       <%= link_to "post a question", new_project_faq_path(@project, @faq), class: "btn btn-sm btn-outline-secondary" %>
 
       <% @project.faqs.each do |faq| %>
         <li><%= faq.ask %> | <small><%= link_to "edit", edit_project_faq_path(@project, faq) %> - <%= link_to "destroy", project_faq_path(@project, faq), :method => :delete, data: {confirm: 'Are you sure?'} %> </small> </li>
       <% end %>
+      <br />
+      <small>Need help to get started? Check these easy steps</small>
 
-      <p class="content">Need help to get started? Check these easy steps</p>
-
-      <ol data-controller="drag-item"
+      <!-- <ol data-controller="drag-item"
           data-action="dragstart->drag-item#dragstart dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop dragend->drag-item#dragend"
       >
         <li draggable="true" data-todo-id="1">Take out trash</li>
@@ -118,7 +118,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
