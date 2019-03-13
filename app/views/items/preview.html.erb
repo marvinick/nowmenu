@@ -9,7 +9,6 @@
   <div data-controller="select-filter" data-select-filter-url="<%= project_items_filter_path %>">
     <div class="row">
       <div class="col-md-3">
-
         <select name="categories" multiple size="<%= @categories.length %>" data-action="select-filter#change">
           <%= @categories.each do |category| %>
             <option value="<%= category %>"><%= category.to_s.humanize %></option>
@@ -20,6 +19,7 @@
       <div class="col-md-9" data-target="select-filter.items">
         <%= render partial: 'item_list', locals: { items: @items} %>
       </div>
+      
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <%= render "layouts/navbar" %>
 
 <div class="container">
-  
+
   <div class="card p-2 m-2 border-0 text-center">
 
     <small><%= link_to "exit preview", project_path(@project), class: "exit-text" %></small>
@@ -11,8 +11,9 @@
   <div class="row">
 
     <div class="col-md-12">
-
-      <%= render_activities @activities %>
+      <% if @activities.present? %>
+        <%= render_activities @activities %>
+      <% end %>
     </div>
   </div>
 </div>

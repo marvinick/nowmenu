@@ -8,8 +8,8 @@ class ItemsController < BaseController
   end
 
   def preview
-    # @categories = @project.items.all.order(:category).pluck(:category).uniq
-    @categories = @project.items.all.joins(:group_items).order("group_items.group_id").pluck("group_items.group_id").uniq
+    @categories = @project.items.all.order(:category).pluck(:category).uniq
+    # @categories = @project.items.all.joins(:group_items).order("group_items.group_id").pluck("group_items.group_id").uniq
     @items = @project.items.all
   end
 

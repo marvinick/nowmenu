@@ -1,0 +1,10 @@
+<li >
+  <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
+  <strong><%= activity.owner ? activity.owner.email : 'Guest' %></strong>
+  <% if a.trackable %>
+    created a new category 
+  <% else %>
+    edited the story that is currently deleted
+  <% end %>
+</li>
+<br />
