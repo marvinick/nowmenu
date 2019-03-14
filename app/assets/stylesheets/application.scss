@@ -20,6 +20,11 @@
 
  */
 
+ editable--hidden {
+  display: none;
+  opacity: 0;
+}
+
  //no content yet
 .skeleton {
   background-repeat: no-repeat;

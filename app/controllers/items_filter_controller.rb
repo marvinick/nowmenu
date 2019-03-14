@@ -4,3 +4,4 @@ class ItemsFilterController < ApplicationController
     @items = @project.items.where(category: params[:categories])
   end
 end
+ 
