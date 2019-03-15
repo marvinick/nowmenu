@@ -2751,11 +2751,11 @@ var _class = function (_Controller) {
 
       editor.addEventListener('keypress', function (event) {
         var key = event.which || event.keyCode;
-        if (key === 13 //13 is n
-        || key == 27) //27 is escape
+        if (key === 13 || key == 27) {
           this.editableTarget.innerText = editor.value;
-        this.editableTarget.classList.remove("editable--hidden");
-        editor.remove();
+          this.editableTarget.classList.remove("editable--hidden");
+          editor.remove();
+        }
       }.bind(this));
 
       var selection = window.getSelection();
@@ -2906,4 +2906,4 @@ function getMetaValue(name) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=application-d4ed0e3ccf9ad81f747f.js.map
+//# sourceMappingURL=application-b749b7215f841b5b49b0.js.map

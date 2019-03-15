@@ -15,11 +15,11 @@ export default class extends Controller {
 
     editor.addEventListener('keypress', function(event) {
       var key = event.which || event.keyCode;
-      if (key === 13 //13 is n
-       || key == 27) //27 is escape
-       this.editableTarget.innerText = editor.value
-       this.editableTarget.classList.remove("editable--hidden")
-       editor.remove()
+      if (key === 13 || key == 27) {
+        this.editableTarget.innerText = editor.value
+        this.editableTarget.classList.remove("editable--hidden")
+        editor.remove()
+      }    
     }.bind(this));
 
     let selection = window.getSelection()
