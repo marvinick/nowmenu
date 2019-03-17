@@ -21,6 +21,7 @@ gem 'draftsman', '~> 0.7.1'
 
 #roles
 gem "pundit"
+gem 'name_of_person'
 
 #faster app
 gem 'redis', '~> 4.0'
