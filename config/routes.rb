@@ -44,5 +44,7 @@ Rails.application.routes.draw do
     post "items_filter", action: :index, controller: "items_filter"
   end
 
-
+  # Service Worker Routes
+  get '/service-worker.js' => "service_worker#service_worker"
+  get '/manifest.json' => "service_worker#manifest"
 end
