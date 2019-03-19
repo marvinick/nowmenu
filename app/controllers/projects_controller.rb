@@ -3,6 +3,8 @@ class ProjectsController < BaseController
   before_action :activities, only: [:load_activities]
   before_action :set_project, only: [:show, :edit, :update, :destroy, :preview, :load_activities]
 
+  caches_action :index, :show, :preview, :load_activities
+
   def index
     @projects = current_user.projects.all
   end

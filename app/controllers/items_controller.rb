@@ -2,6 +2,8 @@ class ItemsController < BaseController
   before_action :set_project
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+  caches_action :index, :show, :preview
+
   def index
     # @items = @project.items.with_attached_image.includes(:image_attachment)
     @items = @project.items.all

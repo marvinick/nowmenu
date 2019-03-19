@@ -28,6 +28,8 @@ gem 'redis', '~> 4.0'
 gem 'sidekiq'
 gem 'goldiloader'
 gem 'kaminari'
+gem 'actionpack-action_caching'
+
 
 #performance measure
 gem "memory_profiler"
