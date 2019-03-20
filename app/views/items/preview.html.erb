@@ -4,6 +4,12 @@
   <small><%= link_to "exit",  project_items_path(@project, @items), class: "exit-text" %></small>
   <h4 class="font-weight-bold">Preview</h4>
   <%= link_to "No filters", preview_project_item_path(@project), class: "btn btn-outline-secondary btn-sm" %>
+
+  <div data-controller="clipboard">
+    PIN: <input data-target="clipboard.source" type="text" value="1234" readonly>
+    <button data-action="clipboard#copy" >Copy to Clipboard</button>
+  </div>
+
   <br />
   <br />
   <div data-controller="select-filter" data-select-filter-url="<%= project_items_filter_path %>">
@@ -19,7 +25,8 @@
       <div class="col-md-9" data-target="select-filter.items">
         <%= render partial: 'item_list', locals: { items: @items} %>
       </div>
-      
+      <div>
+
     </div>
   </div>
 </div>

@@ -30,7 +30,6 @@ gem 'goldiloader'
 gem 'kaminari'
 gem 'actionpack-action_caching'
 
-
 #performance measure
 gem "memory_profiler"
 gem "derailed_benchmarks"
