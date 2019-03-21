@@ -6,8 +6,18 @@
 </div>
 
 <div class="row">
+
   <div class="col-md-2"></div>
   <div class="col-md-8">
+    <div data-controller="slideshow" data-slideshow-index="1">
+      <button data-action="slideshow#previous">←</button>
+      <button data-action="slideshow#next">→</button>
+
+      <div data-target="slideshow.slide" class="slide">🐵</div>
+      <div data-target="slideshow.slide" class="slide">🙈</div>
+      <div data-target="slideshow.slide" class="slide">🙉</div>
+      <div data-target="slideshow.slide" class="slide">🙊</div>
+    </div>
     <hr />
     <br />
     <br />

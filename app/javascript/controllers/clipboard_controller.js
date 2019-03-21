@@ -1,11 +1,13 @@
 import { Controller } from 'stimulus'
 
-export defaults class extends Controller {
+export default class extends Controller {
 
-  static targets = ["source"]
+  static targets = [ "source" ]
 
-  copy(){
+  copy() {
     this.sourceTarget.select()
     document.execCommand("copy")
   }
+
+
 }

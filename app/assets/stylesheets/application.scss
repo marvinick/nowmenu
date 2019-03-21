@@ -20,6 +20,15 @@
 
  */
 
+
+ .slide {
+   display: none;
+ }
+
+ .slide.slide--current {
+   display: block;
+ }
+ 
  editable--hidden {
   display: none;
   opacity: 0;
