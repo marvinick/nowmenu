@@ -34,10 +34,11 @@ Rails.application.routes.draw do
       end
       resources :reviews
 
-
     end
 
     resources :faqs
+
+    resources :requests
 
     resources :project_users, path: :users, module: :projects
 

@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["table"]
 
   connect() {
-    this.originalDimensions = this.tableTargt.getBoundingClientRect()
+    this.originalDimensions = this.tableTarget.getBoundingClientRect()
     this.tableHeader = this.tableTarget.tHead;
     this.onScrollRunning = true
     this.resizeHeader()
