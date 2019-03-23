@@ -14,19 +14,11 @@
 //= require jquery-ui
 //= require rails-ujs
 //= require turbolinks
+//= require jquery.raty
 //= require toastr
 //= require jquery.select2buttons
 //= require jquery.easy-autocomplete
 //= require_tree .
-
-//service workers
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/service-worker.js', { scope: './'})
-    .then(function(reg) {
-      console.log('[Companion]', 'Service worker registered!');
-      console.log(reg);
-    });
-}
 
 
 $(document).on('click', 'form .remove_fields', function(event) {

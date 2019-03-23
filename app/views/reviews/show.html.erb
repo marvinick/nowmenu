@@ -31,7 +31,7 @@
                     </div>
                   </div>
                 </div>
-              </div> 
+              </div>
 
             </div>
           </div>
@@ -58,7 +58,6 @@
                 <div class="star-rating" data-score= "<%= value %>" ></div>
               </div>
             </div>
-
           <% end %>
         </div>
       </div>
@@ -66,12 +65,13 @@
     <div class="col-md-2"></div>
   </div>
 </div>
-  <script>
-    $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-        return $(this).attr('data-score');
-      }
-    });
-  </script>
+<script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+  $('.star-rating').raty('reload')
+</script>

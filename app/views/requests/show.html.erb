@@ -1,6 +1,19 @@
-<div class="container" data-controller="delete">
-  by <%= @request.full_name %>
-  <%= @request.message %>
-  <%= link_to "edit", edit_project_request_path(@project, @request) %>
-  <%= link_to "retract request", project_request_path(@project, @request), method: :destroy, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-danger" %>
+<div class="container pt-5" data-controller="delete">
+
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 p-3">
+      <small><%= link_to "exit", project_requests_path(@project), class: "exit-text" %></small>
+      <div class="card shadow p-3 border-0 m-3">
+        <li><h6 class="font-weight-bold"><%= @request.full_name %></h6></li>
+        <%= @request.message %>
+        <%= link_to "edit", edit_project_request_path(@project, @request) %>
+        <%= link_to "retract request", project_request_path(@project, @request), method: :destroy, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %>
+      </div>
+
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
 </div>
