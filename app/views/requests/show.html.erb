@@ -1,0 +1,6 @@
+<div class="container" data-controller="delete">
+  by <%= @request.full_name %>
+  <%= @request.message %>
+  <%= link_to "edit", edit_project_request_path(@project, @request) %>
+  <%= link_to "retract request", project_request_path(@project, @request), method: :destroy, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-danger" %>
+</div>

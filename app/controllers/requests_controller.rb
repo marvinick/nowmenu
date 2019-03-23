@@ -1,6 +1,11 @@
 class RequestsController < ApplicationController
   before_action :set_project
   before_action :set_request, only: [:show, :edit, :update, :destroy]
+  caches_action :index, :show
+
+  def index
+    @requests = @project.requests.all
+  end
 
   def new
     @request = @project.requests.build
@@ -14,11 +19,7 @@ class RequestsController < ApplicationController
       render :new, alert: "Something is wrong"
     end
   end
-
-  def index
-    @requests = @project.requests.all
-  end
-
+  
   def show; end
 
   def edit; end
@@ -41,11 +42,15 @@ class RequestsController < ApplicationController
 
   private
 
+  def set_request
+    @request = @project.requests.find(params[:id])
+  end
+
   def request_params
     params.require(:request).permit(:full_name, :message, :project_id)
   end
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:project_id])
   end
 end

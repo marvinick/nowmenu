@@ -1,5 +1,4 @@
 class ProjectsController < BaseController
-
   before_action :activities, only: [:load_activities]
   before_action :set_project, only: [:show, :edit, :update, :destroy, :preview, :load_activities]
 

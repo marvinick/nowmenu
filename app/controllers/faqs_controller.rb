@@ -1,6 +1,7 @@
 class FaqsController < ApplicationController
   before_action :set_project
   before_action :set_faq, only: [:show, :edit, :update, :destroy]
+  caches_action :index, :show
 
   def index
     @faqs = @project.faqs.all

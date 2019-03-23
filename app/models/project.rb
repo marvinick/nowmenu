@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :faqs
+  has_many :requests
 
   include PublicActivity::Model
   tracked

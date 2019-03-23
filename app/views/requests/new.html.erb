@@ -1,0 +1,38 @@
+<%= render "projects/project_navbar" %>
+
+<div class="container pt-3">
+
+  <div class="text-center">
+    <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
+    <h4 class="font-weight-bold">Request</h4>
+    <p class="content mb-0">
+      ask to be included into the project
+    </p>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card my-4 border-0 ">
+
+        <hr />
+        <br />
+
+        <%= simple_form_for [@project, @request] do |f| %>
+            <% f.hidden_field :project_id %>
+            <%= f.input :full_name, label: false, placeholder: "name" %>
+
+            <br />
+            <%= f.input :message, label: false, placeholder: "description" %>
+            <br />
+
+
+            <%= link_to "cancel", project_path(@project, @requests), class: "btn btn-outline-secondary btn-sm" %>
+            <%= f.submit "make the request", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Posting question..." } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+</div>
