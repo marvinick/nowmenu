@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
     resources :requests
 
+    resoources :analytics
+
     resources :project_users, path: :users, module: :projects
 
     post "items_filter", action: :index, controller: "items_filter"

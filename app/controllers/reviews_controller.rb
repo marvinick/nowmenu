@@ -1,7 +1,7 @@
 class ReviewsController < BaseController
     before_action :set_item
     before_action :set_review, only: [:show, :edit, :destroy, :update]
-    caches_action :index, :show
+    caches_action :index, :show, :new, :edit
 
     def new
         @review = Review.new(project_id: params[:project_id], item_id: params[:item_id])
