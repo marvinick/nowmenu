@@ -1,7 +1,7 @@
 class ItemsController < BaseController
   before_action :set_project
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  caches_action :index, :show, :preview
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :result]
+  caches_action :index, :show, :preview, :result
 
   def index
     # @items = @project.items.with_attached_image.includes(:image_attachment)
@@ -14,15 +14,15 @@ class ItemsController < BaseController
     @items = @project.items.all
   end
 
-  def sort
-
-    items = @project.items.all
-    params[:item].each_with_index do |id, index|
-
-      items.where(id: id).update_all(position: index + 1)
-    end
-    head :ok
-  end
+  # def sort
+  #
+  #   items = @project.items.all
+  #   params[:item].each_with_index do |id, index|
+  #
+  #     items.where(id: id).update_all(position: index + 1)
+  #   end
+  #   head :ok
+  # end
 
   def new
     @item = @project.items.build
@@ -58,6 +58,12 @@ class ItemsController < BaseController
     end
   end
 
+
+
+  def result
+    item_dataframe
+  end
+
   private
 
   def item_params
@@ -70,6 +76,32 @@ class ItemsController < BaseController
 
   def set_item
     @item = @project.items.find(params[:id])
+  end
+
+  def get_keys
+    total_keys = []
+    @item.reviews.each do |review|
+      review.properties.each_key do |k|
+        total_keys << k
+      end
+    end
+    total_keys
+  end
+
+  def get_values
+    total = []
+    @item.reviews.each do |review|
+      review.properties.each_value do |v|
+        total << v
+      end
+    end
+    total
+  end
+
+  def item_dataframe
+    # @df = Daru::DataFrame.new([[get_keys], [get_values]])
+    # @df = Daru::DataFrame.new([[1,2,3,4], [1,2,3,4]],order: [:a, :b], index: [:one, :two, :three, :four])
+    @data_frame = Daru::DataFrame.from_csv('biostats.csv', liberal_parsing: true)
   end
 
 end

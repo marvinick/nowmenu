@@ -1,20 +1,17 @@
 <div class="field">
-
     <div id="star-rating_<%= field.name.squish! %>">
       <%= f.label field.name %>
     </div>
 
-
   <script>
-
-      $("#star-rating_<%= field.name %>").each(function() {
-        $(this).raty({
-          path: '/assets/',
-          scoreName: 'review[properties[<%= field.name %>]',
-          score: 'review[properties]',
-        });
+    $("#star-rating_<%= field.name %>").each(function() {
+      $(this).raty({
+        path: '/assets/',
+        scoreName: 'review[properties[<%= field.name %>]]',
+        score: 'review[properties[<%= field.name %>]]',
       });
-      $('#star-rating').raty('reload')
+    });
+    $('#star-rating').raty('reload')
 
   </script>
 </div>

@@ -28,19 +28,18 @@ Rails.application.routes.draw do
     resources :items do
       member do
         get 'preview'
+        get "result"
       end
       collection do
         patch :sort
       end
       resources :reviews
-
+  
     end
 
     resources :faqs
 
     resources :requests
-
-    resoources :analytics
 
     resources :project_users, path: :users, module: :projects
 

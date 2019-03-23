@@ -41,8 +41,11 @@
       </p>
       <p class="content mb-1"><i class="fas fa-dollar-sign fa-fw"></i><%= @item.price.to_i rescue 0 %></p>
 
+
+      <%= link_to "show analytics", result_project_item_path(@project, @item), class: "btn btn-success btn-sm" %>
+      <%=raw item_dataframe %>
     </div>
-    </div>
+  </div>
 </div>
 
 <br />
@@ -80,7 +83,7 @@
 </div>
 
 <script>
-  $('.star-rating').raty({ 
+  $('.star-rating').raty({
     path: '/assets/',
     readOnly: true,
     score: function() {
