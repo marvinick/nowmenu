@@ -29,12 +29,6 @@ module ItemsHelper
     @item.user_id == current_user.id
   end
 
-  def item_dataframe
-    # @df = Daru::DataFrame.new([[get_keys], [get_values]])
-    # @df = Daru::DataFrame.new([[1,2,3,4], [1,2,3,4]],order: [:a, :b], index: [:one, :two, :three, :four])
-    @data_frame = Daru::DataFrame.from_csv('biostats.csv', liberal_parsing: true)
-  end
-
   def get_keys
     total_keys = []
     @item.reviews.each do |review|

@@ -1,1 +1,12 @@
-<%=raw @data_frame %>
+<%=raw Daru::View.dependent_script(:datatables) %>
+
+<h3> Rating analysis: </h3>
+<p>
+  <b>Data : </b>
+  <%=raw @dt_df1.data %>
+  <br>
+  <b>Table : </b>
+  <br>
+  <div style="width: 500px;"><%=raw @dt_df1.div %></div>
+</p>
+<%= get_keys %>

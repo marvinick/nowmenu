@@ -58,8 +58,6 @@ class ItemsController < BaseController
     end
   end
 
-
-
   def result
     item_dataframe
   end
@@ -82,7 +80,7 @@ class ItemsController < BaseController
     total_keys = []
     @item.reviews.each do |review|
       review.properties.each_key do |k|
-        total_keys << k
+        total_keys << k.to_s
       end
     end
     total_keys
@@ -92,16 +90,29 @@ class ItemsController < BaseController
     total = []
     @item.reviews.each do |review|
       review.properties.each_value do |v|
-        total << v
+        total << v.to_i
       end
     end
     total
   end
 
   def item_dataframe
-    # @df = Daru::DataFrame.new([[get_keys], [get_values]])
-    # @df = Daru::DataFrame.new([[1,2,3,4], [1,2,3,4]],order: [:a, :b], index: [:one, :two, :three, :four])
-    @data_frame = Daru::DataFrame.from_csv('biostats.csv', liberal_parsing: true)
+    # df1 = Daru::DataFrame.from_csv('biostats.csv', liberal_parsing: true)
+    df1 = Daru::DataFrame.new({
+      a: [get_keys],
+      b: [get_values]
+      }, index: 'a'..'f')
+
+    options2 = {
+      adapter: :datatables,
+      html_options: {
+        table_options: {
+          cellspacing: '0',
+          width: "100%"
+        }
+      }
+    }
+    @dt_df1 = Daru::View::Table.new(df1, options2)
   end
 
 end
