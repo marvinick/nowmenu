@@ -1,6 +1,11 @@
 <%=raw Daru::View.dependent_script(:datatables) %>
+<%=raw Daru::View.dependent_script(:googlecharts) %>
+<%=raw Daru::View.dependent_script(:highcharts) %>
+<%=raw Daru::View.dependent_script(:nyaplot) %>
 
-<h3> Rating analysis: </h3>
+<small><%= link_to "exit",  project_item_path(@project, @item), class: "exit-text" %></small>
+
+<h5> Rating analysis: </h5>
 <p>
   <b>Data : </b>
   <%=raw @dt_df1.data %>
@@ -9,4 +14,48 @@
   <br>
   <div style="width: 500px;"><%=raw @dt_df1.div %></div>
 </p>
-<%= get_keys %>
+
+
+<br>
+<h3> Bar Graph</h3>
+<p>
+  <b>Data : </b>
+  <%=raw @bar_graph.data %>
+  <br>
+  <b>Options</b>
+  <%=raw @bar_graph.options %>
+  <br>
+  <b>Chart : </b>
+  <br>
+  <%=raw @bar_graph.div %>
+</p>
+
+
+<br>
+<br>
+<h3> Scatter Graph</h3><br>
+<p>
+  <b>Data : </b>
+  <%=raw @scatter_graph.data %>
+  <br>
+  <b>Options</b>
+  <%=raw @scatter_graph.options %>
+  <br>
+  <b>Chart : </b>
+  <br>
+  <%=raw @scatter_graph.div %>
+</p>
+
+
+<h3> Line Graph</h3><br>
+<p>
+  <b>Data : </b>
+  <%=raw @df_line.data %>
+  <br>
+  <b>Options</b>
+  <%=raw @df_line.options %>
+  <br>
+  <b>Chart : </b>
+  <br>
+  <%= @df_line.div.html_safe %>
+</p>

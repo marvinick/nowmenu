@@ -36,14 +36,14 @@ module ItemsHelper
         total_keys << k
       end
     end
-    total_keys
+    total_keys.to_s.tr('"', '')
   end
 
   def get_values
     total = []
     @item.reviews.each do |review|
       review.properties.each_value do |v|
-        total << v
+        total << v.delete_prefix('"').delete_suffix('"')
       end
     end
     total

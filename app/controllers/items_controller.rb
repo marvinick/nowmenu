@@ -80,7 +80,7 @@ class ItemsController < BaseController
     total_keys = []
     @item.reviews.each do |review|
       review.properties.each_key do |k|
-        total_keys << k.to_s
+        total_keys << k
       end
     end
     total_keys
@@ -90,7 +90,7 @@ class ItemsController < BaseController
     total = []
     @item.reviews.each do |review|
       review.properties.each_value do |v|
-        total << v.to_i
+        total << v
       end
     end
     total
@@ -98,10 +98,9 @@ class ItemsController < BaseController
 
   def item_dataframe
     # df1 = Daru::DataFrame.from_csv('biostats.csv', liberal_parsing: true)
-    df1 = Daru::DataFrame.new({
-      a: [get_keys],
-      b: [get_values]
-      }, index: 'a'..'f')
+    df1 = Daru::DataFrame.new({get_keys: [get_values]},
+      order: get_keys,
+      index: 'a'..'d')
 
     options2 = {
       adapter: :datatables,
@@ -113,6 +112,23 @@ class ItemsController < BaseController
       }
     }
     @dt_df1 = Daru::View::Table.new(df1, options2)
+
+    dv = Daru::Vector.new [:a, :a, :a, :b, :b, :c], type: :category
+    # default adapter is nyaplot only
+    @bar_graph = Daru::View::Plot.new(dv, type: :bar, adapter: :nyaplot)
+
+    df = Daru::DataFrame.new({b: [11,12,13,14,15], a: [1,2,3,4,5],
+      c: [11,22,33,44,55]},
+      order: [:a, :b, :c],
+      index: [:one, :two, :three, :four, :five])
+    @scatter_graph = Daru::View::Plot.new df, type: :scatter, x: :a, y: :b, adapter: :nyaplot
+
+    df = Daru::DataFrame.new({
+      a: [1, 3, 5, 7, 5, 0],
+      b: [1, 5, 2, 5, 1, 0],
+      c: [1, 6, 7, 2, 6, 0]
+      }, index: 'a'..'f')
+    @df_line = Daru::View::Plot.new df, type: :line, x: :a, y: :b, adapter: :nyaplot
   end
 
 end
