@@ -42,6 +42,8 @@ gem 'nyaplot', git: 'https://github.com/sciruby/nyaplot.git'
 gem 'daru-data_tables', git: 'https://github.com/shekharrajak/daru-data_tables.git'
 gem 'google_visualr', git: 'https://github.com/winston/google_visualr.git'
 gem 'daru-view', git: 'https://github.com/SciRuby/daru-view.git'
+gem 'eps'
+
 
 #forms
 gem 'simple_form'

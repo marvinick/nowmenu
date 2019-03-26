@@ -98,7 +98,7 @@ class ItemsController < BaseController
 
   def item_dataframe
     # df1 = Daru::DataFrame.from_csv('biostats.csv', liberal_parsing: true)
-    df1 = Daru::DataFrame.new({get_keys: [get_values]},
+    df1 = Daru::DataFrame.new({a: [get_values]},
       order: get_keys,
       index: 'a'..'d')
 
