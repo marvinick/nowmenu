@@ -15,7 +15,8 @@
       <div class="card border-0 ">
 
         <br />
-
+        <trix-editor></trix-editor>
+        
         <%= simple_form_for [@project, @item] do |f| %>
 
             <%= f.input :title, label: false, placeholder: "name" %>

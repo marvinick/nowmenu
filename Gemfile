@@ -44,7 +44,6 @@ gem 'google_visualr', git: 'https://github.com/winston/google_visualr.git'
 gem 'daru-view', git: 'https://github.com/SciRuby/daru-view.git'
 gem 'eps'
 
-
 #forms
 gem 'simple_form'
 gem 'wicked'
@@ -63,6 +62,9 @@ gem 'devise_invitable'
 #draggable sortable
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
+
+#animation
+gem 'animate.css-rails', '~> 3.2.0'
 
 #image upload
 gem 'aws-sdk'
