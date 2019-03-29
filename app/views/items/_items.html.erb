@@ -6,7 +6,7 @@
         <% cache item do %>
           <%= link_to project_item_path(@project, item) do %>
             <div class="card border-0 shadow-sm p-3 m-2 h-100">
-                <p class="item-title"><%= truncate(item.title, length: 20) %></p>
+                <p class="font-weight-bold"><%= truncate(item.title, length: 20) %></p>
                 <small><%= truncate(item.content, length: 45) %></small>
             </div>
           <% end %>
