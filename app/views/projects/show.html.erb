@@ -10,13 +10,10 @@
       <%= link_to "edit", edit_project_path(@project) %>
       <p class="content">Remember, your items need to have categories, for your users to review them. And also don't forget to group them.</p>
       <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-success" %>
-      <%= link_to "See activities", load_activities_project_path(@project), class: "btn btn-sm btn-outline-secondary" %>
-      <%= link_to "See requests", project_requests_path(@project, @requests), class: "btn btn-sm btn-success" %>
 
     </div>
   </div>
   <br />
-
 
   <div class="row ">
     <div class="col-md-3 col-6 mb-4">
@@ -24,10 +21,11 @@
         <div class="card shadow p-3 h-100">
           <h6 class="font-weight-bold text-center mb-0 ">Items</h6>
           <hr />
-          <p class="description text-center">This is where your items live</p>
-          <% @project.items.last(3).each do |item| %>
+
+          <% @project.items.last(4).each do |item| %>
             <div class="py-1 px-2 border-0 ">
-              <p class="content font-weight-bold card-text"><%= truncate(item.title, length: 15) %></p>
+              <small class="font-weight-bold card-text"><%= truncate(item.title, length: 15) %></small>
+              <small><%= truncate(item.content, length: 20) %></small>
             </div>
           <% end %>
         </div>
@@ -38,11 +36,11 @@
         <div class="card shadow  p-3 h-100">
           <h6 class="font-weight-bold text-center mb-0">Groups</h6>
           <hr />
-          <p class="description text-center">This is where your items live</p>
-          <% @project.groups.last(3).each do |group| %>
-            <div class="py-1 px-2 border-0 ">
-              <p class="content font-weight-bold card-text"><%= group.name %></p>
 
+          <% @project.groups.last(4).each do |group| %>
+            <div class="py-1 px-2 border-0 ">
+              <small class="font-weight-bold card-text"><%= group.name %> </small>
+              <small><%= truncate(group.description, length: 20) %></small>
             </div>
           <% end %>
         </div>
@@ -54,11 +52,11 @@
         <div class="card shadow p-3 h-100">
           <h6 class="font-weight-bold text-center mb-0">Categories</h6>
           <hr />
-          <p class="description text-center">Check your categories</p>
 
-          <% @project.categories.last(3).each do |category| %>
+          <% @project.categories.last(4).each do |category| %>
               <div class="card py-1 px-2 border-0">
-                <p class="content font-weight-bold card-text"><%= category.name %></p>
+                <small class="font-weight-bold card-text"><%= category.name %> </small>
+                <small><%= truncate(category.description, length: 20) %></small>
               </div>
           <% end %>
         </div>
@@ -69,10 +67,9 @@
         <div class="card shadow p-3 h-100">
           <h6 class="font-weight-bold text-center mb-0">Members</h6>
           <hr />
-          <p class="description text-center">This is where your items live</p>
           <% @project.users.each do |user| %>
             <div class="card py-1 px-2 border-0 ">
-              <p class="content font-weight-bold card-text"><%= truncate((user.email).chomp("gmail"), length: 12) %></p>
+              <small class="font-weight-bold card-text"><%= truncate((user.email).chomp("gmail"), length: 12) %></small>
             </div>
           <% end %>
         </div>
@@ -81,7 +78,45 @@
 
   </div>
 
-  <hr class="m-5">
+  <br class="m-5">
+  <br class="m-5">
+
+  <div class="row">
+    <div class="col-md-6 col-6 mb-4">
+      <%= link_to  project_requests_path(@project, @requests) do %>
+
+        <div class="card p-3 h-100">
+          <h6 class="font-weight-bold mb-0">Requests</h6>
+
+          <br />
+
+          <% @project.requests.last(4).each do |request| %>
+              <div class="card py-1 px-2 border-0">
+                <small class="font-weight-bold card-text"><%= request.full_name %> </small>
+                <small><%= truncate(request.message, length: 40) %></small>
+              </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-6 col-6 mb-4">
+
+      <%= link_to load_activities_project_path(@project) do %>
+        <div class="card p-3 h-100">
+          <h6 class="font-weight-bold mb-0">Activities</h6>
+
+          <br />
+
+          <small> See what's been happening lately</small>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+  <br class="m-5">
+  <br class="m-5">
+
 
   <div class="row">
     <div class="col-md-12">
