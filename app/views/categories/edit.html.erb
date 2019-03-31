@@ -5,30 +5,24 @@
   <div class="text-center">
     <small><%= link_to "exit", project_categories_path(@project, @categories), class: "exit-text" %></small>
     <h4 class="font-weight-bold">Categories</h4>
-    <small class="form-text text-muted">
-      These categories will be part of every review for each item
-    </small>
-
+    <small class="form-text text-muted">These categories will be part of every review for each item</small>
   </div>
   <br />
 
   <div class="row  ">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
       <div class="card my-4 border-0 ">
-
         <%= simple_form_for [@project, @category] do |f| %>
-            <%= f.input :name, label: false, placeholder: "name" %>
-
-            <br />
-            <%= f.input :description, label: false, placeholder: "description" %>
-
-            <br />
-            <%= link_to "cancel", project_categories_path(@project, @categories), class: "btn btn-outline-secondary btn-sm" %>
-            <%= f.submit "create category", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." } %>
+          <%= f.input :name, label: false, placeholder: "name" %>
+          <br />
+          <%= f.input :description, label: false, placeholder: "description" %>
+          <br />
+          <%= link_to "cancel", project_categories_path(@project, @categories), class: "btn btn-outline-secondary btn-sm" %>
+          <%= f.submit "create category", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." } %>
         <% end %>
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-6"></div>
   </div>
 </div>

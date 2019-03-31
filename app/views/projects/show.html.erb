@@ -89,12 +89,12 @@
           <h6 class="font-weight-bold mb-0">Requests</h6>
 
           <br />
-
+          <small>See the list of people that are still want make a </small>
           <% @project.requests.last(4).each do |request| %>
-              <div class="card py-1 px-2 border-0">
-                <small class="font-weight-bold card-text"><%= request.full_name %> </small>
-                <small><%= truncate(request.message, length: 40) %></small>
-              </div>
+            <div class="card py-1 px-2 border-0">
+              <small class="font-weight-bold card-text"><%= request.full_name %> </small>
+              <small><%= truncate(request.message, length: 40) %></small>
+            </div>
           <% end %>
         </div>
       <% end %>
@@ -103,10 +103,9 @@
 
       <%= link_to load_activities_project_path(@project) do %>
         <div class="card p-3 h-100">
-          <h6 class="font-weight-bold mb-0">Activities</h6>
-
+          <%= image_tag 'sierranevada_20', style: 'width:30%;' %>
           <br />
-
+          <h6 class="font-weight-bold mb-0">Activities</h6>
           <small> See what's been happening lately</small>
         </div>
       <% end %>

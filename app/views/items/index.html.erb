@@ -2,24 +2,42 @@
 
 <div class="container" data-controller="filter">
 
-  <div class="text-center">
-    <%= link_to "exit", project_path(@project),  class: "exit-text description" %>
-    <br />
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= link_to "exit", project_path(@project),  class: "exit-text description" %>
+      <br />
+      <h3 class="font-weight-bold">Items</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
+      <%= link_to "Preview", preview_project_item_path(@project, @items), class: "btn btn-sm btn-outline-secondary" %>
 
-    <h3 class="font-weight-bold">Items</h3>
-    <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
-    <%= link_to "Preview", preview_project_item_path(@project, @items), class: "btn btn-sm btn-outline-secondary" %>
-    <br/ >
-    <br/ >
-    <div class="text-center">
+    </div>
+  </div>
+  <br />
+  <div class="row text-center">
+    <div class="col-md-12 text-center">
       <input data-target="filter.source" data-action="input->filter#filter" type="text" class="filter filter-size" placeholder="Filter items" size="35" />
     </div>
   </div>
 
-    <% if @items.present? %>
-      <%= render "items" %>
-    <% else %>
-      <h6 class="text-center nothing-yet">nothing yet!</h6>
-    <% end %>
+  <div class="row mt-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+      <div class="card shadow-sm ">
+
+        <% if @items.present? %>
+          <%= render "items" %>
+        <% else %>
+          <h6 class="text-center nothing-yet">nothing yet!</h6>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
 
 </div>

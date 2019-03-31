@@ -206,7 +206,7 @@ input::placeholder {
  }
 
  .beige-bg {
-   background-color: #fffcf7;
+   background-color: #fffcf7!important;
  }
 
  .navbar-light {
@@ -229,7 +229,8 @@ body {
 
  li .inline-text {
     list-style-type: none;
-    display: inline;
+    display: inline!important;
+    font-size: 11px;
   }
 
   li {
@@ -241,14 +242,10 @@ body {
 
   }
 
-
 .dropdown-toggle::after {
   display:none!important;
 }
 
-.inline-text {
-  font-size: 11px;
-}
 
 a {
   color: black!important;

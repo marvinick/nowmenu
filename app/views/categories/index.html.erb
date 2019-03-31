@@ -1,6 +1,6 @@
 <%= render "projects/project_navbar" %>
 
-<div class="container pt-5">
+<div class="container">
 
   <div class="text-center">
     <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
@@ -14,14 +14,16 @@
   <br />
 
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <% if @categories.present? %>
-        <%= render "categories" %>
-      <% else %>
-        <h6 class="nothing-yet text-center"> Nothing yet </h6>
-      <% end %>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card beige-bg p-4 shadow-sm">
+        <% if @categories.present? %>
+          <%= render "categories" %>
+        <% else %>
+          <h6 class="nothing-yet text-center"> Nothing yet </h6>
+        <% end %>
+      </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-2"></div>
   </div>
 </div>

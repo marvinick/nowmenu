@@ -8,8 +8,8 @@
   </div>
 
   <div class="row ">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
       <div class="card border-0 ">
 
         <%= simple_form_for [@project, @item], html: { data: { controller: "unsaved-changes", action: 'beforeunload@window->unsaved-changes#leavingPage turbolinks:before-visit@window->unsaved-changes#leavingPage', 'unsaved-changes-changed': "false" }} do |f| %>
@@ -40,6 +40,6 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-3"></div>
   </div>
 </div>
