@@ -17,12 +17,7 @@
 
     </div>
   </div>
-  <br />
-  <div class="row text-center">
-    <div class="col-md-12 text-center">
-      <input data-target="filter.source" data-action="input->filter#filter" type="text" class="filter filter-size" placeholder="Filter items" size="35" />
-    </div>
-  </div>
+
 
   <div class="row mt-4">
     <div class="col-md-2"></div>
@@ -31,10 +26,23 @@
       <div class="card shadow-sm ">
 
         <% if @items.present? %>
+        <br />
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10 text-center">
+            <input data-target="filter.source" data-action="input->filter#filter" type="text" class="filter filter-size" placeholder="Filter items" size="35" />
+          </div>
+          <div class="col-md-1"></div>
+        </div>
           <%= render "items" %>
         <% else %>
-          <h6 class="text-center nothing-yet">nothing yet!</h6>
-        <% end %>
+          <div class=" text-center">
+            <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
+            <br />
+            <br />
+            <%= image_tag 'getting-there' %>
+            <% end %>
+          </div>
       </div>
     </div>
     <div class="col-md-2"></div>

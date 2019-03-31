@@ -1,6 +1,6 @@
 <%= render "projects/project_navbar" %>
 
-<div class="container pt-5">
+<div class="container">
 
   <div class="text-center">
     <p class="content"><%= link_to "exit", project_path(@project), class: "exit-text" %></p>
@@ -15,16 +15,22 @@
   <br />
 
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-    <% @project.users.each do |user| %>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card p-3">
+        <% if @project.users.present? %>
+          <% @project.users.each do |user| %>
+            <li><small class="font-weight-bold"><%= user.email %></small></li>
+            <hr />
+          <% end %>
+        <% else %>
+          <li><small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small></li>
 
-      <div class="card py-3 px-3 border-0 shadow">
-        <small class="inline-text"><%= user.email %></small>
+          <br />
+          <%= image_tag 'getting-there' %>
+        <% end %>
       </div>
-      <br />
-    <% end %>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-2"></div>
   </div>
 </div>
