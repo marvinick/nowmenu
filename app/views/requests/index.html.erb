@@ -1,22 +1,25 @@
-<%= render "layouts/navbar" %>
+<%= render "projects/project_navbar" %>
 
-<div class="container pt-5">
-  <small><%= link_to "go back", project_path(@project), class: "exit-text" %></small>
-  <h4 class="font-weight-bold ">Requests</h4>
-
-  <div class="row">
-    <% @requests.each do |request| %>
-    <div class="col-md-4">
-      <div class="card shadow-sm p-3">
-        <li><%= link_to request.full_name, project_request_path(@project, request) %></li>
-        <%= truncate(request.message, length: 50) %>
-      </div>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+      <h4 class="font-weight-bold ">Requests</h4>
+      <%= link_to "send request", new_project_request_path(@project, @request), class: "btn btn-outline-secondary btn-sm" %>
     </div>
-    <% end %>
-
-
   </div>
   <br />
-  <br />
-  <%= link_to "send request", new_project_request_path(@project, @request), class: "btn btn-sm btn-success" %>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card p-4 shadow-sm">
+        <% @requests.each do |request| %>
+          <li><small class="font-weight-bold"><%= link_to request.full_name, project_request_path(@project, request) %></small></li>
+          <%= request.message %>
+        <% end %>
+        <br />
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
 </div>

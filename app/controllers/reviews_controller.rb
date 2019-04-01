@@ -24,18 +24,17 @@ class ReviewsController < BaseController
 
     def update
         if @review.update_attributes(review_params)
-            redirect_to project_item_review_path(@project, @item, @review)
+          redirect_to project_item_review_path(@project, @item, @review)
         else
-            render :edit
+          render :edit
         end
     end
 
     def destroy
-        if @review.destroy
-            redirect_to [@project, @item], alert: 'deleted!'
-        end
+      if @review.destroy
+        redirect_to [@project, @item], alert: 'deleted!'
+      end
     end
-
 
     private
 

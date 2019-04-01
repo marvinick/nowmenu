@@ -32,7 +32,7 @@ class CategoriesController < BaseController
 
   def destroy
     if @category.destroy
-      redirect_to [@project], notice: "Success!"
+      redirect_to project_categories_path(@project, @categories), notice: "Success!"
     else
       redirect_to [@project], alert: "Something's wrong!"
     end

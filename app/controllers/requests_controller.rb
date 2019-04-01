@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
       render :new, alert: "Something is wrong"
     end
   end
-  
+
   def show; end
 
   def edit; end
@@ -33,7 +33,7 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    if @request.delete
+    if @request.destroy
       redirect_to preview_project_path(@project), alert: "You have retracted your request"
     else
       redirect_to preview_project_path(@project), alert: "Something is wrong"

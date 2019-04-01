@@ -2,37 +2,32 @@
   <% cache group do %>
     <div data-controller="delete">
       <div class="row">
-        <div class="col-md-1"></div>
         <div class="col-md-10 col-12">
-          <div class="card beige-bg border-0 p-3 ">
-
             <h5 class="font-weight-bold mb-0"><%= group.name %></h5>
-
             <p class="description mb-0"><%= group.description %></p>
-            <div class="pull-right">
-              <%= link_to edit_project_group_path(@project, group) do %>
-                <small class="description mb-0"><i class="fas fa-pencil-alt"></i></small>
-              <% end %>
-
-              <%= link_to project_group_path(@project, group), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
-              <small class=" mb-0"><i class="fa fa-trash"></i></small>
-              <% end %>
-            </div>
 
             <% if group.items.present? %>
               <% group.items.each do |item| %>
 
-                <small class="inline-text"><%= link_to item.title, project_item_path(@project, item) %></small>
+                <small class="inline-text font-weight-bold"><%= link_to item.title, project_item_path(@project, item) %></small>
               <% end %>
             <% else %>
               <small><%= link_to "it's not connected to any item yet, go to items", project_items_path(@project, @items), class:"exit-text" %></small>
-
             <% end %>
-          </div>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-2">
+          <%= link_to edit_project_group_path(@project, group) do %>
+            <small><i class="fas fa-pencil-alt"></i></small>
+          <% end %>
+
+          <%= link_to project_group_path(@project, group), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
+            <small><i class="fa fa-trash"></i></small>
+          <% end %>
+
+        </div>
       </div>
     </div>
 
   <% end %>
+  <hr class="my-4" />
 <% end %>
