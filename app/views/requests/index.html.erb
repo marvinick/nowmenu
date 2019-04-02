@@ -12,12 +12,19 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-      <div class="card p-4 shadow-sm">
-        <% @requests.each do |request| %>
-          <li><small class="font-weight-bold"><%= link_to request.full_name, project_request_path(@project, request) %></small></li>
-          <%= request.message %>
+      <div class="card p-4 shadow">
+        <% if @requests.present? %>
+          <% @requests.each do |request| %>
+            <li><small class="font-weight-bold"><%= link_to request.full_name, project_request_path(@project, request) %></small></li>
+            <%= request.message %>
+          <% end %>
+          <br />
+        <% else %>
+          <small class="text-center">"They are words that are easy enough to say and which fill vast empty spaces."</small>
+          <br />
+          <br />
+          <%= image_tag 'getting-there' %>
         <% end %>
-        <br />
       </div>
     </div>
     <div class="col-md-2"></div>

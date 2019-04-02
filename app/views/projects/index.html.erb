@@ -13,7 +13,7 @@
 
       <div class="col-md-4 col-6">
         <%= link_to project_path(project) do %>
-          <div class="card shadow-sm">
+          <div class="card shadow">
 
             <div class="card-body">
               <h6 class="font-weight-bold">  <%= project.name %></h6>
@@ -35,7 +35,7 @@
     data-target="history.links"
     class="history">
     <li>
-    <a href="${ historyItemPath }" 
+    <a href="${ historyItemPath }"
        data-action="history#visitPageInHistory"
        data-history-location="${ historyLocation }"> <strong>></strong> ${ historyItemTitle }</a>
     </li>
