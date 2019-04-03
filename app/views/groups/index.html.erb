@@ -1,22 +1,23 @@
 <%= render "projects/project_navbar" %>
 
-<div class="container">
+<div class="">
 
-  <div class="row text-center">
-    <div class="col-md-12">
-      <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
-      <h4 class="font-weight-bold mb-0">Groups</h4>
-      <p class="description mb-0">Where each of your items belong to</p>
-      <br />
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text " %></small>
+      <p class="page-title">Groups</p>
+      <p class="description">Where each of your items belong to</p>
       <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
     </div>
+    <div class="col-md-1"></div>
   </div>
 
   <br />
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <div class="card p-4 shadow">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="card p-4 shadow-sm">
         <% if @groups.present? %>
           <%= render "groups" %>
         <% else %>
@@ -29,7 +30,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
   </div>
 
 </div>

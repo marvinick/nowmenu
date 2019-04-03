@@ -22,14 +22,31 @@
 
  @import 'animate';
 
+.paddy {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.each-item-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0px;
+  margin-top: -10px;
+}
+
+ .page-title {
+   font-size: 30px;
+   font-weight: 800;
+   margin-bottom: 0px;
+   margin-top: -10px;
+ }
+
  .search {
     width: 300px !important;
-
  }
 
  .search-field {
-   width: 280px !important;
-
+   width: 300px !important;
  }
 
 .hidden-input {
@@ -194,6 +211,7 @@ input[type="text"], textarea {
    background-color : white!important;
    font-size: 15px!important;
    font-weight: 600!important;
+   text-indent: 10px;
     // border-top: none!important;
     // border-left: none!important;
     // border-right: none!important;

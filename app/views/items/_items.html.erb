@@ -1,23 +1,13 @@
-
-
-<div class="row">
-
-  <% @items.each do |item| %>
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <div data-target="filter.filterable" data-filter-key='<%= "#{item.title} #{item.content}".downcase %>'>
-        <% cache item do %>
-          <%= link_to project_item_path(@project, item) do %>
-            <div class="card py-4 border-0 h-100">
-                <h6 class="font-weight-bold"><%= truncate(item.title, length: 20) %></h6>
-                <small><%= truncate(item.content, length: 100) %></small>
-            </div>
-          <% end %>
-        <% end %>
-        <hr class="m-0"/>
-      </div>
-    </div>
-    <div class="col-md-1"></div>
-  <% end %>
-</div>
- 
+<% @items.each do |item| %>
+  <div data-target="filter.filterable" data-filter-key='<%= "#{item.title} #{item.content}".downcase %>'>
+    <% cache item do %>
+      <%= link_to project_item_path(@project, item) do %>
+        <div class="card  border-right-0 border-top-0 border-left-0 py-2">
+            <p class="each-item-title"><%= truncate(item.title, length: 20) %></p>
+            <small><%= truncate(item.content, length: 100) %></small>
+        </div>
+      <% end %>
+    <% end %>
+    <br />
+  </div>
+<% end %>

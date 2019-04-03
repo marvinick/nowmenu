@@ -3,7 +3,7 @@
 <div class="container">
 
   <div class="text-center">
-    <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+    <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text" %></small>
     <h4 class="font-weight-bold">Categories</h4>
     <small class="form-text text-muted">
       These categories will be part of every review for each item
