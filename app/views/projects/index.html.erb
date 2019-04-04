@@ -1,10 +1,17 @@
 <%= render "layouts/navbar" %>
 
-<div class="container pt-5">
+<div class="container">
+  <div class="float-md-left">
+    <h2 class="font-weight-bold ">Projects</h2>
+    <small>Collection of the all current different projects</small>
+  </div>
+  <br />
+  <div class="float-md-right">
+    <h6 class="mt-0 "><small><%= link_to "add project", new_project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small></h6>
+  </div>
 
-  <h3 class="font-weight-bold ">Projects</h3>
-  <h6 class="mt-0 "><small><%= link_to "add project", new_project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small></h6>
-
+  <br />
+  <br />
   <br />
 
   <div class="row">

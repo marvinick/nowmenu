@@ -1,32 +1,36 @@
 <%= render "projects/project_navbar" %>
 
-<div class="container">
-  <div class="row text-center">
-    <div class="col-md-12">
-      <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
-      <h4 class="font-weight-bold ">Requests</h4>
-      <%= link_to "send request", new_project_request_path(@project, @request), class: "btn btn-outline-secondary btn-sm" %>
-    </div>
+<div class="col-md-12 mb-4">
+  <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text" %></small>
+  <br />
+  <div class="float-md-left paddy">
+
+    <p class="page-title">Requests</p>
+    <small>someone asking you to become a member of a project, or adding a feature? This is the place to check it</small>
   </div>
   <br />
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <div class="card p-4 shadow">
-        <% if @requests.present? %>
-          <% @requests.each do |request| %>
-            <li><small class="font-weight-bold"><%= link_to request.full_name, project_request_path(@project, request) %></small></li>
-            <%= request.message %>
-          <% end %>
-          <br />
-        <% else %>
-          <small class="text-center">"They are words that are easy enough to say and which fill vast empty spaces."</small>
-          <br />
-          <br />
-          <%= image_tag 'getting-there' %>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-md-2"></div>
+  <div class="float-md-right paddy">
+    <%= link_to "send request", new_project_request_path(@project, @request), class: "btn btn-outline-secondary btn-sm" %>
   </div>
 </div>
+
+<br />
+<br />
+<br />
+
+<div class="col-md-8">
+  <% if @requests.present? %>
+    <% @requests.each do |request| %>
+      <p class="each-item-title"><%= link_to request.full_name, project_request_path(@project, request) %></p>
+      <%= request.message %>
+    <% end %>
+    <hr />
+  <% else %>
+    <small class="text-center">"They are words that are easy enough to say and which fill vast empty spaces."</small>
+    <br />
+    <br />
+    <%= image_tag 'getting-there' %>
+  <% end %>
+</div>
+
+<div class="col-md-4"></div>

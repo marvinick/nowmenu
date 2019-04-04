@@ -1,5 +1,5 @@
 const RESET_TIMEOUT_MILLIS = 2000;
-const CONFIRMATION_MESSAGE = 'Are you really sure?';
+const CONFIRMATION_MESSAGE = '<small>Are you really sure?</small>';
 
 import { Controller } from "stimulus"
 

@@ -1,36 +1,34 @@
 <%= render "projects/project_navbar" %>
 
-<div class="">
-
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text " %></small>
-      <p class="page-title">Groups</p>
-      <p class="description">Where each of your items belong to</p>
-      <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-
+<div class="col-md-12 mb-3">
+  <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text " %></small>
   <br />
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <div class="card p-4 shadow-sm">
-        <% if @groups.present? %>
-          <%= render "groups" %>
-        <% else %>
-        <div class=" text-center">
-          <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
-          <br />
-          <br />
-          <%= image_tag 'getting-there' %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-md-1"></div>
+  <div class="float-md-left paddy">
+    <p class="page-title">Groups</p>
+    <small>efneeefe</small>
   </div>
+  <br />
+  <div class="float-md-right paddy">
+    <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="col-md-8">
+
+    <% if @groups.present? %>
+      <%= render "groups" %>
+    <% else %>
+    <div class=" text-center">
+      <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
+      <br />
+      <br />
+      <%= image_tag 'getting-there' %>
+    </div>
+    <% end %>
 
 </div>
+<div class="col-md-4"></div>
