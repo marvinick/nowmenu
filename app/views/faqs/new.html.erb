@@ -1,38 +1,40 @@
-<%= render "projects/project_navbar" %>
 
-<div class="container pt-3">
+<div class="container pt-5 animated myElement rubberBand">
 
-  <div class="text-center">
-    <small><%= link_to "exit", project_path(@project), class: "exit-text " %></small>
-    <h4 class="font-weight-bold">FAQS</h4>
-    <p class="content mb-0">
-      Post most asked question
-    </p>
-
-  </div>
+  <br />
 
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
+      <div class="float-left">
+        <%= link_to project_path(@project), class: "btn btn-outline-secondary btn-sm" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      </div>
+      <br />
+      <br />
+      <h4 class="font-weight-bold">FAQS</h4>
+      <p class="content mb-0">
+        Post most asked question
+      </p>
       <div class="card my-4 border-0 ">
-
-        <hr />
-        <br />
 
         <%= simple_form_for [@project, @faq] do |f| %>
             <% f.hidden_field :project_id %>
-            <%= f.input :ask, label: false, placeholder: "name" %>
+
+              <%= f.input :ask, label: false, placeholder: "question" %>
 
             <br />
-            <%= f.input :answer, label: false, placeholder: "description" %>
+            <%= f.input :answer, label: false, placeholder: "answer" %>
             <br />
 
 
-            <%= link_to "cancel", project_path(@project, @faqs), class: "btn btn-outline-secondary btn-sm" %>
+          <div class="float-right">
             <%= f.submit "post the question", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Posting question..." } %>
+          </div>
         <% end %>
       </div>
-    </div>
-    <div class="col-md-6"></div>
+    <div class="col-md-3"></div>
   </div>
+  <br />
 </div>

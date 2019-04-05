@@ -1,21 +1,22 @@
-<%= render "projects/project_navbar" %>
+<div class="container pt-5 animated myElement rubberBand">
 
-<div class="container pt-5">
-  <div class="text-center">
-    <%= link_to "exit", project_items_path(@project, @items),  class: "exit-text description" %>
-    <br />
+  <br />
 
-    <h3 class="font-weight-bold">Create Item</h3>
-
-  </div>
-
-  <div class="row ">
+  <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <div class="card border-0 ">
-
-        <br />
-        <trix-editor></trix-editor>
+      <div class="float-left">
+        <%= link_to project_items_path(@project, @items), class: "btn btn-outline-secondary btn-sm" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      </div>
+      <br />
+      <br />
+      <h4 class="font-weight-bold ">Add  a new item</h4>
+      <small class="form-text text-muted">
+        These categories will be part of every review for each item
+      </small>
+      <div class="card my-4 border-0 ">
 
         <%= simple_form_for [@project, @item] do |f| %>
 
@@ -37,10 +38,12 @@
             <% end %>
             <br />
             <br />
-            <%= f.submit "create item", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." } %>
+            <div class="float-right">
+              <%= f.submit "create item", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating an item..." } %>
+            </div>
         <% end %>
       </div>
-    </div>
-    <div class="col-md-6"></div>
+    <div class="col-md-3"></div>
   </div>
+  <br />
 </div>

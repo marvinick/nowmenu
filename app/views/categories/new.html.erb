@@ -1,34 +1,38 @@
-<%= render "projects/project_navbar" %>
+<div class="container pt-5 animated myElement rubberBand">
 
-<div class="container pt-5">
-
-  <div class="text-center">
-    <small><%= link_to "exit", project_categories_path(@project, @categories), class: "exit-text" %></small>
-    <h4 class="font-weight-bold">Categories</h4>
-    <small class="form-text text-muted">
-      These categories will be part of every review for each item
-    </small>
-
-  </div>
   <br />
 
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
+      <div class="float-left">
+        <%= link_to project_categories_path(@project, @categories), class: "btn btn-outline-secondary btn-sm" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      </div>
+      <br />
+      <br />
+      <h4 class="font-weight-bold ">Add a category</h4>
+      <small class="form-text text-muted">
+        These categories will be part of every review for each item
+      </small>
       <div class="card my-4 border-0 ">
 
         <%= simple_form_for [@project, @category] do |f| %>
             <%= f.input :name, label: false, placeholder: "name" %>
 
             <br />
-            <%= f.input :description, label: false, placeholder: "description" %>
+            <div id="tall">
+              <%= f.input :description, label: false, placeholder: "description"  %>
+            </div>
 
             <br />
-            <%= link_to "cancel", project_categories_path(@project, @categories), class: "btn btn-outline-secondary btn-sm" %>
-            <%= f.submit "create category", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." } %>
+            <div class="float-right">
+              <%= f.submit "add a category", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "adding a category" } %>
+            </div>
         <% end %>
       </div>
-    </div>
     <div class="col-md-3"></div>
   </div>
+  <br />
 </div>

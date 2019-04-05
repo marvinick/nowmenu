@@ -1,45 +1,47 @@
-<%= render "projects/project_navbar" %>
+<div class="container pt-5 animated myElement rubberBand">
 
-<div class="container pt-5">
-  <div class="text-center">
-    <%= link_to "exit", project_item_path(@project, @item),  class: "exit-text description" %>
-    <br />
-    <h2 class="font-weight-bold">Items</h2>
-  </div>
+  <br />
 
-  <div class="row ">
+  <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-6 text-center">
-      <div class="card border-0 ">
+    <div class="col-md-6">
+      <div class="float-left">
+        <%= link_to project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      </div>
+      <br />
+      <br />
+      <h4 class="font-weight-bold ">Edit <%= "#{@item.title}" %></h4>
 
-        <%= simple_form_for [@project, @item], html: { data: { controller: "unsaved-changes", action: 'beforeunload@window->unsaved-changes#leavingPage turbolinks:before-visit@window->unsaved-changes#leavingPage', 'unsaved-changes-changed': "false" }} do |f| %>
+      <div class="card my-4 border-0 ">
+
+        <%= simple_form_for [@project, @item] do |f| %>
+
             <%= f.input :title, label: false, placeholder: "name" %>
 
             <br />
-            <%= f.input :content, label: false, placeholder: "description", :data => { :'action' => "change->unsaved-changes#formIsChanged" } %>
+            <%= f.input :content, label: false, placeholder: "description" %>
             <br />
-            <%= f.input :category, label: false, placeholder: "category", :data => { :'action' => "change->unsaved-changes#formIsChanged"}  %>
+            <%= f.input :category, label: false, placeholder: "category" %>
             <br />
-
-              <%# f.collection_select :group_ids, @project.groups.all, :id, :name, {}, { multiple: true }  %>
-
-            <%= f.input :price, label: false, placeholder: "price", :data => { :'action' => "change->unsaved-changes#formIsChanged"}  %>
+            <%= f.input :price, label: false, placeholder: "price" %>
             <br />
             <%= f.file_field :image %>
             <br />
             <br />
-            <%= f.label "Groups", class: "item-title" %>
-            <br />
+            <%= f.label "Groups: ", class: "item-title" %>
             <%= f.collection_check_boxes :group_ids, @project.groups.all, :id, :name do |cb| %>
               <% cb.label(class: "checkbox_inline") {cb.check_box(class: "checkbox") + cb.text} %>
             <% end %>
             <br />
             <br />
-
-            <%= f.submit "create item", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating item..." }, :'data-action' => "unsaved-changes#allowFormSubmission" %>
+            <div class="float-right">
+              <%= f.submit "update this item", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "updating this item..." } %>
+            </div>
         <% end %>
       </div>
-    </div>
     <div class="col-md-3"></div>
   </div>
+  <br />
 </div>

@@ -1,0 +1,28 @@
+input[type="text"] {
+   outline: none!important;
+   box-shadow:none !important;
+   border:1px solid #ccc!important;
+   background-color : white!important;
+   font-size: 15px!important;
+   font-weight: 600!important;
+   text-indent: 10px;
+    // border-top: none!important;
+    // border-left: none!important;
+    // border-right: none!important;
+ }
+
+ textarea {
+   height: 200px!important;
+ }
+
+input::placeholder {
+   color: #a5a5a5!important;
+   font-size: 10px!important;
+   font-style: italic;
+ }
+
+ textarea::placeholder {
+   color: #a5a5a5!important;
+   font-size: 10px!important;
+   font-style: italic;
+ }

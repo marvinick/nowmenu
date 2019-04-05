@@ -1,12 +1,13 @@
 <div class="jumbotron ">
+
+
   <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+
       <div class="card my-4 border-0 ">
-        <h5 class="font-weight-bold">Create your project</h5>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <hr class="my-4">
-        <br />
+        <h5 class="font-weight-bold"><%= link_to "projects", projects_path(@projects), class: "link-to" %></h5>
 
 
         <%= simple_form_for @project do |f| %>
@@ -37,6 +38,6 @@
 
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-2"></div>
   </div>
 </div>

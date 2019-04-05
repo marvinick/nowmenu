@@ -29,7 +29,7 @@
 
           <% @project.items.last(4).each do |item| %>
             <div class="py-1 px-2 border-0 ">
-              <small class="font-weight-bold card-text"><%= truncate(item.title, length: 15) %></small>
+              <small class="font-weight-bold card-text no-underline"><%= truncate(item.title, length: 15) %></small>
               <small><%= truncate(item.content, length: 20) %></small>
             </div>
           <% end %>
