@@ -1,0 +1,9 @@
+<div class="row">
+  <% @faqs.each do |faq| %>
+  <div class="<%= cycle('left', 'right') -%>">
+    <div class="col-md-8">
+      <%= faq.ask %>
+    </div>
+   <% end %>
+  </div>
+ </div>
