@@ -1,9 +1,36 @@
-<div class="row">
-  <% @faqs.each do |faq| %>
-  <div class="<%= cycle('left', 'right') -%>">
-    <div class="col-md-8">
-      <%= faq.ask %>
+<%= render "projects/project_navbar" %>
+
+<div class="container">
+    <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text font-weight-" %></small>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-left">
+        <p class="page-title">Most Asked Questions</p>
+        <p class="description">this is sort of a documentation for your project, where everyone can get help navigate</p>
+      </div>
+      <div class="float-right">
+        <%= link_to "create a new documentation ", new_project_faq_path(@project, @faq), class: "btn btn-sm btn-outline-secondary" %>
+      </div>
     </div>
-   <% end %>
   </div>
- </div>
+
+  <br />
+
+  <div class="row">
+
+    <% @faqs.each do |faq| %>
+
+      <div class="col-md-6">
+        <%= link_to project_faq_path(@project, faq) do %>
+          <div class="card p-4 shadow-sm">
+            <p class="description font-weight-bold"><%= truncate(faq.ask, length: 200) %></p>
+            <p class="description"><%= truncate(faq.answer, length: 200) %> </p>
+              <small><%= link_to "edit", edit_project_faq_path(@project, faq) %> - <%= link_to "delete", project_faq_path(@project, faq), :method => :delete, data: {confirm: 'Are you sure?'} %> </small>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

@@ -1,19 +1,26 @@
-<div class="jumbotron ">
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <div class="card my-4 border-0 ">
-        <h5 class="font-weight-bold">Make some changes to your project</h5>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <hr />
-        <br />
+<div class="container pt-5 animated myElement rubberBand">
 
+  <br />
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="float-left">
+        <%= link_to project_path(@project), class: "btn btn-outline-secondary btn-sm" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      </div>
+      <br />
+      <br />
+       <h4 class="font-weight-bold">update this project</h4>
+
+      <div class="card my-4 border-0 ">
 
         <%= simple_form_for @project do |f| %>
             <div class="form-group">
                 <%= f.input :name, label: false, class: "form-control", placeholder: "name" %>
             </div>
-            <br /> 
+            <br />
             <div class="form-group">
                 <%= f.input :description, label: false %>
             </div>
@@ -29,12 +36,12 @@
             <br />
             <br /> -->
             <br />
-            <%= link_to "cancel", project_path(@project), class: "btn btn-outline-dark btn-sm" %>
-            <%= f.submit "make the change", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
+            <div class="float-right">
+              <%= f.submit "update #{@project.name}", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
+            </div>
         <% end %>
-
       </div>
-    </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-3"></div>
   </div>
+  <br />
 </div>

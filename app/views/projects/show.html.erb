@@ -122,22 +122,20 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h5 class="font-weight-bold">Help - <%= link_to "post a question", new_project_faq_path(@project, @faq), class: "btn btn-sm btn-outline-secondary" %></h5>
+      <h5 class="font-weight-bold">Most asked questions -   <%= link_to "see more", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %> </h5>
 
-      <small>Need help to get started? Check these easy steps</small>
+      <small>documentation of some sort</small>
       <br />
       <br />
       <div class="row">
       <% @project.faqs.limit(4).each do |faq| %>
-      <div class="<%= cycle('left', 'right') %>">
         <div class="col-md-6">
-          <div class="card p-3 beige-bg border-0 shadow-sm">
-            <p class="description font-weight-bold"><%= faq.ask %> </p>
-            <p class="description"><%= faq.answer %></p>
-            <small><%= link_to "edit", edit_project_faq_path(@project, faq) %> - <%= link_to "delete", project_faq_path(@project, faq), :method => :delete, data: {confirm: 'Are you sure?'} %> </small>
-          </div>
+          <%= link_to project_faq_path(@project, faq) do %>
+            <div class="card p-3 border-0 shadow-sm">
+              <p class="description font-weight-bold"><%= truncate(faq.ask, length: 200) %> </p>
+            </div>
+          <% end %>
         </div>
-      </div>
       <br />
       <% end %>
       <br />
@@ -178,6 +176,9 @@
 
     </div>
     <br />
-    <%= link_to "see more", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %>
+    <br />
+    <div class="col-md-12 text-center">
+
+    </div>
   </div>
 </div>

@@ -1,14 +1,20 @@
-<div class="jumbotron ">
+<div class="container pt-5 animated myElement rubberBand">
 
+  <br />
 
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="float-left">
+        <%= link_to projects_path(@projects), class: "btn btn-outline-secondary btn-sm" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      </div>
+      <br />
+      <br />
+       <h4 class="font-weight-bold">create new project</h4>
 
       <div class="card my-4 border-0 ">
-        <h5 class="font-weight-bold"><%= link_to "projects", projects_path(@projects), class: "link-to" %></h5>
-
 
         <%= simple_form_for @project do |f| %>
             <div class="form-group">
@@ -16,28 +22,26 @@
             </div>
             <br />
             <div class="form-group">
-                <%= f.input :description, label: false, placeholder: "example: one of a kind dish" %>
+                <%= f.input :description, placeholder: "enter description", label: false %>
             </div>
             <!-- <br />
-            <hr />
-            <small id="emailHelp" class="form-text text-muted">Hint: you can add as many or as little categories as you want.</small>
-            <small id="emailHelp" class="form-text text-muted">Every item under this project will inherit the same categories you add here.</small>
+            <small id="emailHelp" class="form-text text-muted">Optional! Hint: you can add as many or as little categories as you want.</small>
             <br />
             <%= f.fields_for :categories do |builder| %>
               <%= render 'category_categories', f: builder %>
+              <br />
+
             <% end %>
-
-            <strong><h4><%= link_to_add_categories "+", f, :categories %></h4></strong>
-
+            <strong><%= link_to_add_categories "+", f, :categories %></strong>
+            <br />
             <br /> -->
             <br />
-
-            <%= link_to "cancel", projects_path(@projects), class: "btn btn-outline-dark btn-sm" %>
-            <%= f.submit "create project", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating project..." } %>
+            <div class="float-right">
+              <%= f.submit "create new project", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "creating project..." } %>
+            </div>
         <% end %>
-
       </div>
-    </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-3"></div>
   </div>
+  <br />
 </div>
