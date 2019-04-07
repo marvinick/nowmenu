@@ -16,15 +16,21 @@
 
 <br />
 <br />
-<br />
 
 <div class="col-md-8">
   <% if @requests.present? %>
     <% @requests.each do |request| %>
+    <div class="card p-3 beige-bg border-0 shadow-sm">
       <p class="each-item-title"><%= link_to request.full_name, project_request_path(@project, request) %></p>
-      <%= request.message %>
+      <p class="content"><%= request.message %></p>
+      <small class="font-weight-bold"><%= time_ago_in_words(request.updated_at) %> ago</small>
+
+      <div class="float-md-right">
+        <%= link_to "edit", edit_project_request_path(@project, request) %> -
+        <%= link_to "retract request", project_request_path(@project, request), method: :destroy, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %>
+      </div>
+    </div>
     <% end %>
-    <hr />
   <% else %>
     <small class="text-center">"They are words that are easy enough to say and which fill vast empty spaces."</small>
     <br />
