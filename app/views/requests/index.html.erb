@@ -21,13 +21,16 @@
   <% if @requests.present? %>
     <% @requests.each do |request| %>
     <div class="card p-3 beige-bg border-0 shadow-sm">
-      <p class="each-item-title"><%= link_to request.full_name, project_request_path(@project, request) %></p>
-      <p class="content"><%= request.message %></p>
-      <small class="font-weight-bold"><%= time_ago_in_words(request.updated_at) %> ago</small>
+      <div class="float-md-left">
+        <p class="each-item-title"><%= request.full_name %></p>
+        <small class="mb-0"><%= request.message %></small>
+        <br />
+        <small class="font-weight-bold"><%= time_ago_in_words(request.updated_at) %> ago</small>
+      </div>
 
       <div class="float-md-right">
-        <%= link_to "edit", edit_project_request_path(@project, request) %> -
-        <%= link_to "retract request", project_request_path(@project, request), method: :destroy, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %>
+        <%= link_to "edit", edit_project_request_path(@project, request), class: "btn btn-outline-secondary btn-sm" %> -
+        <%= link_to "update request", project_request_path(@project, request), method: :destroy, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-outline-secondary btn-sm" %>
       </div>
     </div>
     <% end %>

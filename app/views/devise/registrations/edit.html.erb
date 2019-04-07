@@ -1,7 +1,10 @@
-<div class="jumbotron">
+<%= render "layouts/navbar" %>
+
+
+<div class="container">
 <div class="row  ">
-  <div class="col-md-4"></div>
-  <div class="col-md-3">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
     <div class="card my-4 border-0 ">
       <small><%= link_to "back", :back, class: "exit-text"  %></small>
       <h5 class="font-weight-bold">Edit <%= resource_name.to_s.humanize %></h5>
@@ -18,7 +21,10 @@
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
-
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true
+                       %>
           <%= f.input :password,
                       hint: "leave it blank if you don't want to change it",
                       required: false,
@@ -26,10 +32,7 @@
           <%= f.input :password_confirmation,
                       required: false,
                       input_html: { autocomplete: "new-password" } %>
-          <%= f.input :current_password,
-                      hint: "we need your current password to confirm your changes",
-                      required: true,
-                      input_html: { autocomplete: "current-password" } %>
+
         </div>
 
         <div class="form-actions">

@@ -1,4 +1,4 @@
-<div class="container pt-5 animated myElement rubberBand">
+<div class="container pt-5">
 
   <br />
 
@@ -6,7 +6,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="float-left">
-        <%= link_to project_path(@project), class: "btn btn-outline-secondary btn-sm" do %>
+        <%= link_to project_requests_path(@project, @requests), class: "btn btn-outline-secondary btn-sm" do %>
           <i class="fas fa-times"></i>
         <% end %>
       </div>
