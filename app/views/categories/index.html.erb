@@ -20,16 +20,26 @@
 <br />
 <br />
 
-<div class="col-md-8">
+<div class="row">
+  <div class="col-md-7">
 
-    <% if @categories.present? %>
-      <%= render "categories" %>
-    <% else %>
-    <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
-    <br />
-    <br />
-    <%= image_tag 'getting-there' %>
-    <% end %>
+      <% if @categories.present? %>
+        <%= render "categories" %>
+      <% else %>
+      <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
+      <br />
+      <br />
+      <%= image_tag 'getting-there' %>
+      <% end %>
 
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <div class="card p-4 mb-5">
+      <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.</small>
+    </div>
+    <div class="card p-4">
+      <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.</small>
+    </div>
+  </div>
 </div>
-<div class="col-md-4"></div>
