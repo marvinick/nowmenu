@@ -1,32 +1,33 @@
-<%= render "projects/project_navbar" %>
-
 <div class="container">
-  <div data-controller="delete">
-  <div class="row">
+  <div class="row my-5">
+    <div class="col-md-6">
+      <small><%= link_to "exit",  project_items_path(@project, @items), class: "btn btn-outline-secondary btn-sm" %></small>
+    </div>
+  </div>
 
-    <div class="col-md-4">
-      <div class="card border-0">
+
+  <div class="row" data-controller="delete">
+
+    <div class="col-md-7">
+
+      <div class="card border-0 pr-5">
         <% if @item.image.attached? %>
-          <%= image_tag url_for(@item.image.variant(resize: "500x300")), class: "img-fluid"  %>
+          <%= image_tag url_for(@item.image.variant(resize: "400x400")), class: "img-fluid"  %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-8 ">
-      <div class="row">
-        <div class="col-md-8 col-10">
-          <small><%= link_to "exit",  project_items_path(@project, @items), class: "exit-text" %></small>
-        </div>
-
-        <div class="col-md-4 col-2">
-          <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_path(@project, @item)  %></p>
-          <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %></p>
-        </div>
-
-      </div>
-
-      <h3 class="font-weight-bold mt-1 title"><%= @item.title %></h3>
+    <div class="col-md-5 ">
+      <p class="page-title"><%= @item.title %></p>
       <p class="description"><%= @item.content %></p>
+      <%= link_to "edit", edit_project_item_path(@project, @item)  %>
+      <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div classs="row">
+    <div class="col-md-6">
       <p class="content mb-1"><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</p>
       <p class="content mb-1"><i class="far fa-folder-open fa-fw"></i> belongs in
         <% @item.groups.each do |group| %>
@@ -40,44 +41,47 @@
       </p>
       <p class="content mb-1"><i class="fas fa-dollar-sign fa-fw"></i><%= @item.price.to_i rescue 0 %></p>
 
-
-      <%= link_to "show analytics", result_project_item_path(@project, @item), class: "btn btn-success btn-sm" %>
     </div>
   </div>
-</div>
 
-<br />
-<hr />
-<br />
 
-<div class="row ">
-  <div class="col-md-4">
-    <h5 class="font-weight-bold title"><%= @item.reviews.count %> Reviews</h5>
-    <% if reviewers.include?(current_user.id) %>
-      <small class="description">you've submitted a review</small>
-    <% else %>
-      <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
-    <% end %>
-    <br />
-    <br />
-  </div>
-  <div class="col-md-8">
-    <% if !@item.reviews.present? %>
-      <h6 class="nothing-yet">There are no reviews yet!</h6>
-    <% end %>
+  <br />
+  <hr />
+  <br />
 
-    <% @item.reviews.includes(:user).each do |review| %>
-      <%= link_to project_item_review_path(@project, @item, review) do %>
-        <div class="card  mb-2  border-0">
-          <p class="content"><%= truncate(review.public_review, length: 200) %></p>
-          <p class="description mb-0"><%= time_ago_in_words(review.created_at)  %> ago</p>
-          <p class="description">by <%= review.user.email %>  </p>
-        </div>
-        <hr />
+  <div class="row ">
+    <div class="col-md-12">
+      <h5 class="font-weight-bold title"> Ratings and Reviews</h5>
+      <% if reviewers.include?(current_user.id) %>
+        <small class="description">you've submitted a review</small>
+      <% else %>
+        <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
       <% end %>
-    <% end %>
+      <br />
+      <br />
+    </div>
+    <div class="col-md-12">
+      <% if !@item.reviews.present? %>
+        <h6 class="nothing-yet">There are no reviews yet!</h6>
+      <% end %>
+      <div class="row">
+        <% @item.reviews.includes(:user).each do |review| %>
+          <div class="col-md-4">
+          <%= link_to project_item_review_path(@project, @item, review) do %>
+
+            <div class="card  mb-2 beige-bg p-4  border-0">
+              <p class="content"><%= truncate(review.public_review, length: 200) %></p>
+              <p class="description mb-0"><%= time_ago_in_words(review.created_at)  %> ago</p>
+              <p class="description">by <%= review.user.email %>  </p>
+            </div>
+
+
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
 </div>
 
 <script>
