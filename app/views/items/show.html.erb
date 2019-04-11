@@ -51,32 +51,37 @@
 
   <div class="row ">
     <div class="col-md-12">
-      <h5 class="font-weight-bold title"> Ratings and Reviews</h5>
-      <% if reviewers.include?(current_user.id) %>
-        <small class="description">you've submitted a review</small>
-      <% else %>
-        <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
-      <% end %>
-      <br />
-      <br />
+      <div class="float-left">
+        <h5 class="font-weight-bold title"> Ratings and Reviews</h5>
+        <% if reviewers.include?(current_user.id) %>
+          <small class="description">you've submitted a review</small>
+        <% else %>
+          <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+        <% end %>
+        <br />
+        <br />
+      </div>
+
+      <div class="float-right">
+        <%= link_to "see all reviews", project_item_reviews_path(@project, @item, @reviews), class: "btn btn-outline-secondary btn-sm" %>
+      </div>
     </div>
     <div class="col-md-12">
+
       <% if !@item.reviews.present? %>
         <h6 class="nothing-yet">There are no reviews yet!</h6>
+
       <% end %>
       <div class="row">
-        <% @item.reviews.includes(:user).each do |review| %>
+        <% @item.reviews.includes(:user).limit(3).each do |review| %>
           <div class="col-md-4">
-          <%= link_to project_item_review_path(@project, @item, review) do %>
-
-            <div class="card  mb-2 beige-bg p-4  border-0">
-              <p class="content"><%= truncate(review.public_review, length: 200) %></p>
-              <p class="description mb-0"><%= time_ago_in_words(review.created_at)  %> ago</p>
-              <p class="description">by <%= review.user.email %>  </p>
-            </div>
-
-
-          <% end %>
+            <%= link_to project_item_review_path(@project, @item, review) do %>
+              <div class="card  mb-2 beige-bg p-4  border-0">
+                <p class="content"><%= truncate(review.public_review, length: 200) %></p>
+                <p class="description mb-0"><%= time_ago_in_words(review.created_at)  %> ago</p>
+                <p class="description">by <%= review.user.email %>  </p>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>

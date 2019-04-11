@@ -8,19 +8,22 @@ class ReviewsController < BaseController
     end
 
     def create
-
-        @review = Review.new(review_params)
-        @review.user_id = current_user.id
-        if @review.save
-            redirect_to [@project, @item]
-        else
-            render :new
-        end
+      @review = Review.new(review_params)
+      @review.user_id = current_user.id
+      if @review.save
+          redirect_to [@project, @item]
+      else
+          render :new
+      end
     end
 
     def show; end
 
     def edit; end
+
+    def index
+      @reviews = @item.reviews.all
+    end 
 
     def update
         if @review.update_attributes(review_params)

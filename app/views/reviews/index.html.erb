@@ -1,0 +1,14 @@
+<div class="container mt-5">
+
+
+  <small><%= link_to "exit",  project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %></small>
+  <div class="row mt-5">
+      <% @reviews.each do |review| %>
+      <div class="col-md-12">
+        <div class="card beige-bg py-5 px-3">
+          <%= review.public_review %>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>
