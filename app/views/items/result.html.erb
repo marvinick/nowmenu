@@ -1,10 +1,10 @@
 
 <%=raw Daru::View.dependent_script(:datatables) %>
-<%= render "projects/project_navbar" %>
 
-<div class="container">
-  <small><%= link_to "exit",  project_item_path(@project, @item), class: "exit-text" %></small>
-
+<div class="container m-5">
+  <small><%= link_to "back to #{@item.title}",  project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %></small>
+  <br />
+  <br />
   <h5 class="font-weight-bold animated myElement flipInX">Analytics</h5>
   <p>
     <b>Data : </b>

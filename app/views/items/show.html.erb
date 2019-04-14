@@ -1,28 +1,30 @@
 <div class="container">
   <div class="row my-5">
     <div class="col-md-6">
-      <small><%= link_to "exit",  project_items_path(@project, @items), class: "btn btn-outline-secondary btn-sm" %></small>
+      <small><%= link_to "back to items",  project_items_path(@project, @items), class: "btn btn-outline-secondary btn-sm" %></small>
     </div>
   </div>
 
 
   <div class="row" data-controller="delete">
 
-    <div class="col-md-7">
+    <div class="col-md-4">
 
       <div class="card border-0 pr-5">
         <% if @item.image.attached? %>
-          <%= image_tag url_for(@item.image.variant(resize: "400x400")), class: "img-fluid"  %>
+          <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid"  %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-5 ">
+    <div class="col-md-6 ">
       <p class="page-title"><%= @item.title %></p>
+      <h6><%= @v.mean %> <i class="fas fa-star"></i></h6>
       <p class="description"><%= @item.content %></p>
-      <%= link_to "edit", edit_project_item_path(@project, @item)  %>
-      <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %>
-      <%= link_to "analysis", result_project_item_path(@project, @item) %>
+      <%= link_to "edit", edit_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm"  %>
+      <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-outline-secondary btn-sm" %>
+
+      <%= link_to "analysis", result_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
     </div>
   </div>
   <br />

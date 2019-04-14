@@ -1,8 +1,11 @@
 <div class="jumbotron ">
 
   <div class="row  ">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= link_to project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" do %>
+        <i class="fas fa-times"></i>
+      <% end %>
       <div class="card my-4 border-0 ">
         <h5 class="font-weight-bold">make some changes to the review of <%= @item.title %></h5>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -25,12 +28,13 @@
             <br />
             <%= f.input :public_review, label: false, placeholder: "public review" %>
             <br />
-            <%= link_to "cancel", project_item_review_path(@project, @item, @review), class: "btn btn-outline-dark btn-sm" %>
-            <%= f.submit "change your review", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
+            <div class="float-right">
+              <%= f.submit "change your review", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "making the changes..." } %>
+            </div>
         <% end %>
 
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-2"></div>
   </div>
 </div>

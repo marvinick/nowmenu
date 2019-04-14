@@ -6,6 +6,8 @@ class ItemsController < BaseController
   def index
     # @items = @project.items.with_attached_image.includes(:image_attachment)
     @items = @project.items.all
+    average_reviews = Daru::Vector.new(reviews_from_all_items)
+    @average_reviews = average_reviews.mean
   end
 
   def preview
@@ -38,7 +40,10 @@ class ItemsController < BaseController
     end
   end
 
-  def show; end
+  def show
+    v = Daru::Vector.new(get_values)
+    @v = v
+  end
 
   def edit; end
 
@@ -76,6 +81,20 @@ class ItemsController < BaseController
     @item = @project.items.find(params[:id])
   end
 
+
+  #review in index
+  def reviews_from_all_items
+    total = []
+    @items.each do |item|
+      item.reviews do |review|
+        review.properties.each_value do |v|
+          total << v.to_i
+        end
+      end
+    end
+    total
+  end
+
   def get_keys
     total = []
     @item.reviews.each do |review|
@@ -100,11 +119,7 @@ class ItemsController < BaseController
 
     v = Daru::Vector.new(get_values)
     @v = v
-    # @values = get_values
-    # @keys = get_keys
 
-
-    # df1 = Daru::DataFrame.from_csv('biostats.csv', liberal_parsing: true)
     df1 = Daru::DataFrame.new({a: get_values},
       # order: get_keys,
       index: get_keys

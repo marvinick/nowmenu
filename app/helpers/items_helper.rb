@@ -49,4 +49,21 @@ module ItemsHelper
     total
   end
 
+  def reviews_from_all_items
+    total = []
+    sum = []
+    @items.each do |item|
+      item.reviews do |review|
+        review.properties.each_value do |v|
+          total << v.to_i
+
+        end
+
+      end
+      return total  
+    end
+
+
+  end
+
 end
