@@ -15,5 +15,10 @@
     <div style="width: 500px;"><%=raw @dt_df1.div %></div>
   </p>
 
+  Average <%= @v.mean %>
+  <br />
+  <% @v.each do |v| %>
+    <%= v %>
+  <% end %>
 
 </div>

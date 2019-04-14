@@ -21,7 +21,7 @@
     <% if user_signed_in? %>
       <%= link_to "see your projects", projects_path, class: "btn btn-success"  %>
     <% else %>
-      <%= link_to "login", new_user_session_path, class: "btn btn-outline-secondary"  %>
+      <%= link_to "login", new_user_session_path %>
     <% end %>
   </div>
 </div>

@@ -22,6 +22,7 @@
       <p class="description"><%= @item.content %></p>
       <%= link_to "edit", edit_project_item_path(@project, @item)  %>
       <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %>
+      <%= link_to "analysis", result_project_item_path(@project, @item) %>
     </div>
   </div>
   <br />
