@@ -1,7 +1,15 @@
 <div class="field">
-    <div id="star-rating_<%= field.name.squish! %>">
-      <%= f.label field.name %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-left">
+        <h6 class="font-weight-bold"><%= field.name %></h6>
+      </div>
+      <div class="float-right">
+        <div id="star-rating_<%= field.name.squish! %>" class="mx-5"></div>
+      </div>
     </div>
+  </div>
 
   <script>
     $("#star-rating_<%= field.name %>").each(function() {
