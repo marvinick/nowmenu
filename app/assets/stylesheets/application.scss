@@ -23,6 +23,14 @@
 
  @import 'animate';
 
+ 
+
+ .icon-image {
+   height: 50px!important;
+   width: 50px!important;
+   text-align: center!important;
+ }
+
  .link-to {
     color: #4391e0!important;
  }
@@ -260,5 +268,5 @@ a {
 }
 
 .no-underline a:hover {
-  text-decoration: none;
+  text-decoration: none!important;
 }

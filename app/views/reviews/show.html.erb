@@ -1,6 +1,5 @@
-<%= render "projects/project_navbar" %>
 
-<div class="container">
+<div class="container mt-5">
 
   <div class="row ">
     <div class="col-md-2"></div>
@@ -48,11 +47,11 @@
           <p class="content mb-5"><%= @review.private_review %></p>
 
           <hr class="my-5" />
-          <h6 class="font-weight-bold mb-4">Categories</h6>
+          <h5 class="font-weight-bold mb-4">Categories</h5>
           <% @review.properties.each do |key, value| %>
             <div class="row mb-3 ">
               <div class="col-md-8">
-                <p class="content"><%= key %></p>
+                <h6 class="font-weight-bold"><%= key %></h6>
               </div>
               <div class="col-md-4">
                 <div class="star-rating" data-score= "<%= value %>" ></div>

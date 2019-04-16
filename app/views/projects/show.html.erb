@@ -12,7 +12,7 @@
       <div class="float-md-right">
         <%= link_to "edit", edit_project_path(@project), class: "btn btn-outline-secondary btn-sm" %>
 
-        <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-success" %>
+        <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-outline-secondary" %>
       </div>
     </div>
   </div>
@@ -90,54 +90,59 @@
       <%= link_to  project_requests_path(@project, @requests) do %>
 
         <div class="card p-3 h-100">
-          <h6 class="font-weight-bold mb-0">Requests</h6>
-
-          <br />
-          <small>See the list of people that are still want make a </small>
-          <% @project.requests.last(4).each do |request| %>
-            <div class="card py-1 px-2 border-0">
-              <small class="font-weight-bold card-text"><%= request.full_name %> </small>
-              <small><%= truncate(request.message, length: 40) %></small>
+          <div class="row">
+            <div class="float-left">
+                <%= image_tag 'chat', class: "icon-image mx-3" %>
             </div>
-          <% end %>
+
+            <div class="float-right ">
+              <h6 class="font-weight-bold mb-0">Requests</h6>
+              <small>See the list of people that are still want make a </small>
+
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6 mb-4 ">
       <%= link_to load_activities_project_path(@project) do %>
         <div class="card p-3 h-100">
-          <%= image_tag '', style: 'height:30%;' %>
-          <br />
-          <h6 class="font-weight-bold mb-0">Activities</h6>
-          <small> See what's been happening lately</small>
+          <div class="row">
+
+              <div class="float-left">
+                <%= image_tag 'address-book-100', class: "icon-image  mx-3" %>
+              </div>
+              <div class="float-right ">
+                <h6 class="font-weight-bold mb-0 ">Activities</h6>
+                <small> See what's been happening lately</small>
+              </div>
         </div>
       <% end %>
     </div>
   </div>
 
-  <hr class="m-5">
+  <hr class="m-3">
 
-  <div class="row">
+
     <div class="col-md-12">
-      <h5 class="font-weight-bold mb-0">Most asked questions -   <%= link_to "see more", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %> </h5>
+      <div class="card p-5 shadow-sm">
+        <h5 class="font-weight-bold mb-0">MAQs - most asked questions   </h5>
+        <small>documentation where everyone can benefit from</small>
 
-      <small>documentation where everyone can benefit from</small>
-      <br />
-      <br />
-      <div class="row">
-      <% @project.faqs.limit(4).each do |faq| %>
-        <div class="col-md-6">
+        <br />
+        <br />
+
+        <% @project.faqs.limit(6).each do |faq| %>
           <%= link_to project_faq_path(@project, faq) do %>
-            <div class="card p-3 border-0 shadow-sm">
-              <p class="description font-weight-bold"><%= truncate(faq.ask, length: 200) %> </p>
-            </div>
+
+            <p class="description font-weight-bold"><%= truncate(faq.ask, length: 200) %> </p>
+            <p class="description "><%= truncate(faq.answer, length: 300)  %> </p>
+
           <% end %>
-        </div>
-      <br />
-      <% end %>
-      <br />
+        <br />
+        <% end %>
 
-
+        <%= link_to "see all", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %>
       <!-- <h6 data-controller="inplace-editing"
       data-action="dblclick->inplace-editing#doubleClick"
       data-target="inplace-editing.editable">Here is a header</h6> -->
@@ -172,10 +177,6 @@
       </div> -->
 
     </div>
-    <br />
-    <br />
-    <div class="col-md-12 text-center">
-
-    </div>
   </div>
+
 </div>
