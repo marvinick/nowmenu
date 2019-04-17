@@ -7,14 +7,14 @@
 
       <div class="card mt-2 border-0">
         <div class="card-body">
-          <small><%= link_to "back", project_item_path(@project, @item), class: "exit-text" %></small>
+          <small><%= link_to "back to #{@item.title}", project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %></small>
           <br />
           <br />
           <div class="row">
             <div class="col-md-10 col-9">
               <h5><%= each_review_average %> <i class="fas fa-star"></i></h5>
               <p class="content">by <%= @review.user.email %></p>
-            </div>
+            </div> 
             <div class="col-md-2 col-3">
               <div class=" dropdown">
                 <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >

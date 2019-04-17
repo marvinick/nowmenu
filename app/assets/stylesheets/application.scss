@@ -23,7 +23,13 @@
 
  @import 'animate';
 
- 
+ .pill {
+   padding: 3px;
+   background-color: #f4dec1;
+   border-radius: 5px;
+
+   margin-right: 4px;
+ }
 
  .icon-image {
    height: 50px!important;
@@ -267,6 +273,6 @@ a {
   color: black!important;
 }
 
-.no-underline a:hover {
+ a:hover {
   text-decoration: none!important;
 }

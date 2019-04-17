@@ -92,7 +92,7 @@
         <div class="card p-3 h-100">
           <div class="row">
             <div class="float-left">
-                <%= image_tag 'chat', class: "icon-image mx-3" %>
+                <%= image_tag 'brainstorm', class: "icon-image mx-3" %>
             </div>
 
             <div class="float-right ">
@@ -126,7 +126,7 @@
 
     <div class="col-md-12">
       <div class="card p-5 shadow-sm">
-        <h5 class="font-weight-bold mb-0">MAQs - most asked questions   </h5>
+        <h5 class="font-weight-bold mb-0">MAQs - most asked questions <%= link_to "see all", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %>  </h5>
         <small>documentation where everyone can benefit from</small>
 
         <br />
@@ -142,7 +142,7 @@
         <br />
         <% end %>
 
-        <%= link_to "see all", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %>
+
       <!-- <h6 data-controller="inplace-editing"
       data-action="dblclick->inplace-editing#doubleClick"
       data-target="inplace-editing.editable">Here is a header</h6> -->

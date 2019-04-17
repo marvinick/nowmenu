@@ -57,17 +57,18 @@
       <div class="float-left">
         <h5 class="font-weight-bold title"> Ratings and Reviews</h5>
         <% if reviewers.include?(current_user.id) %>
-          <small class="description">you've submitted a review</small>
+          <small class="font-weight-bold">you've submitted a review</small>
         <% else %>
           <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
         <% end %>
         <br />
         <br />
       </div>
-
-      <div class="float-right">
-        <%= link_to "see all reviews", project_item_reviews_path(@project, @item, @reviews), class: "btn btn-outline-secondary btn-sm" %>
-      </div>
+      <% if @item.reviews.present? %>
+        <div class="float-right">
+          <%= link_to "see all reviews", project_item_reviews_path(@project, @item, @reviews), class: "btn btn-outline-secondary btn-sm" %>
+        </div>
+      <% end %>
     </div>
     <div class="col-md-12">
 
@@ -79,10 +80,17 @@
         <% @item.reviews.includes(:user).limit(3).each do |review| %>
           <div class="col-md-4">
             <%= link_to project_item_review_path(@project, @item, review) do %>
-              <div class="card  mb-2 beige-bg p-4  border-0">
-                <p class="content"><%= truncate(review.public_review, length: 200) %></p>
-                <p class="description mb-0"><%= time_ago_in_words(review.created_at)  %> ago</p>
-                <p class="description">by <%= review.user.email %>  </p>
+              <% review_total_value = [] %>
+              <% review.properties.each do |k, v| %>
+                <% review_total_value << v.to_i %>
+              <% end  %>
+
+              <div class="card  shadow-sm mb-2 beige-bg p-4 ">
+                <div class="star-rating" data-score= "<%= review_total_value.sum / review.properties.count %> " ></div>
+                <small class="mt-3"><%= truncate(review.public_review, length: 100) %></small>
+                <hr class="mt-4"/>
+                <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
+                <small class="font-weight-bold">by <%= review.user.email %>  </small>
               </div>
             <% end %>
           </div>

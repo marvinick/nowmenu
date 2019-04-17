@@ -20,13 +20,18 @@
 
       <div class="col-md-4 col-6">
         <%= link_to project_path(project) do %>
-          <div class="card shadow">
+          <div class="card shadow-sm">
 
             <div class="card-body">
-              <h6 class="font-weight-bold">  <%= project.name %></h6>
-              <p class="description mb-0"><%= project.items.count %> item(s)</p>
-              <p class="description mb-0"><%= project.categories.count %> categories</p>
+              <h5 class="font-weight-bold">  <%= project.name %></h5>
+              <small class="pill"><%= project.items.count %> items</small>
 
+              <small class="pill" ><%= project.categories.count %> categories</small>
+
+              <small class="pill"><%= project.groups.count %> groups</small>
+
+              <small class="pill"><%= project.users.count %> members</small>
+              <br />
               <br />
               <%= link_to "Preview", preview_project_path(project), class: "btn btn-sm btn-outline-secondary" %>
             </div>
