@@ -14,6 +14,9 @@
       <br />
 
       <%= simple_form_for [@project, @item, @review] do |f| %>
+        <%= f.hidden_field :project_id %>
+        <%= f.hidden_field :item_id %>
+        <%= f.hidden_field :user_id %>
         <%= f.fields_for :properties, OpenStruct.new(@review.properties) do |builder| %>
             <% @review.project.categories.each do |category| %>
                 <%= render "field", field: category,  f: builder %>
