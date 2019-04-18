@@ -1,30 +1,14 @@
-
-<div class="card p-2 m-2 border-0 text-center">
-  <small><%= link_to "exit preview", project_path(@project), class: "exit-text" %></small>
-  <br />
-  <h3 class="font-weight-bold"><%= @project.name %></h3>
-</div>
+<div class="container my-5">
 
 <div class="row">
 
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <div class="card shadow p-3 mt-3">
-    <div data-controller="clipboard" >
-      <input data-target="clipboard.source" type="text" value="<%= request.original_url %>" readonly>
-      <button data-action="clipboard#copy" class="btn btn-success">Copy to Clipboard</button>
+    <div class="card  border-0">
+      <small><%= link_to "exit preview", project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small>
+      <br />
+      <h3 class="font-weight-bold"><%= @project.name %></h3>
     </div>
-    </div>
-    <div data-controller="slideshow" data-slideshow-index="1">
-      <button data-action="slideshow#previous">←</button>
-      <button data-action="slideshow#next">→</button>
-
-      <div data-target="slideshow.slide" class="slide">🐵</div>
-      <div data-target="slideshow.slide" class="slide">🙈</div>
-      <div data-target="slideshow.slide" class="slide">🙉</div>
-      <div data-target="slideshow.slide" class="slide">🙊</div>
-    </div>
-    <hr />
     <br />
     <br />
     <% @groups.order('name ASC').each do |group| %>
@@ -60,4 +44,5 @@
 
   </div>
   <div class="col-md-2"></div>
+</div>
 </div>
