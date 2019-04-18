@@ -14,7 +14,7 @@
             <div class="col-md-10 col-9">
               <h5><%= each_review_average %> <i class="fas fa-star"></i></h5>
               <p class="content">by <%= @review.user.email %></p>
-            </div> 
+            </div>
             <div class="col-md-2 col-3">
               <div class=" dropdown">
                 <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
@@ -48,7 +48,7 @@
 
           <hr class="my-5" />
           <h5 class="font-weight-bold mb-4">Categories</h5>
-          <% @review.properties.each do |key, value| %>
+          <% @review.properties.each do |key, value| %> 
             <div class="row mb-3 ">
               <div class="col-md-8">
                 <h6 class="font-weight-bold"><%= key %></h6>
