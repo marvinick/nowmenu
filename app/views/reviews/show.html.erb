@@ -7,29 +7,20 @@
 
       <div class="card mt-2 border-0">
         <div class="card-body">
-          <small><%= link_to "back to #{@item.title}", project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %></small>
+          <small ><%= link_to "back to #{@item.title}", project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %></small>
           <br />
           <br />
+          <br />
+
           <div class="row">
-            <div class="col-md-10 col-9">
-              <h5><%= each_review_average %> <i class="fas fa-star"></i></h5>
-              <p class="content">by <%= @review.user.email %></p>
-            </div>
-            <div class="col-md-2 col-3">
-              <div class=" dropdown">
-                <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" >
-                  <i class="fas fa-ellipsis-h"></i>
-                </span>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <div class="card p-0 border-0">
-                    <div class="dropdown-item">
-                      <p class="description mb-0"><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_review_path(@project, @item, @review) %></p>
-                    </div>
-                    <div class="dropdown-item">
-                      <p class="description mb-0"><i class="fa fa-trash"></i><%= link_to "delete", project_item_review_path, :method => :delete, data: {confirm: "Are you sure?"} %></p>
-                    </div>
-                  </div>
-                </div>
+            <div class="col-md-12">
+              <div class="float-left">
+                <h4 class="font-weight-bold"><%= each_review_average %> <%= image_tag "star-on" %></h4>
+                <small>by <%= @review.user.email %></small>
+              </div>
+              <div class="float-right">
+                <small><i class="fas fa-pencil-alt"></i><%= link_to "edit", edit_project_item_review_path(@project, @item, @review) %></small> -
+                <small><i class="fa fa-trash"></i><%= link_to "delete", project_item_review_path, :method => :delete, data: {confirm: "Are you sure?"} %></small>
               </div>
 
             </div>
@@ -39,19 +30,19 @@
 
           <h6 class="font-weight-bold mt-5 mb-3">Public review</h6>
 
-          <p class="content mb-5"><%= @review.public_review %></p>
+          <small><%= @review.public_review %></small>
 
           <hr />
-          <h6 class="font-weight-bold font-weight-bold mt-5 mb-3">Private review</h6>
+          <h6 class="font-weight-bold mt-5 mb-3">Private review</h6>
 
-          <p class="content mb-5"><%= @review.private_review %></p>
+          <small><%= @review.private_review %></small>
 
           <hr class="my-5" />
-          <h5 class="font-weight-bold mb-4">Categories</h5>
-          <% @review.properties.each do |key, value| %> 
+          <h6 class="font-weight-bold mb-4">Categories</h6>
+          <% @review.properties.each do |key, value| %>
             <div class="row mb-3 ">
               <div class="col-md-8">
-                <h6 class="font-weight-bold"><%= key %></h6>
+                <small class="font-weight-bold"><%= key %></small>
               </div>
               <div class="col-md-4">
                 <div class="star-rating" data-score= "<%= value %>" ></div>

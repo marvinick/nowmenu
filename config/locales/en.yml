@@ -35,3 +35,11 @@ en:
       create: 'has created a project'
       destroy: 'has removed a project'
       update: 'has edited the project'
+
+  activerecord:
+    errors:
+      models:
+        group:
+          attributes:
+            name:
+              blank: "must be included, c'mon bro!"

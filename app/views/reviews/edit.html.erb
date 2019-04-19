@@ -3,7 +3,7 @@
   <div class="row  ">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-      <%= link_to project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" do %>
+      <%= link_to project_item_review_path(@project, @item, @review), class: "btn btn-outline-secondary btn-sm" do %>
         <i class="fas fa-times"></i>
       <% end %>
       <div class="card my-4 border-0 ">
@@ -19,7 +19,7 @@
             <%= f.hidden_field :user_id %>
             <%= f.fields_for :properties, OpenStruct.new(@review.properties) do |builder| %>
                 <% @review.project.categories.each do |category| %>
-                    <%= render "field2", field: category,  f: builder %>
+                    <%= render "field", field: category,  f: builder %>
                     <br />
                 <% end %>
             <% end %>
