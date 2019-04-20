@@ -2,4 +2,75 @@
   html, body {
     padding-bottom: 50px!important;
   }
+
+  .navbar-menu {
+    font-size: 13px;
+    font-weight: 900!important;
+
+  }
+
+  .navbar-nav {
+		float: none!important;
+	}
+
+  .item-title {
+    font-size: 14px!important;
+    font-weight: bold!important;
+    color: #636363!important;
+  }
+
+  .menu-brand {
+    font-weight: bolder!important;
+    color: black!important;
+    font-size: 14px!important;
+  }
+
+  .nav.navbar-nav {
+   	display: flex!important;
+   	justify-content: center!important;
+   	flex-wrap: wrap!important;
+ }
+
+ .fa-user-circle {
+   font-size: 24px!important;
+ }
+
+ .fa-layer-group {
+   color: #636363!important;
+   font-size: 14px!important;
+ }
+
+ .fa-user  {
+   color: #addb8e!important;
+   font-size: 24px!important;
+
+ }
+
+ .fa-accusoft {
+   color: #addb8e!important;
+   font-size: 30px!important;
+
+ }
+
+ .each-item-title {
+   font-size: 18px;
+   font-weight: 700;
+   margin-bottom: 0px;
+   margin-top: -10px;
+ }
+
+  .page-title {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 0px;
+    margin-top: -10px;
+  }
+
+  .search {
+     width: 500px !important;
+  }
+
+  .search-field {
+    width: 325px !important;
+  }
 }

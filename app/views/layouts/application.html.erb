@@ -34,6 +34,12 @@
     	 <% end %>
       <%= yield %>
     </div>
+
+    <% if user_signed_in? %>
+      <% unless controller_name == "home" %>
+        <%= render "layouts/footer" %>
+      <% end %>
+    <% end %>
   </body>
 
 </html>

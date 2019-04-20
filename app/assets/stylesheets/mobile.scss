@@ -8,4 +8,25 @@
     width: 100%;
   }
 
+  #footer {
+    clear: both;
+    background: white!important;
+    padding-top: 0px;
+    margin-bottom: 10px;
+    display: block;
+
+    .navfooter {
+      float:none;
+      display:inline-block;
+      vertical-align: top;
+     }
+
+     .fa {
+       font-size: 20px;
+     }
+  }
+
+  .navbar {
+    display: none;
+  }
 }

@@ -223,32 +223,12 @@
   margin-right: 3px!important;
 
 }
- .nav.navbar-nav {
-	display: flex!important;
-	justify-content: center!important;
-	flex-wrap: wrap!important;
-}
-@media (min-width: 768px) {
-	.navbar-nav {
-		float: none!important;
-	}
-}
 
-.navbar-menu {
-  font-size: 12px!important;
-  font-weight: bold!important;
-  color: #636363!important;
-}
 
-.item-title {
-  font-size: 14px!important;
-  font-weight: bold!important;
-  color: #636363!important;
-}
 
- i {
-   margin-right: 2px!important;
- }
+i {
+  margin-right: 2px!important;
+}
 
 .title {
   color: #515151!important;
@@ -274,32 +254,7 @@
 }
 
 
- .menu-brand {
-   font-weight: bolder!important;
-   color: black!important;
-   font-size: 14px!important;
- }
 
-.fa-user-circle {
-  font-size: 24px!important;
-}
-
- .fa-layer-group {
-   color: #636363!important;
-   font-size: 14px!important;
- }
-
- .fa-user  {
-   color: #addb8e!important;
-   font-size: 24px!important;
-
- }
-
- .fa-accusoft {
-   color: #addb8e!important;
-   font-size: 30px!important;
-
- }
 
  .grey-bg {
    background-color: #f7f7f7!important;

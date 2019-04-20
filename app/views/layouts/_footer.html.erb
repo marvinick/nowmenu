@@ -1,17 +1,31 @@
-<div class="container">
-  <div class="footer beige-bg">
-    <div class="row">
-      <div class="col-md-4">
+<div id="footer">
+  <div class="icon-bar">
+    <%= link_to root_url do %>
+      <span class="fa fa-home"></span>
+    <% end %>
 
-        <p class="description">Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
-      </div>
-      <div class="col-md-4">
-        <p class="description">Posted by: Hege Refsnes</p>
-        
-      </div>
-      <div class="col-md-4">
-        <p class="description">Posted by: Hege Refsnes</p>
+    <a href="#"><i class="fa fa-"></i></a>
 
-      </div>
+    <% if user_signed_in? %>
+      <% if @account %>
+        <%= link_to lookups_path(@account) do %>
+          <i class="fa fa-search"> </i>
+        <% end %>
+      <% elsif current_account %>
+        <%= link_to lookups_path(current_account) do %>
+          <i class="fa fa-search"> </i>
+        <% end %>
+      <% else %>
+        <a href="#"><i class="fa fa-"></i></a>
+      <% end %>
+        <a href="#"><i class="fa fa-"></i></a>
+
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log out?"}  do %>
+      <i class="fa fa-user"></i>
+    <% end %>
   </div>
+
+  <div class="container"></div>
 </div>

@@ -10,44 +10,47 @@
 
     <div class="col-md-4">
 
-      <div class="card border-0 pr-5">
+      <div class="card border-0 shadow-sm p-2">
         <% if @item.image.attached? %>
           <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid", id: "myImg"  %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-6 ">
-      <p class="page-title"><%= @item.title %></p>
-      <h6><%= @v.mean %> <i class="fas fa-star"></i></h6>
-      <p class="description"><%= @item.content %></p>
-      <%= link_to "edit", edit_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm"  %>
-      <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-outline-secondary btn-sm" %>
+    <div class="col-md-8 ">
+      <div class="float-left">
+        <p class="page-title"><%= @item.title %></p>
+      </div>
+      <div class="float-right">
+        <%= link_to "edit", edit_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm"  %>
+        <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-outline-secondary btn-sm" %>
 
-      <%= link_to "analysis", result_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+        <%= link_to "analysis", result_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+      <br />
+      <br />
+        <h6><%= @v.mean %> <i class="fas fa-star"></i></h6>
+        <small><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</small>
+        <br />
+        <small><i class="far fa-folder-open fa-fw"></i> belongs in
+          <% @item.groups.each do |group| %>
+            <span class="font-weight-bold"><%= group.name %></span><%= "," unless group == @item.groups.last %>
+          <% end %>
+        </small>
+        <br />
+        <small><i class="fas fa-person-booth fa-fw"></i> you'll be voting on
+          <% @project.categories.each do |cat| %>
+            <span class="font-weight-bold"><%= cat.name %></span><%= "," unless cat == @project.categories.last %>
+          <% end %>
+        </small>
+        <br />
+        <small><i class="fas fa-dollar-sign fa-fw"></i><%= @item.price.to_i rescue 0 %></small>
+        <br />
+
+        <p class="description"><%= @item.content %></p>
+
     </div>
   </div>
-  <br />
-  <br />
-  <div classs="row">
-    <div class="col-md-6">
-      <p class="content mb-1"><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</p>
-      <p class="content mb-1"><i class="far fa-folder-open fa-fw"></i> belongs in
-        <% @item.groups.each do |group| %>
-          <span class="font-weight-bold"><%= group.name %></span><%= "," unless group == @item.groups.last %>
-        <% end %>
-      </p>
-      <p class="content mb-1"><i class="fas fa-person-booth fa-fw"></i> you'll be voting on
-        <% @project.categories.each do |cat| %>
-          <span class="font-weight-bold"><%= cat.name %></span><%= "," unless cat == @project.categories.last %>
-        <% end %>
-      </p>
-      <p class="content mb-1"><i class="fas fa-dollar-sign fa-fw"></i><%= @item.price.to_i rescue 0 %></p>
-
-    </div>
-  </div>
-
-
   <br />
   <hr />
   <br />
