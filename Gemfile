@@ -70,7 +70,7 @@ gem 'rails-hyperstack'
 gem 'animate.css-rails', '~> 3.2.0'
 
 #image upload
-gem 'aws-sdk'
+gem 'aws-sdk' 
 gem "aws-sdk-s3", require: false
 gem "mini_magick"
 

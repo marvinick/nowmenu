@@ -125,21 +125,18 @@
 
 
     <div class="col-md-12">
-      <div class="card p-5 shadow-sm">
+      <div class="card p-3 shadow-sm">
         <h5 class="font-weight-bold mb-0">MAQs - most asked questions <%= link_to "see all", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %>  </h5>
         <small>documentation where everyone can benefit from</small>
 
         <br />
-        <br />
-
         <% @project.faqs.limit(6).each do |faq| %>
           <%= link_to project_faq_path(@project, faq) do %>
 
-            <p class="description font-weight-bold"><%= truncate(faq.ask, length: 200) %> </p>
-            <p class="description "><%= truncate(faq.answer, length: 300)  %> </p>
+            <small class="font-weight-bold"><%= truncate(faq.ask, length: 150) %> </small>
 
           <% end %>
-        <hr />
+          <hr />
         <% end %>
 
 

@@ -1,31 +1,85 @@
-<%= render "layouts/navbar" %>
 
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
 
-      <div class="col-md-8">
 
-        <p class="home-title">LiveMenu</p>
-        <p class="home-description" >
-          You spent days creating the most authentic dish you could think of.  Everyone you know tells you that the food is incredible. It goes to the menu and up for service this week.
-          That night was so busy, but overall it went well. Few days later you look up Yelp to see the latest feedback about the restaurant.
-        </p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="text-center">
+        <h4 class="font-weight-bold">LiveMenu </h4>
+        <p class="description">collaborate with your fellow chefs and trusted customers to create your new dish</p>
+
+
+
+        <% if user_signed_in? %>
+          <%= link_to "see your projects", projects_path, class: "btn btn-outline-secondary "  %>
+        <% else %>
+          <%= link_to "log in", new_user_session_path,  class: "btn btn-outline-secondary " %>
+          <%= link_to "get started", new_user_registration_path,  class: "btn btn-outline-secondary " %>
+        <% end %>
+        <br >
+        <br >
+        <%= image_tag "getting-there" %>
+
+      </div>
+      <br >
+      <br >
+      <small>
+
+        You spent days creating the most authentic dish you could think of.  Everyone you know tells you that the food is incredible. It goes to the menu and up for service this week.
+        That night was so busy, but overall it went well. Few days later you look up Yelp to see the latest feedback about the restaurant.
+      </small>
+      <br >
+      <br >
+      <hr />
+      <br >
+      <br >
+      <h6 class="text-center font-weight-bold">Features</h6>
+      <div class="row mt-5">
+
+        <div class="col-md-6">
+          <%= image_tag "books", class: "icon-image" %>
+          <small>
+            You spent days creating the most authentic dish you could think of.  Everyone you know tells you that the food is incredible. It goes to the menu and up for service this week.
+            That night was so busy, but overall it went well. Few days later you look up Yelp to see the latest feedback about the restaurant.
+          </small>
+
+        </div>
+
+        <div class="col-md-6">
+          <%= image_tag "brainstorm", class: "icon-image" %>
+          <small>
+            You spent days creating the most authentic dish you could think of.  Everyone you know tells you that the food is incredible. It goes to the menu and up for service this week.
+            That night was so busy, but overall it went well. Few days later you look up Yelp to see the latest feedback about the restaurant.
+          </small>
+        </div>
+
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <%= image_tag "maintenance", class: "icon-image" %>
+          <small>
+            You spent days creating the most authentic dish you could think of.  Everyone you know tells you that the food is incredible. It goes to the menu and up for service this week.
+            That night was so busy, but overall it went well. Few days later you look up Yelp to see the latest feedback about the restaurant.
+          </small>
+
+        </div>
+
+        <div class="col-md-6">
+          <%= image_tag "statistics", class: "icon-image" %>
+          <small>
+            You spent days creating the most authentic dish you could think of.  Everyone you know tells you that the food is incredible. It goes to the menu and up for service this week.
+            That night was so busy, but overall it went well. Few days later you look up Yelp to see the latest feedback about the restaurant.
+          </small>
+        </div>
+
       </div>
 
     </div>
-
-    <hr class="my-4">
-
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <% if user_signed_in? %>
-      <%= link_to "see your projects", projects_path, class: "btn btn-success"  %>
-    <% else %>
-      <%= link_to "login", new_user_session_path %>
-    <% end %>
   </div>
+
+
+
+
+
 </div>
-
-
-
-<%= render "layouts/footer" %>

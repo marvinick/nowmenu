@@ -26,19 +26,8 @@
             </div>
           </div>
 
-          <hr />
-
-          <h6 class="font-weight-bold mt-5 mb-3">Public review</h6>
-
-          <small><%= @review.public_review %></small>
-
-          <hr />
-          <h6 class="font-weight-bold mt-5 mb-3">Private review</h6>
-
-          <small><%= @review.private_review %></small>
-
           <hr class="my-5" />
-          <h6 class="font-weight-bold mb-4">Categories</h6>
+
           <% @review.properties.each do |key, value| %>
             <div class="row mb-3 ">
               <div class="col-md-8">
@@ -49,12 +38,29 @@
               </div>
             </div>
           <% end %>
+
+          <hr class="my-5" />
+
+          <h6 class="font-weight-bold mt-5 mb-3">Public review</h6>
+
+          <small><%= @review.public_review %></small>
+
+          <br />
+          <br />
+
+          <div class="card  border-0 beige-bg p-3">
+            <h6 class="font-weight-bold ">Private review</h6>
+            <small><%= @review.private_review %></small>
+          </div>
+
         </div>
       </div>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
+
+
 <script>
   $('.star-rating').raty({
     path: '/assets/',
