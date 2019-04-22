@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_012551) do
+ActiveRecord::Schema.define(version: 2019_04_22_040154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,23 @@ ActiveRecord::Schema.define(version: 2019_03_22_012551) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.index ["project_id"], name: "index_categories_on_project_id"
+  end
+
+  create_table "drafts", id: :serial, force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.text "previous_draft"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_drafts_on_created_at"
+    t.index ["event"], name: "index_drafts_on_event"
+    t.index ["item_id"], name: "index_drafts_on_item_id"
+    t.index ["item_type"], name: "index_drafts_on_item_type"
+    t.index ["updated_at"], name: "index_drafts_on_updated_at"
+    t.index ["whodunnit"], name: "index_drafts_on_whodunnit"
   end
 
   create_table "faqs", force: :cascade do |t|

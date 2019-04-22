@@ -30,10 +30,6 @@ gem 'goldiloader'
 gem 'kaminari'
 gem 'actionpack-action_caching'
 
-#performance measure
-gem "memory_profiler"
-gem "derailed_benchmarks"
-# gem 'jemalloc'
 gem 'bullet', group: 'development'
 
 #data analysis
@@ -46,7 +42,6 @@ gem 'eps'
 
 #forms
 gem 'simple_form'
-gem 'wicked'
 
 #activity
 gem 'public_activity'
@@ -70,7 +65,7 @@ gem 'rails-hyperstack'
 gem 'animate.css-rails', '~> 3.2.0'
 
 #image upload
-gem 'aws-sdk' 
+gem 'aws-sdk'
 gem "aws-sdk-s3", require: false
 gem "mini_magick"
 
