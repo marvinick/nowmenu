@@ -10,11 +10,9 @@
 
     <div class="col-md-4">
 
-      <div class="card border-0 shadow-sm p-2">
-        <% if @item.image.attached? %>
-          <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid", id: "myImg"  %>
-        <% end %>
-      </div>
+      <% if @item.image.attached? %>
+        <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid", id: "myImg"  %>
+      <% end %>
       <br >
     </div>
 

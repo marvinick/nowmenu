@@ -60,6 +60,7 @@ gem 'acts_as_list'
 
 #frontend
 gem 'rails-hyperstack'
+gem 'bootstrap', '~> 4.3.1'
 
 #animation
 gem 'animate.css-rails', '~> 3.2.0'
