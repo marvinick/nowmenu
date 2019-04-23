@@ -120,10 +120,7 @@ class ItemsController < BaseController
     v = Daru::Vector.new(get_values)
     @v = v
 
-    df1 = Daru::DataFrame.new({a: get_values},
-      # order: get_keys,
-      index: get_keys
-    )
+    df1 = Daru::DataFrame.rows([get_values], order: get_keys)
 
     options2 = {
       adapter: :datatables,
