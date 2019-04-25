@@ -42,7 +42,7 @@ class ItemsController < BaseController
 
   def show
     v = Daru::Vector.new(get_values)
-    @v = v
+    @v = v.mean
   end
 
   def edit; end

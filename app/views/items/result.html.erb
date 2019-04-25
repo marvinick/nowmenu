@@ -1,3 +1,8 @@
+<%=raw Daru::View.dependent_script(:nyaplot) %>
+<%=raw Daru::View.dependent_script(:googlecharts) %>
+<%=raw Daru::View.dependent_script(:highcharts) %>
+<%=raw Daru::View.dependent_script(:datatables) %>
+
 <div class="container m-5">
   <small><%= link_to "back to #{@item.title}",  project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %></small>
   <br />

@@ -1,109 +1,109 @@
 
 
-<div class="container">
-  <div class="row my-5">
-    <div class="col-md-6">
-      <small><%= link_to "back to items",  project_items_path(@project, @items), class: "btn btn-outline-secondary btn-sm" %></small>
-    </div>
-  </div>
-
-
-  <div class="row" data-controller="delete">
-
-    <div class="col-md-4">
-
-      <% if @item.image.attached? %>
-        <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid", id: "myImg"  %>
-      <% end %>
-      <br >
-    </div>
-
-    <div class="col-md-8 ">
-      <div class="float-left">
-        <p class="page-title"><%= @item.title %></p>
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-6">
+        <small><%= link_to "back to items",  project_items_path(@project, @items), class: "btn btn-outline-secondary btn-sm" %></small>
       </div>
-      <div class="float-right">
-        <%= link_to "edit", edit_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm"  %>
-        <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-outline-secondary btn-sm" %>
-
-        <%= link_to "analysis", result_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
-      </div>
-      <br />
-      <br />
-        <h6><%= @v.mean %> <i class="fas fa-star"></i></h6>
-        <small><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</small>
-        <br />
-        <small><i class="far fa-folder-open fa-fw"></i> belongs in
-          <% @item.groups.each do |group| %>
-            <span class="font-weight-bold"><%= group.name %></span><%= "," unless group == @item.groups.last %>
-          <% end %>
-        </small>
-        <br />
-        <small><i class="fas fa-person-booth fa-fw"></i> you'll be voting on
-          <% @project.categories.each do |cat| %>
-            <span class="font-weight-bold"><%= cat.name %></span><%= "," unless cat == @project.categories.last %>
-          <% end %>
-        </small>
-        <br />
-        <small><i class="fas fa-dollar-sign fa-fw"></i><%= @item.price.to_i rescue 0 %></small>
-        <br />
-
-        <p class="description"><%= @item.content %></p>
-
     </div>
-  </div>
-  <br />
-  <hr />
-  <br />
 
-  <div class="row ">
-    <div class="col-md-12">
-      <div class="float-left">
-        <h5 class="font-weight-bold title"> Ratings and Reviews</h5>
-        <% if reviewers.include?(current_user.id) %>
-          <small class="font-weight-bold">you've submitted a review</small>
-        <% else %>
-          <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+    <div class="card p-5 shadow-sm">
+    <div class="row" data-controller="delete">
+
+      <div class="col-md-4">
+
+        <% if @item.image.attached? %>
+          <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid", id: "myImg"  %>
         <% end %>
-        <br />
-        <br />
+        <br >
       </div>
-      <% if @item.reviews.present? %>
-        <div class="float-right">
-          <%= link_to "see all reviews", project_item_reviews_path(@project, @item, @reviews), class: "btn btn-outline-secondary btn-sm" %>
+
+      <div class="col-md-8 ">
+        <div class="float-left">
+          <p class="page-title"><%= @item.title %></p>
         </div>
-      <% end %>
-    </div>
-    <div class="col-md-12">
+        <div class="float-right">
+          <%= link_to "edit", edit_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm"  %>
+          <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-outline-secondary btn-sm" %>
 
-      <% if !@item.reviews.present? %>
-        <h6 class="nothing-yet">There are no reviews yet!</h6>
-
-      <% end %>
-      <div class="row">
-        <% @item.reviews.includes(:user).limit(3).each do |review| %>
-          <div class="col-md-4">
-            <%= link_to project_item_review_path(@project, @item, review) do %>
-              <% review_total_value = [] %>
-              <% review.properties.each do |k, v| %>
-                <% review_total_value << v.to_i %>
-              <% end  %>
-
-              <div class="card shadow-sm mb-2 p-4 ">
-                <div class="star-rating" data-score= "<%= review_total_value.sum / review.properties.count %> " ></div>
-                <small class="mt-3"><%= truncate(review.public_review, length: 100) %></small>
-                <hr class="mt-4"/>
-                <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
-                <small class="font-weight-bold">by <%= review.user.email %>  </small>
-              </div>
+          <%= link_to "analysis", result_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+        </div>
+        <br />
+        <br />
+          <h6><%= @v %> <i class="fas fa-star"></i></h6>
+          <small><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</small>
+          <br />
+          <small><i class="far fa-folder-open fa-fw"></i> belongs in
+            <% @item.groups.each do |group| %>
+              <span class="font-weight-bold"><%= group.name %></span><%= "," unless group == @item.groups.last %>
             <% end %>
+          </small>
+          <br />
+          <small><i class="fas fa-person-booth fa-fw"></i> you'll be voting on
+            <% @project.categories.each do |cat| %>
+              <span class="font-weight-bold"><%= cat.name %></span><%= "," unless cat == @project.categories.last %>
+            <% end %>
+          </small>
+          <br />
+          <small><i class="fas fa-dollar-sign fa-fw"></i><%= @item.price.to_i rescue 0 %></small>
+          <br />
+
+          <p class="description"><%= @item.content %></p>
+
+      </div>
+    </div>
+    <br />
+    <hr />
+    <br />
+
+    <div class="row ">
+      <div class="col-md-12">
+        <div class="float-left">
+          <h5 class="font-weight-bold title"> Ratings and Reviews</h5>
+          <% if reviewers.include?(current_user.id) %>
+            <small class="font-weight-bold">you've submitted a review</small>
+          <% else %>
+            <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+          <% end %>
+          <br />
+          <br />
+        </div>
+        <% if @item.reviews.present? %>
+          <div class="float-right">
+            <%= link_to "see all reviews", project_item_reviews_path(@project, @item, @reviews), class: "btn btn-outline-secondary btn-sm" %>
           </div>
         <% end %>
+      </div>
+      <div class="col-md-12">
+
+        <% if !@item.reviews.present? %>
+          <h6 class="nothing-yet">There are no reviews yet!</h6>
+
+        <% end %>
+        <div class="row">
+          <% @item.reviews.includes(:user).limit(3).each do |review| %>
+            <div class="col-md-4">
+              <%= link_to project_item_review_path(@project, @item, review) do %>
+                <% review_total_value = [] %>
+                <% review.properties.each do |k, v| %>
+                  <% review_total_value << v.to_i %>
+                <% end  %>
+
+                <div class="card shadow-sm mb-2 p-4 ">
+                  <div class="star-rating" data-score= "<%= review_total_value.sum / review.properties.count %> " ></div>
+                  <small class="mt-3"><%= truncate(review.public_review, length: 100) %></small>
+                  <hr class="mt-4"/>
+                  <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
+                  <small class="font-weight-bold">by <%= review.user.email %>  </small>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 <!-- Trigger the Modal -->
 <!-- <img id="myImg" src="img_snow.jpg" alt="Snow" style="width:100%;max-width:300px"> -->
 
