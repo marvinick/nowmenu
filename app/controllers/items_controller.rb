@@ -107,18 +107,21 @@ class ItemsController < BaseController
   end
 
   def get_values
+    all = []
     total = []
     @item.reviews.each do |review|
       review.properties.each_value do |v|
         total << v.to_i
       end
+
     end
+
     total
   end
 
-  def item_dataframes
-    v = Daru::Vector.new(get_values)
-    @v = v
+  def item_dataframe
+    @v = Daru::Vector.new get_values, type: :category
+
     df1 = Daru::DataFrame.rows([get_values], order: get_keys)
   end
 

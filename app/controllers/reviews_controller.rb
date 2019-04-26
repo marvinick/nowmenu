@@ -17,13 +17,15 @@ class ReviewsController < BaseController
       end
     end
 
-    def show; end
+    def show
+      @review_score = Daru::Vector.new(each_review_average)
+    end
 
     def edit; end
 
     def index
       @reviews = @item.reviews.all
-    end 
+    end
 
     def update
         if @review.update_attributes(review_params)
@@ -60,5 +62,14 @@ class ReviewsController < BaseController
     def set_review
         @review = @item.reviews.find(params[:id])
     end
+
+    def each_review_average
+      review_total_value = []
+      @review.properties.each do |k, v|
+        review_total_value << v.to_i
+      end
+      review_total_value
+    end
+
 
 end

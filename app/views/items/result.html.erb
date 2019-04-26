@@ -3,16 +3,13 @@
   <br />
   <br />
   <h5 class="font-weight-bold animated myElement flipInX">Analytics</h5>
-  <p>
-    <b>Data : </b>
-    <%=raw @dt_df1.data %>
-    <br>
-    <b>Table : </b>
-    <br>
-    <div style="width: 500px;"><%=raw @dt_df1.div %></div>
-  </p>
+
 
   Average <%= @v.mean %>
+  Frequency <% @v.frequencies.each do |f| %>
+       <%= f %>
+        <% end %>
+  Summary <%= @v.summary %>
   <br />
   <% @v.each do |v| %>
     <%= v %>
