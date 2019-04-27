@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-startup-image" href="launch.png">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  
+
   </head>
 
 
@@ -30,11 +30,7 @@
       <%= yield %>
     </div>
 
-    <% if user_signed_in? %>
-      <% unless controller_name == "home" %>
-        <%= render "layouts/footer" %>
-      <% end %>
-    <% end %>
+  
   </body>
 
 </html>

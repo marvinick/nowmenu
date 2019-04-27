@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'draftsman', '~> 0.7.1'
+gem 'draftsman'
 
 #roles
 gem "pundit"
@@ -29,12 +29,11 @@ gem 'sidekiq'
 gem 'goldiloader'
 gem 'kaminari'
 gem 'actionpack-action_caching'
-
-gem 'bullet', group: 'development'
+gem 'rack-cache'
 
 #data analysis
 gem "daru", git: 'https://github.com/SciRuby/daru.git'
-gem 'eps'
+gem 'eps', require: false
 
 #forms
 gem 'simple_form'
@@ -63,7 +62,7 @@ gem 'animate.css-rails', '~> 3.2.0'
 
 #image upload
 gem 'aws-sdk'
-gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3"
 gem "mini_magick"
 
 group :development, :test do
@@ -78,10 +77,11 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 group :test do
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'factory_bot_rails'
