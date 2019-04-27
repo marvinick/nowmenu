@@ -29,12 +29,13 @@ Rails.application.routes.draw do
       member do
         get 'preview'
         get "result"
+        delete :delete_image
       end
       collection do
         patch :sort
       end
       resources :reviews
-  
+
     end
 
     resources :faqs

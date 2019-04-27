@@ -36,6 +36,8 @@
             <% end %>
             <br />
             <br />
+            <%= link_to "remove", delete_image_project_item_url(@project, @item, @item_image) %>
+            <br />
             <div class="float-right">
               <%= f.submit "update this item", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "updating this item..." } %>
             </div>

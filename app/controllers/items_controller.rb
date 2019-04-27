@@ -64,6 +64,12 @@ class ItemsController < BaseController
     end
   end
 
+  def delete_image
+    @item_image = ActiveStorage::Attachment.find(params[:id])
+    @item_image.purge
+    redirect_back(fallback_location: request.referer)
+  end
+
   def result
     item_dataframe
   end
@@ -71,7 +77,7 @@ class ItemsController < BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :content, :user_id, :category, :position, :price, :image, :project_id, :group_id, group_ids: [])
+    params.require(:item).permit(:title, :content, :user_id, :category, :delete_image, :position, :price, :image, :project_id, :group_id, group_ids: [])
   end
 
   def set_project
