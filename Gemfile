@@ -34,6 +34,8 @@ gem 'rack-cache'
 #data analysis
 gem "daru", git: 'https://github.com/SciRuby/daru.git'
 gem 'eps', require: false
+gem 'chartkick'
+gem 'groupdate'
 
 #forms
 gem 'simple_form'

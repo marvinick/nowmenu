@@ -19,6 +19,8 @@
 //= require toastr
 //= require jquery.select2buttons
 //= require jquery.easy-autocomplete
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 
