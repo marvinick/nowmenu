@@ -74,6 +74,10 @@ class ItemsController < BaseController
     item_dataframe
   end
 
+  def chart
+    render json: @project.items.group_by_day(:created_at).count
+  end
+
   private
 
   def item_params

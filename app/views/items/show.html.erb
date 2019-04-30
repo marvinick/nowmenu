@@ -16,6 +16,7 @@
           <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid", id: "myImg"  %>
         <% end %>
         <br >
+      
       </div>
 
       <div class="col-md-8 ">
@@ -31,7 +32,7 @@
         <br />
         <br />
           <h6><%= @v_mean %> <i class="fas fa-star"></i></h6>
-          
+
           <small><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</small>
           <br />
           <small><i class="far fa-folder-open fa-fw"></i> belongs in

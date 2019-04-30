@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     resources :categories
 
     resources :items do
+      collection do
+        get 'chart'
+      end
+
       member do
         get 'preview'
         get "result"
@@ -46,6 +50,8 @@ Rails.application.routes.draw do
 
     post "items_filter", action: :index, controller: "items_filter"
   end
+
+
 
   # Service Worker Routes
   get '/service-worker.js' => "service_worker#service_worker"
