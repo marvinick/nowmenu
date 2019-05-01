@@ -1,5 +1,5 @@
 class ReviewsController < BaseController
-    before_action :set_item
+    before_action :set_item, except: [:chart]
     before_action :set_review, only: [:show, :edit, :destroy, :update]
     caches_action :index, :show, :new, :edit
 
@@ -41,26 +41,25 @@ class ReviewsController < BaseController
       end
     end
 
+    def chart
+      @project = Project.find(params[:project_id])
+      @item = @project.items.find(params[:id])
+      render json: @item.reviews.group_by_day(:created).count
+    end
+
     private
 
     def review_params
-        params.require(:review).permit(:project_id, :item_id, :user_id, :private_review, :public_review, properties: {})
-        # params.require(:review).tap do |whitelisted|
-        #     whitelisted[:properties] = params[:review][:properties]
-        #     whitelisted[:public_review] = params[:review][:public_review]
-        #     whitelisted[:private_review] = params[:review][:private_review]
-        #     whitelisted[:project_id] = params[:review][:project_id]
-        #     whitelisted[:item_id] = params[:review][:item_id]
-        # end
+      params.require(:review).permit(:project_id, :item_id, :user_id, :private_review, :public_review, properties: {})
     end
 
     def set_item
-        @project = Project.find(params[:project_id])
-        @item = @project.items.find(params[:item_id])
+      @project = Project.find(params[:project_id])
+      @item = @project.items.find(params[:id])
     end
 
     def set_review
-        @review = @item.reviews.find(params[:id])
+      @review = @item.reviews.find(params[:id])
     end
 
     def each_review_average

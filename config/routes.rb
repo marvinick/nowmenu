@@ -26,19 +26,23 @@ Rails.application.routes.draw do
     resources :categories
 
     resources :items do
-      collection do
-        get 'chart'
-      end
 
       member do
         get 'preview'
         get "result"
         delete :delete_image
       end
+
       collection do
         patch :sort
+        get 'chart'
       end
-      resources :reviews
+
+      resources :reviews do
+        collection do
+          get 'chart'
+        end
+      end
 
     end
 
@@ -49,6 +53,12 @@ Rails.application.routes.draw do
     resources :project_users, path: :users, module: :projects
 
     post "items_filter", action: :index, controller: "items_filter"
+
+    resources :charts do
+      collection do
+        get 'chart'
+      end
+    end
   end
 
 

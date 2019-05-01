@@ -16,7 +16,7 @@
           <%= image_tag url_for(@item.image.variant(resize: "400x200")), class: "img-fluid", id: "myImg"  %>
         <% end %>
         <br >
-      
+
       </div>
 
       <div class="col-md-8 ">
@@ -80,10 +80,12 @@
 
         <% if !@item.reviews.present? %>
           <h6 class="nothing-yet">There are no reviews yet!</h6>
-
         <% end %>
+
         <div class="row">
+          <%= line_chart chart_project_item_reviews_path %>
           <% @item.reviews.includes(:user).limit(3).each do |review| %>
+
             <div class="col-md-4">
               <%= link_to project_item_review_path(@project, @item, review) do %>
                 <% review_total_value = [] %>
