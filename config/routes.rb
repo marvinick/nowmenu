@@ -44,7 +44,11 @@ Rails.application.routes.draw do
         get 'chart'
       end
 
-      resources :reviews
+      resources :reviews do
+        member do
+          get 'review_chart'
+        end
+      end
     end
 
     resources :faqs
@@ -55,10 +59,7 @@ Rails.application.routes.draw do
 
     post "items_filter", action: :index, controller: "items_filter"
 
-
   end
-
-
 
   # Service Worker Routes
   get '/service-worker.js' => "service_worker#service_worker"

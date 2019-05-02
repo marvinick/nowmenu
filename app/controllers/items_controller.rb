@@ -79,7 +79,7 @@ class ItemsController < BaseController
   end
 
   def reviews_chart
-    render json: @item.reviews.group_by_day(:created_at).count 
+    render json: @item.reviews.group_by_day(:created_at).count
   end
 
   private
@@ -129,13 +129,11 @@ class ItemsController < BaseController
       end
 
     end
-
     total
   end
 
   def item_dataframe
     @v = Daru::Vector.new get_values, type: :category
-
     df1 = Daru::DataFrame.rows([get_values], order: get_keys)
   end
 

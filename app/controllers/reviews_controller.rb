@@ -1,6 +1,6 @@
 class ReviewsController < BaseController
-    before_action :set_item, except: [:chart]
-    before_action :set_review, only: [:show, :edit, :destroy, :update]
+    before_action :set_item
+    before_action :set_review, only: [:show, :edit, :destroy, :update, :review_chart]
     caches_action :index, :show, :new, :edit
 
     def new
@@ -41,7 +41,10 @@ class ReviewsController < BaseController
       end
     end
 
-  
+    def review_chart
+      @reviews_chart = render json: @review.properties
+    end
+
 
     private
 
@@ -51,7 +54,7 @@ class ReviewsController < BaseController
 
     def set_item
       @project = Project.find(params[:project_id])
-      @item = @project.items.find(params[:id])
+      @item = @project.items.find(params[:item_id])
     end
 
     def set_review
@@ -65,6 +68,5 @@ class ReviewsController < BaseController
       end
       review_total_value
     end
-
 
 end
