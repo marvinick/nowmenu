@@ -28,11 +28,11 @@ class ReviewsController < BaseController
     end
 
     def update
-        if @review.update_attributes(review_params)
-          redirect_to project_item_review_path(@project, @item, @review)
-        else
-          render :edit
-        end
+      if @review.update_attributes(review_params)
+        redirect_to project_item_review_path(@project, @item, @review)
+      else
+        render :edit
+      end
     end
 
     def destroy
@@ -41,11 +41,7 @@ class ReviewsController < BaseController
       end
     end
 
-    def chart
-      @project = Project.find(params[:project_id])
-      @item = @project.items.find(params[:id])
-      render json: @item.reviews.group_by_day(:created).count
-    end
+  
 
     private
 

@@ -1,6 +1,6 @@
 class ItemsController < BaseController
   before_action :set_project
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :result]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :result, :reviews_chart]
   caches_action :index, :show, :preview, :result, expires_in: 1.hour
 
   def index
@@ -76,6 +76,10 @@ class ItemsController < BaseController
 
   def chart
     render json: @project.items.group_by_day(:created_at).count
+  end
+
+  def reviews_chart
+    render json: @item.reviews.group_by_day(:created_at).count 
   end
 
   private

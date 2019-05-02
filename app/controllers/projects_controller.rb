@@ -55,6 +55,12 @@ class ProjectsController < BaseController
     end
   end
 
+  def projects_chart
+    @projects = current_user.projects.all
+    render json: @projects.group_by_day(:created_at).count
+  end
+
+
   private
 
   def activities

@@ -83,7 +83,7 @@
         <% end %>
 
         <div class="row">
-          <%= line_chart chart_project_item_reviews_path %>
+          <%= line_chart reviews_chart_project_item_path %>
           <% @item.reviews.includes(:user).limit(3).each do |review| %>
 
             <div class="col-md-4">

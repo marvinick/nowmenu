@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get :search, controller: :search
 
   resources :projects do
+
+    collection do
+      get 'projects_chart'
+    end
+
     member do
       get 'preview'
       get 'load_activities'
@@ -28,6 +33,7 @@ Rails.application.routes.draw do
     resources :items do
 
       member do
+        get 'reviews_chart'
         get 'preview'
         get "result"
         delete :delete_image
@@ -38,12 +44,7 @@ Rails.application.routes.draw do
         get 'chart'
       end
 
-      resources :reviews do
-        collection do
-          get 'chart'
-        end
-      end
-
+      resources :reviews
     end
 
     resources :faqs
@@ -54,11 +55,7 @@ Rails.application.routes.draw do
 
     post "items_filter", action: :index, controller: "items_filter"
 
-    resources :charts do
-      collection do
-        get 'chart'
-      end
-    end
+
   end
 
 
