@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     resources :categories
 
     resources :items do
-
       member do
+        get 'average_of_each_value'
         get 'reviews_chart'
         get 'preview'
         get "result"

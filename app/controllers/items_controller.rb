@@ -1,6 +1,6 @@
 class ItemsController < BaseController
   before_action :set_project
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :result, :reviews_chart]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :result, :reviews_chart, :average_of_each_value]
   caches_action :index, :show, :preview, :result, expires_in: 1.hour
 
   def index
@@ -9,22 +9,6 @@ class ItemsController < BaseController
     average_reviews = Daru::Vector.new(reviews_from_all_items)
     @average_reviews = average_reviews.mean
   end
-
-  def preview
-    @categories = @project.items.all.order(:category).pluck(:category).uniq
-    # @categories = @project.items.all.joins(:group_items).order("group_items.group_id").pluck("group_items.group_id").uniq
-    @items = @project.items.all
-  end
-
-  # def sort
-  #
-  #   items = @project.items.all
-  #   params[:item].each_with_index do |id, index|
-  #
-  #     items.where(id: id).update_all(position: index + 1)
-  #   end
-  #   head :ok
-  # end
 
   def new
     @item = @project.items.build
@@ -82,6 +66,28 @@ class ItemsController < BaseController
     render json: @item.reviews.group_by_day(:created_at).count
   end
 
+  def average_of_each_value
+    totals = array_of_review_properties_in_item.reduce({}) do |keys, values|
+      keys.merge(values) { |_, a, b| a.to_i + b.to_i / values.count + 1  }
+    end
+    @average_of_each_value = render json: totals
+  end
+
+  def preview
+    @categories = @project.items.all.order(:category).pluck(:category).uniq
+    # @categories = @project.items.all.joins(:group_items).order("group_items.group_id").pluck("group_items.group_id").uniq
+    @items = @project.items.all
+  end
+
+  def sort
+    items = @project.items.all
+    params[:item].each_with_index do |id, index|
+
+      items.where(id: id).update_all(position: index + 1)
+    end
+    head :ok
+  end
+
   private
 
   def item_params
@@ -96,6 +102,14 @@ class ItemsController < BaseController
     @item = @project.items.find(params[:id])
   end
 
+  def array_of_review_properties_in_item
+    array = []
+    keys_values = []
+    @item.reviews.each do |review|
+      array << review.properties
+    end
+    array
+  end
 
   #review in index
   def reviews_from_all_items

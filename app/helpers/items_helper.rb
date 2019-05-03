@@ -1,5 +1,19 @@
 module ItemsHelper
 
+  def array_of_review_properties_in_item
+    array = []
+    @item.reviews.each do |review|
+      array << review.properties
+    end
+    array
+  end
+
+  def arr
+    totals = array_of_review_properties_in_item.reduce({}) do |keys, values|
+      keys.merge(values) { |_, a, b| a.to_i + b.to_i / values.count + 1  }
+    end
+  end
+
   def item_average_rating
     each_review_total_collection.sum / @item.reviews.count rescue 0
   end
@@ -60,7 +74,7 @@ module ItemsHelper
         end
 
       end
-      return total  
+      return total
     end
 
 

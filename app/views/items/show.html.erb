@@ -55,8 +55,13 @@
       </div>
     </div>
     <br />
+
+    <br />
+    <%= bar_chart average_of_each_value_project_item_path %>
+
     <hr />
     <br />
+
 
     <div class="row ">
       <div class="col-md-12">
@@ -83,7 +88,6 @@
         <% end %>
 
         <div class="row">
-          <%= line_chart reviews_chart_project_item_path %>
           <% @item.reviews.includes(:user).limit(3).each do |review| %>
 
             <div class="col-md-4">

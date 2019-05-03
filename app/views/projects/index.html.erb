@@ -2,12 +2,13 @@
 
 <div class="container">
   <div class="float-md-left">
-    <h2 class="font-weight-bold "><%= image_tag 'books', class: "icon-image  " %>Projects</h2>
+    <h2 class="font-weight-bold ">Projects</h2>
 
   </div>
 
   <div class="float-md-right">
     <h6 class="mt-0 "><small><%= link_to "add project", new_project_path(@project), class: "btn btn-outline-secondary btn-sm" %></small></h6>
+
   </div>
 
   <br />
@@ -15,7 +16,7 @@
   <br />
 
   <div class="row">
-    <%= line_chart projects_chart_projects_path %>
+
     <% @projects.each do |project| %>
 
       <div class="col-md-4 col-6">
@@ -23,17 +24,19 @@
           <div class="card shadow-sm">
 
             <div class="card-body">
-              <h5 class="font-weight-bold">  <%= project.name %></h5>
-              <small class="pill"><%= project.items.count %> items</small>
 
-              <small class="pill" ><%= project.categories.count %> categories</small>
+              <h5 class="font-weight-bold text-center"><%= project.name %></h5>
+              <hr />
+              <li><small class="font-weight-bold "  ><%= project.items.count %> items</small></li>
 
-              <small class="pill"><%= project.groups.count %> groups</small>
+              <li><small class="font-weight-bold " ><%= project.categories.count %> categories</small></li>
 
-              <small class="pill"><%= project.users.count %> members</small>
-              <br />
-              <br />
-              <%= link_to "Preview", preview_project_path(project), class: "btn btn-sm btn-outline-secondary" %>
+              <li><small class="font-weight-bold " ><%= project.groups.count %> groups</small></li>
+
+              <li><small class="font-weight-bold " ><%= project.users.count %> members</small></li>
+
+
+
             </div>
           </div>
           <br />

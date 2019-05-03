@@ -1237,7 +1237,7 @@ DEPENDENCIES
   puma (~> 3.7)
   pundit
   rack-cache
-  rails (~> 5.2.0)
+  rails (~> 5.2.3)
   rails-hyperstack
   ransack
   redis (~> 4.0)
