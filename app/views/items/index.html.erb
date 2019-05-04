@@ -19,8 +19,6 @@
     <br />
     <div class="row">
       <div class="col-md-7">
-
-
         <% if @items.present? %>
 
           <%= render "items" %>
@@ -44,7 +42,7 @@
         </div>
         <div class="card p-4">
 
-          <%= line_chart chart_project_items_path %>
+          <%= pie_chart chart_item_average_rating_in_index_project_items_path %>
         </div>
       </div>
     </div>

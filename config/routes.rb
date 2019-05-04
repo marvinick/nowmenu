@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
       collection do
         patch :sort
-        get 'chart'
+        get 'chart_item_average_rating_in_index'
       end
 
       resources :reviews do

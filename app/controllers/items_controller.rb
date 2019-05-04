@@ -8,8 +8,6 @@ class ItemsController < BaseController
     @items = @project.items.all
     average_reviews = Daru::Vector.new(reviews_from_all_items)
     @average_reviews = average_reviews.mean
-
-
   end
 
   def new
@@ -28,7 +26,7 @@ class ItemsController < BaseController
 
   def show
     v = Daru::Vector.new(get_values)
-    @item.average_rating = v.mean rescue 0
+
     @v_mean = v.mean
     @v_summary = v.summary rescue 0
   end
@@ -61,19 +59,21 @@ class ItemsController < BaseController
     item_dataframe
   end
 
-  def chart
-    render json: @project.items.group_by_day(:created_at).count
-  end
-
-  def reviews_chart
-    render json: @item.reviews.group_by_day(:created_at).count
-  end
-
   def average_of_each_value
     totals = array_of_review_properties_in_item.reduce({}) do |keys, values|
       keys.merge(values) { |_, a, b| a.to_i + b.to_i / values.count + 1  }
     end
     render json: totals
+  end
+
+  def chart_item_average_rating_in_index
+    @items = @project.items.all
+    @item_name = []
+    @items.each do |item|
+      @item_name << item.title
+    end
+
+    render json: Hash[@item_name.zip(item_average_rating_in_index)]
   end
 
   def preview
@@ -151,6 +151,23 @@ class ItemsController < BaseController
   def item_dataframe
     @v = Daru::Vector.new get_values, type: :category
     df1 = Daru::DataFrame.rows([get_values], order: get_keys)
+  end
+
+  def item_average_rating_in_index
+    sum_all = []
+
+    @items.each do |item|
+      all_total = []
+      item.reviews.each do |review|
+        total = []
+        review.properties.each_value do |v|
+          total << v.to_i
+        end
+        all_total << total.sum / review.properties.count
+      end
+     sum_all << all_total.sum / item.reviews.count rescue 0
+    end
+    sum_all
   end
 
 end
