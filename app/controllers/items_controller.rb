@@ -8,6 +8,8 @@ class ItemsController < BaseController
     @items = @project.items.all
     average_reviews = Daru::Vector.new(reviews_from_all_items)
     @average_reviews = average_reviews.mean
+
+
   end
 
   def new
@@ -26,6 +28,7 @@ class ItemsController < BaseController
 
   def show
     v = Daru::Vector.new(get_values)
+    @item.average_rating = v.mean rescue 0
     @v_mean = v.mean
     @v_summary = v.summary rescue 0
   end
@@ -70,7 +73,7 @@ class ItemsController < BaseController
     totals = array_of_review_properties_in_item.reduce({}) do |keys, values|
       keys.merge(values) { |_, a, b| a.to_i + b.to_i / values.count + 1  }
     end
-    @average_of_each_value = render json: totals
+    render json: totals
   end
 
   def preview
@@ -91,7 +94,7 @@ class ItemsController < BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :content, :user_id, :category, :delete_image, :position, :price, :image, :project_id, :group_id, group_ids: [])
+    params.require(:item).permit(:title, :content, :user_id, :category, :delete_image, :average_rating, :position, :price, :image, :project_id, :group_id, group_ids: [])
   end
 
   def set_project
@@ -135,7 +138,6 @@ class ItemsController < BaseController
   end
 
   def get_values
-    all = []
     total = []
     @item.reviews.each do |review|
       review.properties.each_value do |v|

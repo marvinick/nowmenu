@@ -31,7 +31,7 @@
         </div>
         <br />
         <br />
-          <h6><%= @v_mean %> <i class="fas fa-star"></i></h6>
+          <h6><%= @item.average_rating %> <i class="fas fa-star"></i></h6>
 
           <small><i class="far fa-clock fa-fw"></i> created <span class="font-weight-bold"><%= time_ago_in_words(@item.created_at) %></span> ago</small>
           <br />
@@ -57,17 +57,18 @@
     <br />
 
     <br />
-    <%= bar_chart average_of_each_value_project_item_path %>
+
 
     <hr />
     <br />
-
 
     <div class="row ">
       <div class="col-md-12">
         <div class="float-left">
           <h5 class="font-weight-bold title"> Ratings and Reviews</h5>
+
           <% if reviewers.include?(current_user.id) %>
+
             <small class="font-weight-bold">you've submitted a review</small>
           <% else %>
             <%= link_to " create review", new_project_item_review_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
@@ -77,11 +78,13 @@
         </div>
         <% if @item.reviews.present? %>
           <div class="float-right">
+
             <%= link_to "see all reviews", project_item_reviews_path(@project, @item, @reviews), class: "btn btn-outline-secondary btn-sm" %>
+
           </div>
         <% end %>
       </div>
-      <div class="col-md-12">
+      <div class="col-md-8">
 
         <% if !@item.reviews.present? %>
           <h6 class="nothing-yet">There are no reviews yet!</h6>
@@ -90,7 +93,7 @@
         <div class="row">
           <% @item.reviews.includes(:user).limit(3).each do |review| %>
 
-            <div class="col-md-4">
+            <div class="col-4">
               <%= link_to project_item_review_path(@project, @item, review) do %>
                 <% review_total_value = [] %>
                 <% review.properties.each do |k, v| %>
@@ -108,6 +111,9 @@
             </div>
           <% end %>
         </div>
+      </div>
+      <div class="col-md-4">
+        <%= line_chart average_of_each_value_project_item_path %>
       </div>
     </div>
   </div>

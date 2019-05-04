@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_22_040154) do
+ActiveRecord::Schema.define(version: 2019_05_04_031528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_04_22_040154) do
     t.integer "user_id"
     t.integer "group_id"
     t.string "category"
+    t.float "average_rating"
   end
 
   create_table "project_users", force: :cascade do |t|
