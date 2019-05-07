@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
     get '/users/sign_out' => 'devise/sessions#destroy'
+    resources :requests
   end
 
   get "/homes", to: "homes#home", as: :home
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
         patch :sort
       end
     end
-
+    resources :requests
     resources :categories
 
     resources :items do
@@ -52,9 +53,6 @@ Rails.application.routes.draw do
     end
 
     resources :faqs
-
-    resources :requests
-
     resources :project_users, path: :users, module: :projects
 
     post "items_filter", action: :index, controller: "items_filter"

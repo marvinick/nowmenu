@@ -26,8 +26,11 @@
         <div class="float-right">
           <%= link_to "edit", edit_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm"  %>
           <%= link_to "delete", project_item_path(@project, @item), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" }, class: "btn btn-outline-secondary btn-sm" %>
-
           <%= link_to "analysis", result_project_item_path(@project, @item), class: "btn btn-outline-secondary btn-sm" %>
+          <br />
+          <br />
+          <%= bar_chart average_of_each_value_project_item_path, width: "200px", height: "100px", points: false, messages: {empty: "No data"} %>
+
         </div>
         <br />
         <br />
@@ -54,7 +57,7 @@
 
       </div>
     </div>
-    <br />
+
     <br />
     <hr />
     <br />
@@ -75,43 +78,34 @@
         </div>
         <% if @item.reviews.present? %>
           <div class="float-right">
-
             <%= link_to "see all reviews", project_item_reviews_path(@project, @item, @reviews), class: "btn btn-outline-secondary btn-sm" %>
-
           </div>
         <% end %>
       </div>
-      <div class="col-md-8">
+    </div>
+    <div class="row ">
+      <% if !@item.reviews.present? %>
+        <h6 class="nothing-yet">There are no reviews yet!</h6>
+      <% else %>
+        <% @item.reviews.includes(:user).limit(3).each do |review| %>
 
-        <% if !@item.reviews.present? %>
-          <h6 class="nothing-yet">There are no reviews yet!</h6>
+          <div class="col-4">
+            <%= link_to project_item_review_path(@project, @item, review) do %>
+              <% review_total_value = [] %>
+              <% review.properties.each do |k, v| %>
+                <% review_total_value << v.to_i %>
+              <% end  %>
+              <div class="card mb-2 p-4 ">
+                <div class="star-rating" data-score= "<%= review_total_value.sum / review.properties.count %> " ></div>
+                <small class="mt-3"><%= truncate(review.public_review, length: 100) %></small>
+                <hr class="mt-4"/>
+                <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
+                <small class="font-weight-bold">by <%= review.user.email %>  </small>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-
-        <div class="row">
-          <% @item.reviews.includes(:user).limit(3).each do |review| %>
-
-            <div class="col-4">
-              <%= link_to project_item_review_path(@project, @item, review) do %>
-                <% review_total_value = [] %>
-                <% review.properties.each do |k, v| %>
-                  <% review_total_value << v.to_i %>
-                <% end  %>
-
-                <div class="card shadow mb-2 p-4 ">
-                  <div class="star-rating" data-score= "<%= review_total_value.sum / review.properties.count %> " ></div>
-                  <small class="mt-3"><%= truncate(review.public_review, length: 100) %></small>
-                  <hr class="mt-4"/>
-                  <small class="font-weight-bold"><%= time_ago_in_words(review.created_at)  %> ago</small>
-                  <small class="font-weight-bold">by <%= review.user.email %>  </small>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <%= line_chart average_of_each_value_project_item_path %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

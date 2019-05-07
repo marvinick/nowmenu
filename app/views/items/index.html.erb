@@ -7,12 +7,9 @@
         <p class="page-title">Items</p>
         <input data-target="filter.source" data-action="input->filter#filter" type="text" class="filter filter-size " placeholder="Filter items" size="35" />
         <div class="float-md-right paddy">
-
           <%= link_to "add item", new_project_item_path(@project, @item), class: "btn btn-sm btn-outline-secondary"  %>
           <%= link_to "Preview", preview_project_item_path(@project, @items), class: "btn btn-sm btn-outline-secondary" %>
-
         </div>
-
       </div>
     </div>
     <br />
@@ -33,15 +30,12 @@
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-4">
-        <div class="card p-4 mb-5">
-          <%= image_tag 'statistics', class: "icon-image" %>
-          <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.
-          <%= @average_reviews %>
-          <%= reviews_from_all_items %>
-          </small>
-        </div>
+
         <div class="card p-4">
 
+          <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.
+          <br />
+          <br />
           <%= bar_chart chart_item_average_rating_in_index_project_items_path %>
         </div>
       </div>
