@@ -4,11 +4,11 @@ class ReviewsController < BaseController
     caches_action :index, :show, :new, :edit
 
     def new
-        @review = Review.new(project_id: params[:project_id], item_id: params[:item_id])
+      @review = Review.new(project_id: params[:project_id], item_id: params[:item_id])
     end
 
     def create
-      @review = Review.new(review_params) 
+      @review = Review.new(review_params)
       @review.user_id = current_user.id
       if @review.save
           redirect_to [@project, @item]
@@ -24,7 +24,7 @@ class ReviewsController < BaseController
     def edit; end
 
     def index
-      @reviews = @item.reviews.all
+      @reviews = @item.reviews.includes(:user)
     end
 
     def update

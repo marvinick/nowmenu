@@ -26,10 +26,8 @@ gem 'name_of_person'
 #faster app
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
-gem 'goldiloader'
 gem 'kaminari'
 gem 'actionpack-action_caching'
-gem 'rack-cache'
 
 #data analysis
 gem "daru", git: 'https://github.com/SciRuby/daru.git'
@@ -45,7 +43,7 @@ gem 'public_activity'
 
 #search
 gem 'ransack'
-gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+gem 'webpacker'
 
 #authentication
 gem 'devise'
@@ -58,9 +56,6 @@ gem 'acts_as_list'
 #frontend
 gem 'rails-hyperstack'
 gem 'bootstrap', '~> 4.3.1'
-
-#animation
-gem 'animate.css-rails', '~> 3.2.0'
 
 #image upload
 gem 'aws-sdk'

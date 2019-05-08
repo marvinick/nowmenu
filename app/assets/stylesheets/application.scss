@@ -15,13 +15,12 @@
  *= require easy-autocomplete.themes
  *= require select2Buttons
  *= require input
- *= require_tree .
+
  *= require_self
  *= require toastr
 
  */
 
- @import 'animate';
  @import 'mobile';
  @import 'desktop';
  @import "bootstrap";
@@ -271,7 +270,7 @@ body {
 
   .container {
     margin-top: 10px;
-    
+
   }
 
 .dropdown-toggle::after {

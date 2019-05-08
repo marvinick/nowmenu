@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_project
   before_action :set_request, only: [:show, :edit, :update, :destroy]
-  caches_action :index, :show
+  caches_action :index, :show, :new, :edit
 
   def index
     @requests = @project.requests.all

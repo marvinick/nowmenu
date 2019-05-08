@@ -1,7 +1,7 @@
 class CategoriesController < BaseController
   before_action :set_project
   before_action :set_category, only: [:edit, :update, :destroy, :show]
-  caches_action :index, :show
+  caches_action :index, :edit, :new
 
   def index
     @categories = @project.categories.all

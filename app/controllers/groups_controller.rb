@@ -1,10 +1,10 @@
 class GroupsController < ApplicationController
   before_action :set_project
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  caches_action :index, :show
+  caches_action :index, :edit, :new
 
   def index
-    @groups = @project.groups.all
+    @groups = @project.groups.includes(:group_items)
 
   end
 

@@ -21,7 +21,7 @@
 //= require jquery.easy-autocomplete
 //= require Chart.bundle
 //= require chartkick
-//= require_tree .
+
 
 
 $(document).on('click', 'form .remove_fields', function(event) {
