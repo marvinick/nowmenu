@@ -1,66 +1,42 @@
 <%= render "projects/project_navbar" %>
 
+<div class="row">
+  <div class="col-md-2 mb-3"></div>
+  <div class="col-md-8 col-12 mb-3">
+    <div class="card py-4 px-5">
+      <div class="text-center">
+        <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text" %></small>
+        <p class="page-title ">Categories</p>
+        <small class="form-text text-muted">
+          These categories will be part of every review for each item
+        </small>
+        <br />
+        <%= link_to "add category", new_project_category_path(@project, @category), class: "btn btn-outline-secondary btn-sm" %>
+      </div>
 
-<div class="col-md-12 mb-3">
-  <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text" %></small>
-  <br />
-  <div class="float-md-left paddy">
-    <p class="page-title">Categories</p>
-    <small class="form-text text-muted">
-      These categories will be part of every review for each item
-    </small>
-  </div>
-  <br />
-  <div class="float-md-right paddy">
-    <%= link_to "add category", new_project_category_path(@project, @category), class: "btn btn-outline-secondary btn-sm" %>
-  </div>
-</div>
-
-<br />
-
-
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-7">
-
-        <% if @categories.present? %>
+      <br />
+      <% if @categories.present? %>
         <% @categories.each do |category| %>
           <% cache category do %>
             <div data-controller="delete">
-                <div class="row">
-                  <div class="col-md-10 col-12">
-                    <h6 class="font-weight-bold mb-0"><%= category.name %></h6>
-                    <small><%= category.description %></small>
-                  </div>
-                  <div class="col-md-2">
-                    <%= link_to edit_project_category_path(@project, category) do %>
-                      <small><i class="fas fa-pencil-alt"></i></small>
-                    <% end %>
-                    <%= link_to project_category_path(@project, category), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
-                      <small><i class="fa fa-trash"></i> </small>
-                    <% end %>
-                  </div>
-                </div>
+              <h6 class="font-weight-bold mb-0"><%= category.name %></h6>
+              <small><%= category.description %></small>
+              <%= link_to edit_project_category_path(@project, category) do %>
+                <small><i class="fas fa-pencil-alt"></i></small>
+              <% end %>
+              <%= link_to project_category_path(@project, category), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
+                <small><i class="fa fa-trash"></i> </small>
+              <% end %>
             </div>
           <% end %>
-          <hr class="my-4" />
+        <hr class="my-4" />
         <% end %>
-        <% else %>
+      <% else %>
         <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
         <br />
         <br />
         <%= image_tag 'getting-there' %>
-        <% end %>
-
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
-      <div class="card p-4 mb-5">
-        <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.</small>
-      </div>
-      <div class="card p-4">
-        <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.</small>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

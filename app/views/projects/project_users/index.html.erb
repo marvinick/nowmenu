@@ -1,36 +1,31 @@
 <%= render "projects/project_navbar" %>
 
-<div class="col-md-12">
- <%= link_to "exit", project_path(@project), class: "exit-text description" %>
- <br />
-  <div class="float-md-left paddy">
-    <p class="page-title">Users</p>
-    <small>These are your people</small>
-  </div>
-  <div class="float-md-right paddy">
-    <%= link_to "Invite someone", new_project_project_user_path(@project, @project_user), class: "btn btn-outline-secondary btn-sm" %>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card py-4 px-5">
+      <div class="text-center">
+        <%= link_to "#{@project.name}", project_path(@project), class: "exit-text description" %>
+        <br />
+        <p class="page-title">Users</p>
+        <small class="form-text text-muted">These are your people who will be able to access things around the project <%= @project.name %></small>
+        <br />
+        <%= link_to "Invite someone", new_project_project_user_path(@project, @project_user), class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+      <br />
+      <br />
+      <% if @project.users.present? %>
+        <% @project.users.each do |user| %>
+          <p class="each-item-title"><%= user.email %></p>
+        <hr />
+        <% end %>
+      <% else %>
+        <li><small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small></li>
+
+        <br />
+        <%= image_tag 'getting-there' %>
+      <% end %>
+
+    </div>
   </div>
 </div>
-<br />
-<br />
-<br />
-<br />
-
-<div class="col-md-8">
-
-  <% if @project.users.present? %>
-    <% @project.users.each do |user| %>
-
-      <p class="each-item-title"><%= user.email %></p>
-
-    <hr />
-    <% end %>
-  <% else %>
-    <li><small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small></li>
-
-    <br />
-    <%= image_tag 'getting-there' %>
-  <% end %>
-
-</div>
-<div class="col-md-4"></div>

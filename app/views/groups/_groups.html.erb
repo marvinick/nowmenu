@@ -1,29 +1,24 @@
 <% @groups.includes(:items).each do |group| %>
   <% cache group do %>
     <div data-controller="delete">
-      <div class="row">
-        <div class="col-md-10 col-12">
-          <p class="each-item-title"><%= group.name %></p>
-          <p class="description mb-0"><%= group.description %></p>
-          <% if group.items.present? %>
-            <% group.items.each do |item| %>
-              <small class="inline-text font-weight-bold"><%= link_to item.title, project_item_path(@project, item) %></small>
-            <% end %>
-          <% else %>
-            <small><%= link_to "it's not connected to any item yet, go to items", project_items_path(@project, @items), class:"exit-text" %></small>
-          <% end %>
-        </div>
-        <div class="col-md-2">
-          <%= link_to edit_project_group_path(@project, group) do %>
-            <small><i class="fas fa-pencil-alt"></i></small>
-          <% end %>
+      <p class="each-item-title"><%= group.name %></p>
+      <p class="description mb-0"><%= group.description %></p>
+      <% if group.items.present? %>
+        <% group.items.each do |item| %>
+          <small class="inline-text font-weight-bold"><%= link_to item.title, project_item_path(@project, item) %></small>
+        <% end %>
+      <% else %>
+        <small><%= link_to "it's not connected to any item yet, go to items", project_items_path(@project, @items), class:"exit-text" %></small>
+      <% end %>
+      <br />
+      <%= link_to edit_project_group_path(@project, group) do %>
+        <small><i class="fas fa-pencil-alt"></i></small>
+      <% end %>
 
-          <%= link_to project_group_path(@project, group), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
-            <small><i class="fa fa-trash"></i></small>
-          <% end %>
+      <%= link_to project_group_path(@project, group), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
+        <small><i class="fa fa-trash"></i></small>
+      <% end %>
 
-        </div>
-      </div>
     </div>
 
   <% end %>

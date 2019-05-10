@@ -1,18 +1,21 @@
 <%= render "layouts/navbar" %>
 
-<div class="col-md-12">
-  <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card py-4 px-5" >
+      <div class="text-center">
+        <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+        <br />
+        <br />
+        <p class="page-title">latest activity for project <%= @project.name %></p>
+      </div>
+      <br />
+      <br />
+      <% if @activities.present? %>
+        <%= render_activities @activities %>
+      <% end %>
+    </div>
+  </div>
   <br />
-  <p class="page-title"><%= @project.name %></p>
-  <small>latest activity for project </small>
 </div>
-<br />
-
-<div class="col-md-8">
-
-    <% if @activities.present? %>
-      <%= render_activities @activities %>
-    <% end %>
-
-</div>
-<div class="col-md-4"></div>

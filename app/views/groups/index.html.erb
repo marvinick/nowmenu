@@ -1,44 +1,28 @@
 <%= render "projects/project_navbar" %>
 
-<div class="col-md-12 mb-3">
-  <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text " %></small>
-  <br />
-  <div class="float-md-left paddy">
-    <p class="page-title">Groups</p>
-    <small>efneeefe</small>
-  </div>
-  <br />
-  <div class="float-md-right paddy">
-    <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
-  </div>
-</div>
-
-<br />
-<br />
-<br />
-<div class="container">
-  <div class="row">
-    <div class="col-md-7">
-
-        <% if @groups.present? %>
-          <%= render "groups" %>
-        <% else %>
-          <div class="text-center">
-            <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
-            <br />
-            <br />
-            <%= image_tag 'getting-there' %>
-          </div>
-        <% end %>
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
-      <div class="card p-4 mb-5">
-        <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.</small>
+<div class="row">
+  <div class="col-md-2 mb-3"></div>
+  <div class="col-md-8 col-12 mb-3">
+    <div class="card py-4 px-5">
+      <div class="text-center">
+        <small><%= link_to "#{@project.name}", project_path(@project), class: "exit-text " %></small>
+        <br />
+        <p class="page-title">Groups</p>
+        <small class="form-text text-muted">Group your items</small>
+        <br />
+        <%= link_to "new group", new_project_group_path(@project, @group), class: "btn btn-outline-secondary btn-sm" %>
       </div>
-      <div class="card p-4">
-        <small>Here's where we're keeping track of the licensed music we've been using in the show. Here's where we're keeping track of the licensed music we've been using in the show.</small>
-      </div>
+      <br />
+      <br />
+      <% if @groups.present? %>
+        <%= render "groups" %>
+      <% else %>
+        <div class="text-center">
+          <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
+          <br />
+          <br />
+          <%= image_tag 'getting-there' %>
+        </div>
+      <% end %>
     </div>
-  </div>
 </div>
