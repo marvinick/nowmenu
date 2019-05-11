@@ -156,7 +156,7 @@ class ItemsController < BaseController
   def item_average_rating_in_index
     sum_all = []
 
-    @items.each do |item|
+    @items.includes(:reviews).each do |item|
       all_total = []
       item.reviews.each do |review|
         total = []

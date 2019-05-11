@@ -17,7 +17,7 @@ module Nowmenu
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.time_zone = 'Pacific Time (US & Canada)'
+    config.cache_store = :dalli_store, 11211, { namespace: 'player', pool_size: 10 }
 
-    
   end
 end

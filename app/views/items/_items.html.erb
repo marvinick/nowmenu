@@ -2,7 +2,7 @@
   <div data-target="filter.filterable" data-filter-key='<%= "#{item.title} #{item.content}".downcase %>'>
     <% cache item do %>
       <%= link_to project_item_path(@project, item) do %>
-        <div class="card p-4">
+        <div class="card shadow p-4">
             <p class="each-item-title"><%= truncate(item.title, length: 20) %></p>
 
             <small><%= truncate(item.content, length: 150) %></small>

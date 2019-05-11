@@ -31,11 +31,7 @@ class ProjectsController < BaseController
     end
   end
 
-  def show
-    # authorize @project, :show?
-    @project = Project.find(params[:id])
-
-  end
+  def show; end
 
   def edit; end
 

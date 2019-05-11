@@ -28,6 +28,7 @@ gem 'redis', '~> 4.0'
 gem 'sidekiq'
 gem 'kaminari'
 gem 'actionpack-action_caching'
+gem 'dalli'
 
 #data analysis
 gem "daru", git: 'https://github.com/SciRuby/daru.git'

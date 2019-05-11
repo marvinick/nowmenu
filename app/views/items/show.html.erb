@@ -95,7 +95,7 @@
               <% review.properties.each do |k, v| %>
                 <% review_total_value << v.to_i %>
               <% end  %>
-              <div class="card mb-2 p-4 ">
+              <div class="card shadow mb-2 p-4 ">
                 <div class="star-rating" data-score= "<%= review_total_value.sum / review.properties.count %> " ></div>
                 <small class="mt-3"><%= truncate(review.public_review, length: 100) %></small>
                 <hr class="mt-4"/>

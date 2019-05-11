@@ -6,11 +6,12 @@
     <div class="card py-4 px-5" >
       <div class="text-center">
         <small><%= link_to "exit", project_path(@project), class: "exit-text" %></small>
+
         <br />
-        <br />
-        <p class="page-title">latest activity for project <%= @project.name %></p>
+        <p class="page-title">latest activity for project: <%= @project.name %></p>
+        <hr >
       </div>
-      <br />
+      
       <br />
       <% if @activities.present? %>
         <%= render_activities @activities %>
