@@ -1,0 +1,11 @@
+<div data-controller="delete">
+  <h6 class="font-weight-bold mb-0"><%= category.name %></h6>
+  <small><%= category.description %></small>
+  <%= link_to edit_project_category_path(@project, category), remote: true do %>
+    <small><i class="fas fa-pencil-alt"></i></small>
+  <% end %>
+  <%= link_to project_category_path(@project, category), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
+    <small><i class="fa fa-trash"></i> </small>
+  <% end %>
+</div>
+<hr class="my-4" />

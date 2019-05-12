@@ -1,7 +1,7 @@
 class CategoriesController < BaseController
   before_action :set_project
   before_action :set_category, only: [:edit, :update, :destroy, :show]
-  caches_action :index, :edit, :new
+  # caches_action :index, :edit, :new
 
   def index
     @categories = @project.categories.all
@@ -14,7 +14,11 @@ class CategoriesController < BaseController
   def create
     @category = @project.categories.new(category_params)
     if @category.save
-      redirect_to project_categories_path(@project, @categories), notice: "You have successfully created #{@category.name}"
+
+      respond_to do |f|
+        f.html { redirect_to project_categories_path(@project, @categories), notice: "You have successfully created #{@category.name}" }
+        f.js
+      end
     else
       render :new
     end
@@ -24,7 +28,10 @@ class CategoriesController < BaseController
 
   def update
     if @category.update_attributes(category_params)
-      redirect_to project_categories_path(@project, @categories), notice: "you have successfully #{@category.name}!"
+      respond_to do |f|
+        f.html { redirect_to project_categories_path(@project, @categories), notice: "you have successfully #{@category.name}!" }
+        f.js
+      end 
     else
       render :edit
     end

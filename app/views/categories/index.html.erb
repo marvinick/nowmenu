@@ -11,32 +11,22 @@
           These categories will be part of every review for each item
         </small>
         <br />
-        <%= link_to "add category", new_project_category_path(@project, @category), class: "btn btn-outline-secondary btn-sm", id: "new_link", remote: true %>
+        <%= link_to "add category", new_project_category_path(@project, @category), class: "btn btn-outline-secondary btn-sm", id: "new_category", remote: true %>
       </div>
 
       <br />
-      <% if @categories.present? %>
-        <% @categories.each do |category| %>
-          <% cache category do %>
-            <div data-controller="delete">
-              <h6 class="font-weight-bold mb-0"><%= category.name %></h6>
-              <small><%= category.description %></small>
-              <%= link_to edit_project_category_path(@project, category) do %>
-                <small><i class="fas fa-pencil-alt"></i></small>
-              <% end %>
-              <%= link_to project_category_path(@project, category), method: :delete, remote: true, data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } do %>
-                <small><i class="fa fa-trash"></i> </small>
-              <% end %>
-            </div>
-          <% end %>
-        <hr class="my-4" />
+      <div id="categories">
+        <% if @categories.present? %>
+          <%= render @categories %>
+          
+        <% else %>
+          <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
+          <br />
+          <br />
+          <%= image_tag 'getting-there' %>
         <% end %>
-      <% else %>
-        <small class="">"They are words that are easy enough to say and which fill vast empty spaces."</small>
-        <br />
-        <br />
-        <%= image_tag 'getting-there' %>
-      <% end %>
+      </div>
+
     </div>
   </div>
 </div>
