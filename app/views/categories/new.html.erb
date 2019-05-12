@@ -17,20 +17,8 @@
         These categories will be part of every review for each item
       </small>
       <div class="card my-4 border-0 ">
+        <%= render 'form' %>
 
-        <%= simple_form_for [@project, @category] do |f| %>
-            <%= f.input :name, label: false, placeholder: "name" %>
-
-            <br />
-            <div id="tall">
-              <%= f.input :description, label: false, placeholder: "description"  %>
-            </div>
-
-            <br />
-            <div class="float-right">
-              <%= f.submit "add a category", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "adding a category" } %>
-            </div>
-        <% end %>
       </div>
     <div class="col-md-3"></div>
   </div>

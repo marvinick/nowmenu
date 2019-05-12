@@ -11,7 +11,7 @@
           These categories will be part of every review for each item
         </small>
         <br />
-        <%= link_to "add category", new_project_category_path(@project, @category), class: "btn btn-outline-secondary btn-sm" %>
+        <%= link_to "add category", new_project_category_path(@project, @category), class: "btn btn-outline-secondary btn-sm", id: "new_link", remote: true %>
       </div>
 
       <br />

@@ -1,0 +1,13 @@
+<%= simple_form_for([@project, @category], remote: true) do |f| %>
+    <%= f.input :name, label: false, placeholder: "name" %>
+
+    <br />
+    <div id="tall">
+      <%= f.input :description, label: false, placeholder: "description"  %>
+    </div>
+
+    <br />
+    <div class="float-right">
+      <%= f.submit "add a category", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "adding a category" } %>
+    </div>
+<% end %>
