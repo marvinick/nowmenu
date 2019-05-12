@@ -5,7 +5,22 @@
 
   .card {
     border-width:  thin!important;
-    border-color: black!important;
+    border-color: #e8e8e8!important;
+
+
+  }
+
+  .box-2 {
+    border: thin solid #e8e8e8;
+    min-height: 1000px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+     box-shadow: 1px 4px #888888;
+     -webkit-box-shadow: -1px 0px 19px -15px rgba(0,0,0,0.78);
+    -moz-box-shadow: -1px 0px 19px -15px rgba(0,0,0,0.78);
+    box-shadow: -1px 0px 19px -15px rgba(0,0,0,0.78);
   }
 
   .navbar-menu {
