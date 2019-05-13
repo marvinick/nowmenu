@@ -1,1 +1,2 @@
-$("#categories").html("<%= j render('form') %>")
+$('form').remove();
+$('div#<%= dom_id(@category) %>').replaceWith("<%= j render('form') %>")
