@@ -19,17 +19,15 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 
-
 #roles
 gem "pundit"
 gem 'name_of_person'
 
 #faster app
-gem 'redis', '~> 4.0'
+gem 'redis'
 gem 'sidekiq'
 gem 'kaminari'
 gem 'actionpack-action_caching'
-gem 'dalli'
 
 #data analysis
 gem "daru", git: 'https://github.com/SciRuby/daru.git'
@@ -57,7 +55,6 @@ gem 'acts_as_list'
 
 #frontend
 gem 'rails-hyperstack'
-gem 'bootstrap', '~> 4.3.1'
 
 #image upload
 gem 'aws-sdk'
@@ -68,14 +65,14 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'selenium-webdriver'
-  # gem "rspec-rails", "~> 3.7.0"
+  gem "rspec-rails"
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   gem 'bullet'
 end
 

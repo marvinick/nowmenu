@@ -1,179 +1,74 @@
-<%= render "projects/project_navbar" %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <small><%= link_to "projects", projects_path(@projects), class: "exit-text font-weight-" %></small>
-      <br />
-      <div class="float-md-left">
-        <p class="page-title"><%= @project.name %></p>
-        <small>Remember, your items need to have categories, for your users to review them. And also don't forget to group them.</small>
-      </div>
-      <div class="float-md-right">
-        <%= link_to "edit", edit_project_path(@project), class: "btn btn-outline-secondary btn-sm" %>
-
-        <%= link_to "Preview", preview_project_path(@project), class: "btn btn-sm btn-outline-secondary" %>
-      </div>
-    </div>
-  </div>
-
-  <br />
-  <br />
-
-  <div class="row ">
-    <div class="col-md-3 col-6 mb-4">
-      <%= link_to project_items_path(@project, @items) do %>
-        <div class="card shadow-sm p-3 h-100">
-          <h6 class="font-weight-bold text-center mb-0 ">Items</h6>
-          <hr />
-
-          <% @project.items.last(4).each do |item| %>
-            <div class="py-1 px-2 border-0 ">
-              <small class="font-weight-bold card-text no-underline"><%= truncate(item.title, length: 15) %></small>
-              <small><%= truncate(item.content, length: 20) %></small>
+<div class="card m-5 shadow-sm">
+    <div class="card-body p-5">
+    <h4 class="text-center font-weight-bold">
+        <%= @project.name %>
+        <div class="dropdown">
+            <i class="fab fa-elementor dropdown-toggle" data-toggle="dropdown" ></i>
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">edit</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button"><%= link_to "edit", edit_project_path(@project) %></button>
+                <button class="dropdown-item" type="button"><%= link_to "Delete", project_path(@project), :method => :delete %></button>                
             </div>
-          <% end %>
         </div>
-      <% end %>
-    </div>
-    <div class="col-md-3 col-6 mb-4">
-      <%= link_to project_groups_path(@project, @groups) do %>
-        <div class="card shadow-sm  p-3 h-100">
-          <h6 class="font-weight-bold text-center mb-0">Groups</h6>
-          <hr />
+    </h4>
 
-          <% @project.groups.last(4).each do |group| %>
-            <div class="py-1 px-2 border-0 ">
-              <small class="font-weight-bold card-text"><%= group.name %> </small>
-              <small><%= truncate(group.description, length: 20) %></small>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-md-3 col-6 mb-4">
-      <%= link_to project_categories_path(@project, @categories) do %>
-
-        <div class="card shadow-sm p-3 h-100">
-          <h6 class="font-weight-bold text-center mb-0">Categories</h6>
-          <hr />
-
-          <% @project.categories.last(4).each do |category| %>
-              <div class="card py-1 px-2 border-0">
-                <small class="font-weight-bold card-text"><%= category.name %> </small>
-                <small><%= truncate(category.description, length: 20) %></small>
-              </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-md-3 col-6 mb-4">
-      <%= link_to project_project_users_path(@project, @users) do %>
-        <div class="card shadow-sm p-3 h-100">
-          <h6 class="font-weight-bold text-center mb-0">Members</h6>
-          <hr />
-          <% @project.users.each do |user| %>
-            <div class="card py-1 px-2 border-0 ">
-              <small class="font-weight-bold card-text"><%= truncate((user.email).chomp("gmail"), length: 12) %></small>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-  </div>
-
-  <br class="m-5">
-
-  <div class="row">
-    <div class="col-md-6 mb-4">
-      <%= link_to  project_requests_path(@project, @requests) do %>
-
-        <div class="card shadow-sm p-3 h-100">
-          <div class="row">
-            <div class="float-left">
-                <%= image_tag 'books', class: "icon-image mx-3" %>
-            </div>
-
-            <div class="float-right ">
-              <h6 class="font-weight-bold mb-0">Requests</h6>
-              <small>See the list of people that are still want make a </small>
-
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-md-6 mb-4 ">
-      <%= link_to load_activities_project_path(@project) do %>
-        <div class="card shadow-sm p-3 h-100">
-          <div class="row">
-
-              <div class="float-left">
-                <%= image_tag 'address-book-100', class: "icon-image  mx-3" %>
-              </div>
-              <div class="float-right ">
-                <h6 class="font-weight-bold mb-0 ">Activities</h6>
-                <small> See what's been happening lately</small>
-              </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <hr class="m-3">
-
-
-    <div class="col-md-12">
-      <div class="card p-3">
-        <h5 class="font-weight-bold mb-0">MAQs - most asked questions <%= link_to "see all", project_faqs_path(@project, @faqs), class: "btn btn-sm btn-outline-secondary" %>  </h5>
-        <small>documentation where everyone can benefit from</small>
-
-        <br />
-        <% @project.faqs.limit(6).each do |faq| %>
-          <%= link_to project_faq_path(@project, faq) do %>
-
-            <small><%= truncate(faq.ask, length: 150) %> </small>
-
-          <% end %>
-          <hr />
+    <div class="row">
+        <% @project.categories.each do |category| %>            
+            <li><%= category.name %></li>
         <% end %>
-
-
-      <!-- <h6 data-controller="inplace-editing"
-      data-action="dblclick->inplace-editing#doubleClick"
-      data-target="inplace-editing.editable">Here is a header</h6> -->
-
-
-      <!-- <ol data-controller="drag-item"
-          data-action="dragstart->drag-item#dragstart dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop dragend->drag-item#dragend"
-      >
-        <li draggable="true" data-todo-id="1">Take out trash</li>
-        <li draggable="true" data-todo-id="2">Check Email</li>
-        <li draggable="true" data-todo-id="3">Subscribe to mailing list</li>
-        <li draggable="true" data-todo-id="4">Research Stimulus</li>
-      </ol> -->
-
-      <!-- <div id="app" data-controller="demo">
-        <ol>
-          <li><button data-action="click->demo#launchDemo" data-name="Daniel Coulbourne" data-email="daniel@tighten.co" data-title="Developer">Daniel</button></li>
-          <li><button data-action="click->demo#launchDemo" data-name="Caleb Porzio" data-email="caleb@tighten.co" data-title="Developer">Caleb</button></li>
-        </ol>
-
-
-        <div class="modal" data-controller="modal co-host-modal" data-target="demo.modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <h2 data-target="co-host-modal.name"></h2>
-              <span data-target="co-host-modal.title"></span>
-              <a data-target="co-host-modal.email" href=""></a>
-              <button data-action="click->modal#close">Close</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
     </div>
-  </div>
+    <br />
+    <br />
 
+    <h6 class="font-weight-bold text-center">Items</h6>
+    <%= link_to "New item", new_project_item_path(@project, @item), class: "btn btn-sm btn-primary" %>
+    <%= link_to "Menu", project_items_path(@project, @items), class: "btn btn-sm btn-success" %>
+    <br />
+    <br />
+
+    <div class="row">
+        <% @project.items.each do |item| %>
+            
+            <div class="col-md-3">
+                <%= link_to project_item_path(@project, item) do %>
+                    <div class="card my-2">
+                        <div class="card-body">
+                            <small><%= item.title %></small>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            
+        <% end %>
+    </div>
+    <br />
+    <br />
+
+    <div class="row">
+        
+        <div class="col-md-4">
+            <p>
+                <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Add member
+                </a>            
+            </p>
+            <div class="collapse" id="collapseExample">
+            
+                <%= simple_form_for [@project, ProjectUser.new] do |f| %>
+                    <div class="card card-body">
+                    
+                        <%= f.input :email, placeholder: "email", label: false %>
+                        <%= f.submit "Invite", class: "btn btn-xs btn-primary" %>
+                
+                    <%  end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <% @project.users.each do |user| %> 
+                <li><%= user.email %></li>
+            <% end %>
+        </div>    
+    </div>
 </div>
