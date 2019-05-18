@@ -67,7 +67,7 @@ class ItemsController < BaseController
   end
 
   def chart_item_average_rating_in_index
-    @items = @project.items.all
+    @items = @project.items.includes(:reviews)
     @item_name = []
     @items.each do |item|
       @item_name << item.title

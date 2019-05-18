@@ -16,9 +16,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery.raty
-//= require toastr
-//= require jquery.select2buttons
-//= require jquery.easy-autocomplete
+
+
 //= require Chart.bundle
 //= require chartkick
 
