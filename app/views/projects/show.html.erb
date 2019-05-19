@@ -1,74 +1,92 @@
-<div class="card m-5 shadow-sm">
-    <div class="card-body p-5">
-    <h4 class="text-center font-weight-bold">
-        <%= @project.name %>
-        <div class="dropdown">
-            <i class="fab fa-elementor dropdown-toggle" data-toggle="dropdown" ></i>
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">edit</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button"><%= link_to "edit", edit_project_path(@project) %></button>
-                <button class="dropdown-item" type="button"><%= link_to "Delete", project_path(@project), :method => :delete %></button>                
-            </div>
+<%= render "projects/project_navbar" %>
+
+<div class="container">
+
+  <div class="row ">
+    <div class="col-md-12 text-center">
+      <small><%= link_to "projects", projects_path, class: "exit-text" %></small>
+
+      <p class="page-title"><%= @project.name %></p>
+      <small><%= @project.description %></small>
+      <hr />
+      <br />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to project_items_path(@project, @items) do %>
+        <div class="box h-100">
+          <h6 class="text-center each-item-title">Items</h6>
+          <hr />
+          <% @project.items.last(4).each do |item| %>
+            <li><p class="item-title"><%= item.title %></p></li>
+            <small><%= truncate(item.content, length: 30) %></small>
+
+          <% end %>
         </div>
-    </h4>
-
-    <div class="row">
-        <% @project.categories.each do |category| %>            
-            <li><%= category.name %></li>
-        <% end %>
+      <% end %>
     </div>
-    <br />
-    <br />
-
-    <h6 class="font-weight-bold text-center">Items</h6>
-    <%= link_to "New item", new_project_item_path(@project, @item), class: "btn btn-sm btn-primary" %>
-    <%= link_to "Menu", project_items_path(@project, @items), class: "btn btn-sm btn-success" %>
-    <br />
-    <br />
-
-    <div class="row">
-        <% @project.items.each do |item| %>
-            
-            <div class="col-md-3">
-                <%= link_to project_item_path(@project, item) do %>
-                    <div class="card my-2">
-                        <div class="card-body">
-                            <small><%= item.title %></small>
-                        </div>
-                    </div>
-                <% end %>
-            </div>
-            
-        <% end %>
-    </div>
-    <br />
-    <br />
-
-    <div class="row">
-        
-        <div class="col-md-4">
-            <p>
-                <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Add member
-                </a>            
-            </p>
-            <div class="collapse" id="collapseExample">
-            
-                <%= simple_form_for [@project, ProjectUser.new] do |f| %>
-                    <div class="card card-body">
-                    
-                        <%= f.input :email, placeholder: "email", label: false %>
-                        <%= f.submit "Invite", class: "btn btn-xs btn-primary" %>
-                
-                    <%  end %>
-                </div>
-            </div>
+    <div class="col-md-3">
+      <%= link_to project_categories_path(@project, @categories) do %>
+        <div class="box h-100">
+          <h6 class="text-center each-item-title">Categories</h6>
+          <hr />
+          <% @project.categories.last(4).each do |category| %>
+            <li><p class="item-title"><%= category.name %></p></li>
+            <small><%= truncate(category.description, length: 30) %></small>
+          <% end %>
         </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-6">
-            <% @project.users.each do |user| %> 
-                <li><%= user.email %></li>
-            <% end %>
-        </div>    
+      <% end %>
     </div>
+    <div class="col-md-3">
+      <%= link_to project_groups_path(@project, @groups) do %>
+        <div class="box h-100">
+          <h6 class="text-center each-item-title">Groups</h6>
+          <hr />
+          <% @project.groups.last(4).each do |group| %>
+            <li><p class="item-title"><%= group.name %></p></li>
+              <small><%= truncate(group.description, length: 30) %></small>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to project_project_users_path(@project, @users) do %>
+        <div class="box h-100">
+          <h6 class="text-center each-item-title">Members</h6>
+          <hr />
+          <% @project.users.last(4).each do |user| %>
+            <li><p class="item-title"><%= user.email %></p></li>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to project_requests_path(@project, @requests) do %>
+        <div class="box-3 h-100">
+          <h6 class=" each-item-title">Requests</h6>
+          <hr />
+          <% @project.requests.last(4).each do |request| %>
+            <li><p class="item-title"><%= truncate(request.message, length: 30) %></p></li>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <%= link_to project_faqs_path(@project, @faqs) do %>
+        <div class="box-3 h-100">
+          <h6 class=" each-item-title">Most asked questions</h6>
+          <hr />
+          <% @project.faqs.last(2).each do |faq| %>
+            <li><%= truncate(faq.ask, length: 20)  %></li>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

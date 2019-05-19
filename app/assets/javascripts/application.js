@@ -11,13 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-
 //= require jquery-ui
 //= require rails-ujs
 //= require turbolinks
 //= require jquery.raty
-
-
 //= require Chart.bundle
 //= require chartkick
 
