@@ -14,7 +14,6 @@ class CategoriesController < BaseController
   def create
     @category = @project.categories.new(category_params)
     if @category.save
-
       respond_to do |f|
         f.html { redirect_to project_categories_path(@project, @categories), notice: "You have successfully created #{@category.name}" }
         f.js
@@ -31,7 +30,7 @@ class CategoriesController < BaseController
       respond_to do |f|
         f.html { redirect_to project_categories_path(@project, @categories), notice: "you have successfully #{@category.name}!" }
         f.js
-      end 
+      end
     else
       render :edit
     end
