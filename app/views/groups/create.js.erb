@@ -1,0 +1,4 @@
+document.querySelector("#groups").insertAdjacentHTML("afterBegin", "<%=j render @category %>")
+var element = document.querySelector("#group_name")
+element.value = ""
+element.dispatchEvent(new Event('keyup'))

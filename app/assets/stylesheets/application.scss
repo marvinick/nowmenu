@@ -15,6 +15,10 @@
 
  */
 
+.turbolinks-progress-bar {
+  visibility: hidden;
+}
+
  input[type="text"] {
     outline: none!important;
     box-shadow:none !important;

@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
   caches_action :index, :edit, :new
 
   def index
-    @groups = @project.groups.includes(:group_items)
-
+    @group = @project.groups.build
+    @groups = @project.groups.order(created_at: :desc)
   end
 
   # def sort
@@ -23,10 +23,18 @@ class GroupsController < ApplicationController
 
   def create
     @group = @project.groups.new(group_params)
-    if @group.save
-      redirect_to project_groups_path(@project, @groups), notice: "You have a created a new group!"
-    else
-      render :new, alert: "something's wrong!"
+
+    respond_to do |f|
+
+      if @group.save
+        f.html { redirect_to project_groups_path(@project, @groups), notice: "You have a created a new group!" }
+        f.json
+        f.js
+      else
+        f.html { render :new, alert: "something's wrong!" }
+        f.json { render json: @group.errors, status: :unprocessable_entity }
+        f.js
+      end
     end
   end
 

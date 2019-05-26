@@ -1,0 +1,11 @@
+<%= simple_form_for [@project, @group] do |f| %>
+    <% f.hidden_field :project_id %>
+    <%= f.input :name, label: false, placeholder: "name" %>
+
+    <br />
+    <%= f.input :description, label: false, placeholder: "description" %>
+    <br />
+    <div class="float-right">
+      <%= f.submit "create group", class: "btn btn-outline-secondary btn-sm", data: { disable_with: "Creating group..." } %>
+    </div>
+<% end %>

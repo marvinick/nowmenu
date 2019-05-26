@@ -1,0 +1,8 @@
+<div id="<%= dom_id(group) %>" class="card card-body mb-3" data-controller="inline-edit">
+
+  <div class="text-muted"><small><%= group.created_at %></small></div>
+
+  <div data-target="inline-edit.body" data-action="click->inline-edit#toggle"><%= group.name %></div>
+
+  
+</div>
