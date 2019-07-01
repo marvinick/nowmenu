@@ -31,6 +31,10 @@
             <br />
             <%= f.file_field :image %>
             <br />
+            <div class="field">
+              <%= f.label :body %>
+              <%= f.rich_text_area :body %>
+            </div>
             <br />
             <%= f.label "Groups: ", class: "item-title" %>
             <%= f.collection_check_boxes :group_ids, @project.groups.all, :id, :name do |cb| %>

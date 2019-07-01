@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
 
       if @group.save
         f.html { redirect_to project_groups_path(@project, @groups), notice: "You have a created a new group!" }
-        f.json
+        f.json { render :show, status: :created, location: @group }
         f.js
       else
         f.html { render :new, alert: "something's wrong!" }

@@ -1,6 +1,4 @@
 class ProjectUser < ApplicationRecord
-  include PublicActivity::Model
-  tracked
 
   before_validation :set_user_id, if: :email?
 

@@ -38,9 +38,6 @@ gem 'groupdate'
 #forms
 gem 'simple_form'
 
-#activity
-gem 'public_activity'
-
 #search
 gem 'ransack'
 gem 'webpacker'
@@ -53,11 +50,8 @@ gem 'devise_invitable'
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
 
-#frontend
-gem 'rails-hyperstack'
 
 #image upload
-gem 'aws-sdk'
 gem "aws-sdk-s3"
 gem "mini_magick"
 

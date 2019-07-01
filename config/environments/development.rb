@@ -62,7 +62,7 @@ Rails.application.configure do
   #set up the default URL options for the Devise mailer in each environment
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3001' }
 
   ActionMailer::Base.smtp_settings =
   {
@@ -83,7 +83,7 @@ Rails.application.configure do
     Bullet_bullet_logger = true
     Bullet.console = true
     Bullet.rails_logger = true
-    
+
   end
 
 end

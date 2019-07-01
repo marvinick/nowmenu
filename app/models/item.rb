@@ -1,8 +1,5 @@
 class Item < ApplicationRecord
-  include PublicActivity::Model
-  tracked
-  # tracked owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
-
+  has_rich_text :body
   belongs_to :project
   has_many :group_items
   has_many :groups, through: :group_items
@@ -22,4 +19,3 @@ class Item < ApplicationRecord
   end
 
 end
- 

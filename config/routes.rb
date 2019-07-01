@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'sign_in', to: 'devise/sessions#new'
     get '/users/sign_out' => 'devise/sessions#destroy'
     resources :requests
-  end
+  end 
   resources :users, :only => [:show]
 
   get "/homes", to: "homes#home", as: :home
